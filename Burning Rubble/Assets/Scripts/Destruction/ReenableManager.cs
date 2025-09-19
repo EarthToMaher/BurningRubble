@@ -30,7 +30,7 @@ public class ReenableManager : MonoBehaviour
         {
             if (pending[i].eligibleTime <= now)
             {
-                if (pending[i].obj) pending[i].obj.SetObjectActive(true);
+                if (pending[i].obj) pending[i].obj.RepairMe();
                 pending.RemoveAt(i);
             }
         }

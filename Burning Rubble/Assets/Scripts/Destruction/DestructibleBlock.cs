@@ -31,12 +31,19 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     {
         //TODO: Deal damage to the cause
         //TODO: Instigator gains rubble
+        //TODO: Particle Effects
         SetObjectActive(false);
         rm.AddToBatch(this);
         for(int i = 0; i < numOfPickUps; i++)
         {
             GameObject rubbleObj = Instantiate(rubblePickUp, transform.position, Quaternion.identity);
         }
+    }
+
+    public void RepairMe()
+    {
+        //TODO: Repair Animation
+        SetObjectActive(true);
     }
 
     [ContextMenu("DestroyMe")]
