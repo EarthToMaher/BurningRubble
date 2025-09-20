@@ -14,12 +14,19 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     private MeshRenderer rend;
     private Collider coll;
     private ReenableManager rm;
+    private RubblePickUp[] pickUps;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if(numOfPickUps>0) pickUps = new RubblePickUp[numOfPickUps];
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
         rm = FindFirstObjectByType<ReenableManager>();
+        for (int i = 0; i < numOfPickUps; i++)
+        {
+            GameObject rubbleObj = Instantiate(rubblePickUp, transform.position, Quaternion.identity);
+            pickUps[i] = rubbleObj.GetComponent<RubblePickUp>();
+        }
     }
 
     /// <summary>
@@ -34,15 +41,13 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         //TODO: Particle Effects
         SetObjectActive(false);
         rm.AddToBatch(this);
-        for(int i = 0; i < numOfPickUps; i++)
-        {
-            GameObject rubbleObj = Instantiate(rubblePickUp, transform.position, Quaternion.identity);
-        }
+        if(numOfPickUps>0) foreach (RubblePickUp pickUp in pickUps) pickUp.SetObjectActive(true);
     }
 
     public void RepairMe()
     {
         //TODO: Repair Animation
+        if(numOfPickUps>0)foreach (RubblePickUp pickUp in pickUps) pickUp.SetObjectActive(false);
         SetObjectActive(true);
     }
 
