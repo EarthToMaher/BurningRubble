@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
-  numOfPickUps: 0
+  numOfPickUps: 4
 --- !u!65 &540603157
 BoxCollider:
   m_ObjectHideFlags: 0
