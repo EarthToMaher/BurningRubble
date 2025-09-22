@@ -59,7 +59,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         particle.SetActive(true);
         SetObjectActive(false);
         rm.AddToBatch(this);
-        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.SetObjectActive(true);
+        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Spawn();
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     public void RepairMe()
     {
         //TODO: Repair Animation
-        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.SetObjectActive(false);
+        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Despawn();
         SetObjectActive(true);
     }
 
