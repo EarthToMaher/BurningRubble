@@ -19,6 +19,9 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     [Tooltip("Represents the amount of damage taken when crashing into this block")]
     [SerializeField] private int hp = 5;
 
+    [Tooltip("Prefab for our particle effect")]
+    [SerializeField] private GameObject particle;
+
     //Private Instance Variables, No Need to Access from Inspector
     private MeshRenderer rend;
     private Collider coll;
@@ -32,6 +35,9 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
         rm = FindFirstObjectByType<ReenableManager>();
+        particle = Instantiate(particle, transform.position, Quaternion.identity);
+
+
         if (numOfPickUps < 1) return;
         pickUps = new RubblePickUp[numOfPickUps];
         for (int i = 0; i < numOfPickUps; i++)
@@ -50,7 +56,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     {
         //TODO: Deal damage to the cause
         //TODO: Instigator gains rubble
-        //TODO: Particle Effects
+        particle.SetActive(true);
         SetObjectActive(false);
         rm.AddToBatch(this);
         if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.SetObjectActive(true);

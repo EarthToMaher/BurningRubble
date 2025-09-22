@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReenableManager
   checkRate: 3
-  maxRespawnAmount: 0
+  maxRespawnAmount: 2
   minWaitTime: 5
 --- !u!1 &410087039
 GameObject:
@@ -431,8 +431,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465554dd1056d1144a285082a1036cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
+  rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 4
+  hp: 5
 --- !u!65 &540603157
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -557,8 +559,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465554dd1056d1144a285082a1036cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
+  rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 0
+  hp: 5
 --- !u!65 &558476064
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -683,8 +687,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465554dd1056d1144a285082a1036cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
+  rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 0
+  hp: 5
 --- !u!65 &805817834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -858,8 +864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465554dd1056d1144a285082a1036cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
+  rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 1
+  hp: 5
 --- !u!65 &901304569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -984,8 +992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465554dd1056d1144a285082a1036cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructibleBlock
+  rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 0
+  hp: 5
 --- !u!65 &1147604900
 BoxCollider:
   m_ObjectHideFlags: 0
