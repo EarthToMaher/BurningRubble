@@ -46,7 +46,7 @@ public class KartMovement : MonoBehaviour
         rb.linearVelocity = transform.TransformDirection(localVel);
 
         // kart acceleration
-        rb.AddForce(new Vector3(0f, 0f, moveDirection.y) * acceleration, ForceMode.Acceleration);
+        rb.AddRelativeForce(new Vector3(0f, 0f, moveDirection.y) * acceleration, ForceMode.Acceleration);
 
         // caps acceleration to maxSpeed 
         if (rb.linearVelocity.magnitude > maxSpeed)
