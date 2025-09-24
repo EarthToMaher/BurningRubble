@@ -1434,9 +1434,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  acceleration: 20
+  accelerationMultiplier: 20
   maxSpeed: 500
   turnSpeed: 15
+  brakingMultiplier: 20
 --- !u!54 &1450834463
 Rigidbody:
   m_ObjectHideFlags: 0
