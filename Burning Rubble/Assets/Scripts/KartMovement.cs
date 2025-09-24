@@ -38,10 +38,10 @@ public class KartMovement : MonoBehaviour
     void FixedUpdate()
     {
         // flip steering direction for reversing
-        if (moveDirection.y < 0f)
-        {
-            moveDirection.x *= -1;
-        }
+        //if (moveDirection.y < 0f)
+        //{
+           // moveDirection.x *= -1;
+        //}
 
         // steering
         float speedFactor = rb.linearVelocity.magnitude / maxSpeed;
@@ -56,13 +56,14 @@ public class KartMovement : MonoBehaviour
         rb.linearVelocity = transform.TransformDirection(localVel);
 
         // kart acceleration
-        if (currBraking == 0)
+        if (currAcceleration == 0)
         {
-            rb.AddRelativeForce(new Vector3(0f, 0f, moveDirection.y) * currAcceleration, ForceMode.Acceleration);
+            rb.AddRelativeForce(new Vector3(0f, 0f, -1f) * currBraking, ForceMode.Acceleration);
         }
         else
         {
-            rb.AddRelativeForce(-rb.linearVelocity.normalized * currBraking, ForceMode.Acceleration);
+            moveDirection.x *= -1;
+            rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
         }
 
         // caps acceleration to maxSpeed 
