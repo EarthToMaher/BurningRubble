@@ -56,7 +56,7 @@ public class KartMovement : MonoBehaviour
         rb.linearVelocity = transform.TransformDirection(localVel);
 
         // kart acceleration
-        if(currBraking == 0)
+        if (currBraking == 0)
         {
             rb.AddRelativeForce(new Vector3(0f, 0f, moveDirection.y) * currAcceleration, ForceMode.Acceleration);
         }
@@ -71,7 +71,12 @@ public class KartMovement : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
     }
+    private void OnCollisionStay(Collision other) {
+        I_Destructible destructible = other.gameObject.GetComponent<I_Destructible>();
+        if (destructible != null) destructible.DestroyMe(this.gameObject, this.gameObject);
+    }
 }
+
 
 // old code we could need later can go here
 // prevent reversing on forward movement
