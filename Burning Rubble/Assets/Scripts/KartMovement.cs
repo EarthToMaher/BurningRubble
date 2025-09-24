@@ -71,7 +71,10 @@ public class KartMovement : MonoBehaviour
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
     }
-    private void OnCollisionStay(Collision other) {
+
+    //Temporary Check for destruction, should probably be changed to a spherecast check
+    private void OnTriggerStay(Collider other)
+    {
         I_Destructible destructible = other.gameObject.GetComponent<I_Destructible>();
         if (destructible != null) destructible.DestroyMe(this.gameObject, this.gameObject);
     }
