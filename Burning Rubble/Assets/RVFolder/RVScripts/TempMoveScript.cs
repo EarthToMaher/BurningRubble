@@ -1,11 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TempMoveScript : MonoBehaviour
 {
-    public int _lapCount = 0;
-    public bool _inCheckpointTrigger = false;
+    public int _lapCount = 1;
+    public int _checkpointCount = 0;
+    private int _currCheckpoint = 0;
 
+    public GameObject _txtCheckpoint;
+    public GameObject _txtLapCount;
 
     // Everything below this honestly is just a temp movement script. Above it will be values associated to Lap Checking.
     private PlayerInput playerInput;
@@ -17,6 +22,7 @@ public class TempMoveScript : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
+
     }
 
     void Update()
@@ -24,6 +30,8 @@ public class TempMoveScript : MonoBehaviour
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0f, input.y);
         transform.position += move * moveSpeed * Time.deltaTime;
+
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -31,10 +39,41 @@ public class TempMoveScript : MonoBehaviour
         // In the actual game, we can create an array of the checkpoints, and if the checkpoint the player is at is higher
         // Than their previous one, they can't increase their checkpoint.
         // (Basically, we can set their checkpoint number to whatever number is in the array.)
-        _inCheckpointTrigger = true;
-        Debug.Log("Checkpoint trigger is: " + _inCheckpointTrigger);
-        _lapCount++;
-        Debug.Log("Lap Count is: " + _lapCount);
+
+        if (other.transform.parent.tag.Equals("Checkpoint"))
+        {
+            // Get the Checkpoint Script from other object
+            Checkpoint _checkpointScript = other.GetComponentInParent<Checkpoint>();
+            // Set the _checkpointCount to the scripts Checkpoint number
+            _checkpointCount = _checkpointScript.SetCheckpoint();
+            // If the _currCheckpoint is less than the next checkpoint, increment to the next
+            if (_currCheckpoint < _checkpointScript.SetCheckpoint())
+            {
+                // Display current checkpoint
+                _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _checkpointCount;
+                // Set currCheckpoint to the current checkpoint
+                _currCheckpoint = _checkpointScript.SetCheckpoint();
+            }
+        }
+
+        //Debug.Log("Entered Trigger");
+        if (other.transform.parent.tag.Equals("Lap"))
+        {
+            Debug.Log("Triggered Lap");
+            if (_lapCount <= 2)
+            {
+                _lapCount++;
+                Debug.Log("Lap Count is: " + _lapCount);
+                _txtLapCount.GetComponent<TextMeshProUGUI>().text = "Lap: " + _lapCount + "/3";
+            }
+        }
+
+    }
+
+    public void ResetScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
     }
 
 }
