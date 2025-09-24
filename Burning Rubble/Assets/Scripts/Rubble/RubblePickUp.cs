@@ -7,8 +7,12 @@ public class RubblePickUp : MonoBehaviour
     private MeshRenderer rend;
     private Collider coll;
     private Rigidbody rb;
-    [SerializeField] private float luanchHori;
-    [SerializeField] private float launchVert;
+    //[SerializeField] private float luanchHori;
+    //[SerializeField] private float launchVert;
+    [Tooltip("Multiplies the vertical force applied to the pickup")]
+    [SerializeField] private float verticalLaunchMultiplier = 5;
+    [Tooltip("Multiples the horizontal force applied to the pickup")]
+    [SerializeField] private float horizontalLaunchMultiplier = 2;
     private Vector3 startingPos;
 
     //Sets our instance variables and sets our object active state to false
@@ -33,10 +37,10 @@ public class RubblePickUp : MonoBehaviour
         rb.useGravity = state;
     }
 
-    public void Spawn()
+    public void Spawn(Vector2 launchDirection)
     {
         SetObjectActive(true);
-        LaunchObject();
+        LaunchObject(launchDirection);
     }
 
     public void Despawn()
@@ -46,9 +50,9 @@ public class RubblePickUp : MonoBehaviour
         transform.position = startingPos;
     }
 
-    public void LaunchObject()
+    public void LaunchObject(Vector2 launchDirection)
     {
-        rb.AddForce(new Vector2(luanchHori, launchVert), ForceMode.Impulse);
+        rb.AddForce(new Vector3(launchDirection.x * horizontalLaunchMultiplier, launchDirection.magnitude*verticalLaunchMultiplier,launchDirection.y*horizontalLaunchMultiplier), ForceMode.Impulse);
     }
 
 

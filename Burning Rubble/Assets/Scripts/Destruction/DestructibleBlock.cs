@@ -59,7 +59,10 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         particle.SetActive(true);
         SetObjectActive(false);
         rm.AddToBatch(this);
-        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Spawn();
+        Vector2 launchDirection = new Vector2(1, 1);
+        Rigidbody causeRb = cause.GetComponent<Rigidbody>();
+        if (causeRb != null) launchDirection = new Vector2(causeRb.linearVelocity.x, causeRb.linearVelocity.z);
+            if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Spawn(launchDirection);
     }
 
     /// <summary>
