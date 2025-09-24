@@ -52,8 +52,8 @@ public class RubblePickUp : MonoBehaviour
 
     public void LaunchObject(Vector2 launchDirection)
     {
-        Debug.Log(launchDirection);
-        rb.AddForce(new Vector3(launchDirection.x * horizontalLaunchMultiplier, Mathf.Max(launchDirection.magnitude*verticalLaunchMultiplier,5),launchDirection.y*horizontalLaunchMultiplier), ForceMode.Impulse);
+        //Debug.Log(launchDirection);
+        rb.AddForce(new Vector3(launchDirection.x * horizontalLaunchMultiplier, Mathf.Max(launchDirection.magnitude*verticalLaunchMultiplier,3),launchDirection.y*horizontalLaunchMultiplier), ForceMode.Impulse);
     }
 
 
