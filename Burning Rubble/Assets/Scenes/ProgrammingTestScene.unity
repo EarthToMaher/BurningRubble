@@ -1434,19 +1434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  acceleration: 5
-  maxSpeed: 100
-  drift: 0
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: b7cbaf5e-0fb5-4660-9d3a-de2d541f3aab
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  rb: {fileID: 0}
+  acceleration: 20
+  maxSpeed: 500
+  turnSpeed: 15
 --- !u!54 &1450834463
 Rigidbody:
   m_ObjectHideFlags: 0
