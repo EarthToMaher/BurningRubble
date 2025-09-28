@@ -60,7 +60,7 @@ public class KartMovement : MonoBehaviour
 
         // convert to world velocity
         rb.linearVelocity = transform.TransformDirection(localVel);
-        Debug.Log(currReverse);
+        //Debug.Log(currReverse);
         // kart acceleration
         if (currBraking != 0)
         {

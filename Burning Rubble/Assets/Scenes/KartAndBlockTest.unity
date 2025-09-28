@@ -1115,8 +1115,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1302516141}
   m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+--- !u!1 &1302516140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+  m_PrefabInstance: {fileID: 1302516139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1302516141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302516140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921f716f89a914f4ba47f669db146801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RubbleMeter
+  MAX_AMT: 200
 --- !u!1 &1515655995
 GameObject:
   m_ObjectHideFlags: 0
