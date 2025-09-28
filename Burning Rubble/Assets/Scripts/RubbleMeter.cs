@@ -1,3 +1,9 @@
+/*
+Script Representing Our Rubble Meter and it's Uses
+Script Written By: Matthew Maher
+Last Modified: 9/28/2025
+*/
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -5,11 +11,21 @@ using UnityEngine.InputSystem;
 
 public class RubbleMeter : MonoBehaviour
 {
+    //Current amount of rubble the  meter contains
     private int currRubbleAmt;
+    [Tooltip("Integer representing the capacity of rubble a player can hold")]
     [SerializeField] private int MAX_AMT;
+
+    [Tooltip("The image element that gets filled to represent the rubble meter")]
     [SerializeField] private Image rubbleBar;
+
+    [Tooltip("Text displaying how many rubble charges we have")]
     [SerializeField] private TextMeshProUGUI rubbleText;
+
+    [Tooltip("Amount needed to perform a rubble charge action")]
     [SerializeField] private int rubbleChargeAmt = 100;
+
+    //Input action for using a rubble action
     private InputAction rubbleAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,26 +36,39 @@ public class RubbleMeter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rubbleAction.WasPerformedThisFrame()) UseRubble(rubbleChargeAmt) ; //UseRubble(rubbleChargeAmt);
+        //Temporary Debug to Perform a Rubble Action
+        if (rubbleAction.WasPerformedThisFrame()) UseRubble(rubbleChargeAmt); //UseRubble(rubbleChargeAmt);
     }
 
+/// <summary>
+/// Function for adding rubble to the rubble meter
+/// </summary>
+/// <param name="rubble">The amount of rubble added to the meter</param>
     public void GainRubble(int rubble)
     {
+        //Adds the rubble and clamps the value between 0 and our max
         currRubbleAmt = Mathf.Clamp(currRubbleAmt + rubble, 0, MAX_AMT);
-        //Debug.Log(currRubbleAmt);
         UpdateUI();
     }
 
+/// <summary>
+/// Function for using rubble
+/// </summary>
+/// <param name="rubble">Amount of rubble being used in the action</param>
     public void UseRubble(int rubble)
     {
+        //Check to make sure we have enough rubble to perform the action
         if (currRubbleAmt >= rubble)
         {
             currRubbleAmt -= rubble;
             UpdateUI();
-            Debug.Log("I ran");
         }
     }
 
+
+/// <summary>
+/// Function for updating our UI
+/// </summary>
     private void UpdateUI()
     {
         if (currRubbleAmt == MAX_AMT)
@@ -51,7 +80,7 @@ public class RubbleMeter : MonoBehaviour
         {
             int rubbleCharges = currRubbleAmt / rubbleChargeAmt;
             rubbleText.text = "Rubble: " + rubbleCharges;
-            float barFill = ((currRubbleAmt*1.0f - (rubbleCharges * rubbleChargeAmt*1.0f)) / rubbleChargeAmt*1.0f);
+            float barFill = ((currRubbleAmt * 1.0f - (rubbleCharges * rubbleChargeAmt * 1.0f)) / rubbleChargeAmt * 1.0f);
             rubbleBar.fillAmount = barFill;
         }
     }
