@@ -25,7 +25,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     //Private Instance Variables, No Need to Access from Inspector
     private MeshRenderer rend;
     private Collider coll;
-    private ReenableManager rm;
+    private ReenableManager reMgr;
     private RubblePickUp[] pickUps;
 
     // Initializes our instance variables, Instantiates our PickUps and Fills the Array
@@ -34,7 +34,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
 
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
-        rm = FindFirstObjectByType<ReenableManager>();
+        reMgr = FindFirstObjectByType<ReenableManager>();
         particle = Instantiate(particle, transform.position, Quaternion.identity);
 
 
@@ -55,10 +55,11 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     public void DestroyMe(GameObject instigator, GameObject cause)
     {
         //TODO: Deal damage to the cause
-        //TODO: Instigator gains rubble
+        RubbleMeter rm = instigator.GetComponent<RubbleMeter>();
+        if (rm != null) rm.GainRubble(rubble);
         particle.SetActive(true);
         SetObjectActive(false);
-        rm.AddToBatch(this);
+        reMgr.AddToBatch(this);
         Vector2 launchDirection = new Vector2(1, 1);
         Rigidbody causeRb = cause.GetComponent<Rigidbody>();
         if (causeRb != null) launchDirection = new Vector2(causeRb.linearVelocity.x, causeRb.linearVelocity.z);
