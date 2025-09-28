@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 /*
+Script for handling the reenabling of our destroyed objects
 Written By: Matthew Maher
-Last Updated: 9/21/2025
+Last Updated: 9/28/2025
 ChatGPT was used to discuss ways of optimizing
 */
 public class ReenableManager : MonoBehaviour
@@ -63,15 +64,6 @@ public class ReenableManager : MonoBehaviour
 
         if (pending.Count == 0) nextCheckTime = float.MaxValue; //If there is nothing in the list, sets our nextCheck to be as late as possible
         else nextCheckTime = pending[0].eligibleTime; //Updates our next check time
-
-        /*
-        // Schedule next check (find earliest remaining time) might be worth removing, as this does make this run as O(n^2)
-        nextCheckTime = float.MaxValue;
-        for (int i = 0; i < pending.Count; i++)
-        {
-            if (pending[i].eligibleTime < nextCheckTime)
-                nextCheckTime = pending[i].eligibleTime;
-        }*/
     }
 
     /// <summary>
