@@ -4,7 +4,6 @@ public class Checkpoint : MonoBehaviour
 {
     public int _checkpointPlacement;
 
-
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
@@ -12,10 +11,16 @@ public class Checkpoint : MonoBehaviour
         {
             // Testing purposes, actual game we take the kart script
             TempMoveScript _tempMove = other.GetComponent<TempMoveScript>();
-            if (_tempMove._checkpointCount >= 0)
+
+            // Deprecated until further notice, keeping it as a remnant
+            // in case we wanna reuse it.
+            // old checkpoint system (updating system)
+            /*if (_tempMove._checkpointCount >= 0)
             {
                 _tempMove._checkpointCount = GetCheckpoint();
-            }
+            }*/
+
+            _tempMove._checkpointCount = _tempMove._checkpointCount++;
         }
     }
 
