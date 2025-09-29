@@ -43,6 +43,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Drift",
+                    "type": "Button",
+                    "id": "28f4585a-daa0-4b64-8891-4c68d9a9d0cf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Look",
                     "type": "Value",
                     "id": "6b444451-8a00-4d00-a97e-f47457f736a8",
@@ -109,19 +118,10 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "641cd816-40e6-41b4-8c3d-04687c349290",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Rubble",
-                    "type": "Button",
-                    "id": "812acf25-0828-4c28-942d-714fb5f6013d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -513,7 +513,7 @@
                 {
                     "name": "",
                     "id": "b4d8388b-91e8-4093-af55-9bd67aa6ad4c",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -578,23 +578,34 @@
                 },
                 {
                     "name": "",
-                    "id": "6a3218c1-cecf-4a5a-b109-39ab8baecf0e",
-                    "path": "<Keyboard>/space",
+                    "id": "4a940820-95b5-44fb-8409-9027e8d60572",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Rubble",
+                    "groups": ";Gamepad",
+                    "action": "Drift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "dbd66a1d-827c-44f4-9116-f662d84b3355",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "2db08ea6-7e60-4b80-ade0-9f03783f8200",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Drift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4750c4e5-b718-47ce-b6fa-ca1d999a69b1",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rubble",
+                    "action": "Drift",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
