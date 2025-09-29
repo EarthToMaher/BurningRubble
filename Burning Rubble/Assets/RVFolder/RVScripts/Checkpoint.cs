@@ -3,12 +3,17 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public int _checkpointPlacement;
+    public bool _hasPassed;
 
+    public void Start()
+    {
+        _hasPassed = false;
+    }
 
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
-        if (other.transform.tag.Equals("Player"))
+        if (other.transform.tag.Equals("Player") && _hasPassed == false)
         {
             // Testing purposes, actual game we take the kart script
             
@@ -22,7 +27,8 @@ public class Checkpoint : MonoBehaviour
                 _tempMove._checkpointCount = GetCheckpoint();
             }*/
 
-            _tempMove._checkpointCount = _tempMove._checkpointCount++;
+            _tempMove._checkpointCount++;
+            _hasPassed = true;
         }
     }
 
