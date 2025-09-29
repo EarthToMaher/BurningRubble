@@ -31,7 +31,7 @@ public class TempMoveScript : MonoBehaviour
         Vector3 move = new Vector3(input.x, 0f, input.y);
         transform.position += move * moveSpeed * Time.deltaTime;
 
-        
+        _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _checkpointCount;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -43,7 +43,7 @@ public class TempMoveScript : MonoBehaviour
         if (other.transform.parent.tag.Equals("Checkpoint"))
         {
             // Get the Checkpoint Script from other object
-            Checkpoint _checkpointScript = other.GetComponentInParent<Checkpoint>();
+            /*Checkpoint _checkpointScript = other.GetComponentInParent<Checkpoint>();
             // Set the _checkpointCount to the scripts Checkpoint number
             _checkpointCount = _checkpointScript.SetCheckpoint();
             // If the _currCheckpoint is less than the next checkpoint, increment to the next
@@ -53,7 +53,7 @@ public class TempMoveScript : MonoBehaviour
                 _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _checkpointCount;
                 // Set currCheckpoint to the current checkpoint
                 _currCheckpoint = _checkpointScript.SetCheckpoint();
-            }
+            }*/
         }
 
         //Debug.Log("Entered Trigger");
