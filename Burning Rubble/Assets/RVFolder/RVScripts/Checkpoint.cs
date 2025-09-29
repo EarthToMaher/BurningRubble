@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public int _checkpointPlacement;
+    [SerializeField] private int _checkpointPlacement;
+    public Vector3 _checkpointPosition;
     public bool _hasPassed;
 
     public void Start()
     {
         _hasPassed = false;
+        _checkpointPosition = this.transform.position;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -26,8 +28,12 @@ public class Checkpoint : MonoBehaviour
             {
                 _tempMove._checkpointCount = GetCheckpoint();
             }*/
-
+            
+            // Increments checkpoint (determines who's in first)
             _tempMove._checkpointCount++;
+            // Changes checkpoint placement (teleport location)
+            _tempMove._currCheckpoint = _checkpointPlacement;
+            // Prevents passing through the same checkpoint
             _hasPassed = true;
         }
     }
