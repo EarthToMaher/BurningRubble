@@ -11,11 +11,18 @@ public class Checkpoint : MonoBehaviour
         if (other.transform.tag.Equals("Player"))
         {
             // Testing purposes, actual game we take the kart script
+            
+            // Deprecated
+            // Old ver of the checkpoint system; reworking into incremental
+            // Keeping this here in case we wanna do smth with it
+            // Updating checkpoint system
             TempMoveScript _tempMove = other.GetComponent<TempMoveScript>();
-            if (_tempMove._checkpointCount >= 0)
+            /*if (_tempMove._checkpointCount >= 0)
             {
                 _tempMove._checkpointCount = GetCheckpoint();
-            }
+            }*/
+
+            _tempMove._checkpointCount = _tempMove._checkpointCount++;
         }
     }
 
