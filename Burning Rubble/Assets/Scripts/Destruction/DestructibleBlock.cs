@@ -54,7 +54,8 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     /// <param name="cause">The physical thing causing the destruction (i.e., kart, item)</param>
     public void DestroyMe(GameObject instigator, GameObject cause)
     {
-        //TODO: Deal damage to the cause
+        I_Damageable damageable = cause.GetComponent<I_Damageable>();
+        if (damageable != null) damageable.TakeDamage(hp);
         RubbleMeter rm = instigator.GetComponent<RubbleMeter>();
         if (rm != null) rm.GainRubble(rubble);
         particle.SetActive(true);
