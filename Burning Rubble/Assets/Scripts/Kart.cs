@@ -26,8 +26,22 @@ public class Kart : MonoBehaviour, I_Damageable
         if (hp <= 0) KartDeath();
     }
 
+    public bool Heal(int healAmt)
+    {
+        hp = Mathf.Clamp(hp + healAmt, 0, MAX_HP);
+        Debug.Log(hp);
+        if (hp < MAX_HP) return false;
+        return true;
+    }
+
     private void KartDeath()
     {
         Debug.Log("Oh my god you got a game over what the noob");
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        PitStop pitStop = collision.gameObject.GetComponent<PitStop>();
+        if (pitStop != null) StartCoroutine(pitStop.HealObject(this));
     }
 }
