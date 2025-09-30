@@ -3,29 +3,54 @@ using UnityEngine.InputSystem;
 
 public class KartMovement : MonoBehaviour
 {
-    [SerializeField] private float accelerationMultiplier;
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float brakingMultiplier;
-    [SerializeField] private float reverseMultiplier = 15;
-    private Vector2 moveDirection;
-    private float currAcceleration;
-    private float currReverse;
-    private float currBraking;
+    //input actions 
     private InputAction moveAction;
     private InputAction reverseAction;
     private InputAction accelerateAction;
     private InputAction brakeAction;
+    private InputAction driftAction;
+
+    //serialized values
+    [SerializeField] private float defaultMaxSpeed; //the max speed the kart can reach
+    [SerializeField] private float driftMaxSpeedReducer; //this value is subtracted from defaultMaxSpeed during a drift
+    [SerializeField] private float accelerationMultiplier; //acceleration while moving forward
+    [SerializeField] private float brakingMultiplier; //how much braking affects speed
+    [SerializeField] private float reverseMultiplier = 15; //acceleration while reversing
+    [SerializeField] private float turnSpeed; //the speed of a generic turn
+    [SerializeField] private float driftSpeed; //the speed of a drift turn
+    [SerializeField] private float minDriftAngle; //the min drift angle when player tightens drift (joystick held in drift direction)
+    [SerializeField] private float defaultDriftAngle; //the drift angle when joystick is not held in a direction
+    [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
+    [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
+
+    //updating movement values
+    private Vector2 moveDirection;
+    private float currAcceleration;
+    private float currReverse;
+    private float currBraking;
+    private float currMaxSpeed;
+    private float driftDirection;
+
+    //rigidbody reference
     private Rigidbody rb;
+
+    //booleans
+    private bool isDrifting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (currMaxSpeed <= 0) currMaxSpeed = 1f;
+        //assign input action references
         moveAction = InputSystem.actions.FindAction("Move");
         reverseAction = InputSystem.actions.FindAction("Reverse");
         accelerateAction = InputSystem.actions.FindAction("Accelerate");
         brakeAction = InputSystem.actions.FindAction("Brake");
+        driftAction = InputSystem.actions.FindAction("Drift");
+
+        //assign rigidbody and fix max angular velocity for drift
         rb = this.gameObject.GetComponent<Rigidbody>();
+        rb.maxAngularVelocity = defaultDriftAngle;
     }
 
     // Update is called once per frame
@@ -39,30 +64,93 @@ public class KartMovement : MonoBehaviour
         currReverse *= reverseMultiplier;
         currBraking = brakeAction.ReadValue<float>();
         currBraking *= brakingMultiplier;
+
+        //determine whether kart is drifting
+        if(driftAction.WasPressedThisFrame() && moveDirection.x != 0 && currAcceleration != 0)
+        {
+            isDrifting = true;
+            rb.constraints = RigidbodyConstraints.None;
+            driftDirection = moveDirection.x;
+            Debug.Log(driftDirection);
+            Debug.Log("started drifting");
+        }
+        
+        if(isDrifting && (!driftAction.IsPressed() || currAcceleration == 0))
+        {
+            isDrifting = false;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            Debug.Log("stopped drifting");
+        }
     }
 
     void FixedUpdate()
     {
-        // flip steering direction for reversing
-        //if (moveDirection.y < 0f)
-        //{
-           // moveDirection.x *= -1;
-        //}
+        // steering and drifting
+        if(isDrifting)
+        { 
+            //drifting
+            //decrease max speed
+            currMaxSpeed = defaultMaxSpeed - driftMaxSpeedReducer;
 
-        // steering
-        float speedFactor = rb.linearVelocity.magnitude / maxSpeed;
-        Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
-        rb.MoveRotation(rb.rotation * turnValue);
+            //adjust drift angle based on input
+            if((driftDirection < 0 && moveDirection.x > 0) || (driftDirection > 0 && moveDirection.x < 0))
+            {
+                //widening drift
+                if(rb.maxAngularVelocity < maxDriftAngle)
+                {
+                    rb.maxAngularVelocity -= driftAngleAdjuster;
+                }
+                Debug.Log("Widening: " + rb.maxAngularVelocity);
+            }
+            else if((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
+            {
+                //tightening drift
+                if(rb.maxAngularVelocity > minDriftAngle)
+                {
+                    rb.maxAngularVelocity += (driftAngleAdjuster * 2);
+                }
+                Debug.Log("Tightening: " + rb.maxAngularVelocity);
+            }
+            else
+            {
+                //standard drift, no adjustment
+                if(rb.maxAngularVelocity < defaultDriftAngle)
+                {
+                    rb.maxAngularVelocity += driftAngleAdjuster;
+                }
+                else
+                {
+                    rb.maxAngularVelocity -= driftAngleAdjuster;
+                }
+                Debug.Log("Standard: " + rb.maxAngularVelocity);
+            }
 
-        // eliminate sideways velocity resulting from steering
-        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
-        localVel.x = 0;
+            //apply torque to make sliding effect
+            rb.AddTorque(Vector3.up * driftDirection * driftSpeed, ForceMode.Acceleration);
+        }
+        else
+        {
+            //regular steering
+            //set max speed to default
+            currMaxSpeed = defaultMaxSpeed;
 
-        // convert to world velocity
-        rb.linearVelocity = transform.TransformDirection(localVel);
-        Debug.Log(currReverse);
+            //determine current speed of kart and how much to turn
+            float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
+            Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+
+            rb.MoveRotation(rb.rotation * turnValue);
+
+            // eliminate sideways velocity resulting from steering
+            Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+            localVel.x = 0;
+
+            // convert to world velocity and apply to kart's rigidbody
+            rb.linearVelocity = transform.TransformDirection(localVel);
+        }
+
+        //Debug.Log(currReverse);
         // kart acceleration
-        if (currBraking != 0)
+        if (currBraking != 0 && !isDrifting)
         {
             // Step 1: Get current velocity in local space
             Vector3 localVelocity = rb.transform.InverseTransformDirection(rb.linearVelocity);
@@ -74,20 +162,21 @@ public class KartMovement : MonoBehaviour
             // Step 3: Convert modified local velocity back to world space
             rb.linearVelocity = rb.transform.TransformDirection(localVelocity);
         }
-        else if (currAcceleration == 0)
+        else if (currAcceleration == 0 && !isDrifting)
         {
+            //add reverse acceleration
             rb.AddRelativeForce(new Vector3(0f, 0f, -1f) * currReverse, ForceMode.Acceleration);
         }
         else
         {
-            //moveDirection.x *= -1;
+            //add forward acceleration
             rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
         }
 
-        // caps acceleration to maxSpeed 
-        if (rb.linearVelocity.magnitude > maxSpeed)
+        // caps acceleration to maxSpeed
+        if (rb.linearVelocity.magnitude > currMaxSpeed)
         {
-            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+            rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
         }
     }
 
@@ -107,3 +196,18 @@ public class KartMovement : MonoBehaviour
         Debug.Log("Flip movement direction");
         moveDirection.y *= -1;
     }*/
+
+/*if(Mathf.Abs(driftAngle) > defaultDriftAngle)
+{
+    //stop further torque from being added
+    torqueShouldApply = false;
+
+    //clamp the kart's rotation to stop endless spinning
+    //float clampedDriftAngle = Mathf.Clamp(driftAngle, -defaultDriftAngle, defaultDriftAngle);
+    //Quaternion targetKartRotation = Quaternion.LookRotation(Quaternion.AngleAxis(clampedDriftAngle, Vector3.up) * velocityDirection);
+    //rb.MoveRotation(targetKartRotation);
+    Debug.Log("Clamp active");
+}*/
+//calculate kart's angle
+/*Vector3 velocityDirection = rb.linearVelocity.normalized;
+float driftAngle = Vector3.SignedAngle(velocityDirection, transform.forward, Vector3.up);*/
