@@ -1436,11 +1436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
   accelerationMultiplier: 20
   maxSpeed: 500
-  maxDriftAngle: 1
   turnSpeed: 15
   brakingMultiplier: 20
-  reverseMultiplier: 15
-  driftSpeed: 30
 --- !u!54 &1450834463
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1451,7 +1448,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.5
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
