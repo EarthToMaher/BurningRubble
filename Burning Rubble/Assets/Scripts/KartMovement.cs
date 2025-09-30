@@ -40,6 +40,7 @@ public class KartMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (currMaxSpeed <= 0) currMaxSpeed = 1f;
         //assign input action references
         moveAction = InputSystem.actions.FindAction("Move");
         reverseAction = InputSystem.actions.FindAction("Reverse");
@@ -136,6 +137,7 @@ public class KartMovement : MonoBehaviour
             //determine current speed of kart and how much to turn
             float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
             Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+
             rb.MoveRotation(rb.rotation * turnValue);
 
             // eliminate sideways velocity resulting from steering
