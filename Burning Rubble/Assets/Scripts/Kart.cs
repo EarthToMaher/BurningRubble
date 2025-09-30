@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 public class Kart : MonoBehaviour, I_Damageable
 {
+    //This is a change to try to make it appear in Richard's branch
     [SerializeField] private int MAX_HP;
     private int hp;
     public KartMovement kartMovement;

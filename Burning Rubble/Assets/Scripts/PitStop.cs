@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PitStop : MonoBehaviour
 {
+    //This is a change to try to make it appear in Richard's branch
     [SerializeField] private int healRate;
 
     public IEnumerator HealObject(Kart kart)

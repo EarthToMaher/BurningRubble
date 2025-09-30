@@ -11,6 +11,7 @@ using UnityEngine.InputSystem;
 
 public class RubbleMeter : MonoBehaviour
 {
+    //This is a change to attempt to put it in Richard's Branch
     //Current amount of rubble the  meter contains
     private int currRubbleAmt;
     [Tooltip("Integer representing the capacity of rubble a player can hold")]
