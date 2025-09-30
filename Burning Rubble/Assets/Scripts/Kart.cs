@@ -1,14 +1,11 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+
 public class Kart : MonoBehaviour, I_Damageable
 {
     [SerializeField] private int MAX_HP;
     private int hp;
     public KartMovement kartMovement;
     private RubbleMeter rubbleMeter;
-    [SerializeField] private Image hpImage;
-    [SerializeField] private TextMeshProUGUI hpText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -27,13 +24,12 @@ public class Kart : MonoBehaviour, I_Damageable
     {
         hp -= dmg;
         if (hp <= 0) KartDeath();
-        UpdateUI();
     }
 
     public bool Heal(int healAmt)
     {
         hp = Mathf.Clamp(hp + healAmt, 0, MAX_HP);
-        UpdateUI();
+        Debug.Log(hp);
         if (hp < MAX_HP) return false;
         return true;
     }
@@ -47,11 +43,5 @@ public class Kart : MonoBehaviour, I_Damageable
     {
         PitStop pitStop = collision.gameObject.GetComponent<PitStop>();
         if (pitStop != null) StartCoroutine(pitStop.HealObject(this));
-    }
-
-    public void UpdateUI()
-    {
-        hpText.text = "Health: " + hp;
-        hpImage.fillAmount = hp*1.0f / MAX_HP*1.0f;
     }
 }
