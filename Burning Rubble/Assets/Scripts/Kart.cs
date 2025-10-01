@@ -27,8 +27,8 @@ public class Kart : MonoBehaviour, I_Damageable
     public void TakeDamage(int dmg)
     {
         hp -= dmg;
-        if (hp <= 0) KartDeath();
         UpdateUI();
+        if (hp <= 0) KartDeath();
     }
 
     public bool Heal(int healAmt)
@@ -41,12 +41,12 @@ public class Kart : MonoBehaviour, I_Damageable
 
     private void KartDeath()
     {
-        Debug.Log("Oh my god you got a game over what the noob");
         GameObject _lapManager = GameObject.Find("LapManager");
         CheckpointDetection _checkDetect = this.GetComponent<CheckpointDetection>();
         Vector3 _respawnPoint = _lapManager.GetComponent<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
         this.transform.position = _respawnPoint;
         hp = MAX_HP;
+        UpdateUI();
     }
 
     void OnTriggerEnter(Collider collision)

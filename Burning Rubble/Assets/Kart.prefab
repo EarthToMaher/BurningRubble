@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 669269744311773407}
   - component: {fileID: 5217396144746263836}
   - component: {fileID: 152009511047465187}
+  - component: {fileID: 2874562642783703097}
   m_Layer: 0
   m_Name: Kart
   m_TagString: Player
@@ -33,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 83.7, y: 0.343, z: -188.4}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4915634690305710013}
@@ -156,17 +157,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  defaultMaxSpeed: 200
-  driftMaxSpeedReducer: 0
+  defaultMaxSpeed: 400
+  driftMaxSpeedReducer: 150
   accelerationMultiplier: 20
   brakingMultiplier: 20
-  reverseMultiplier: 15
-  turnSpeed: 45
-  driftSpeed: 0
-  minDriftAngle: 0
-  defaultDriftAngle: 0
-  maxDriftAngle: 1
-  driftAngleAdjuster: 0
+  reverseMultiplier: 20
+  turnSpeed: 8
+  driftSpeed: 17
+  minDriftAngle: 0.5
+  defaultDriftAngle: 0.7
+  maxDriftAngle: 0.9
+  driftAngleAdjuster: 0.01
 --- !u!114 &5217396144746263836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +197,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kart
   MAX_HP: 100
+  hp: 0
   kartMovement: {fileID: 0}
   hpImage: {fileID: 3756922032697944917}
   hpText: {fileID: 6497622641598906599}
+--- !u!114 &2874562642783703097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2750092324257871241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d661e6e709f0646ab732423fa3533f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckpointDetection
+  _lapCount: 1
+  _checkpointCount: 0
+  _currCheckpoint: 0
+  _txtCheckpoint: {fileID: 8763523198417422037}
+  _txtLapCount: {fileID: 5537785631755164371}
 --- !u!1 &2922887544502737463
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,3 +722,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &5537785631755164371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2073132427509428977, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
+  m_PrefabInstance: {fileID: 5773355531566426146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8763523198417422037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2990774631664545527, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
+  m_PrefabInstance: {fileID: 5773355531566426146}
+  m_PrefabAsset: {fileID: 0}

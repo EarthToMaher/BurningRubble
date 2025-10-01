@@ -48,6 +48,7 @@ public class RubbleMeter : MonoBehaviour
     public void GainRubble(int rubble)
     {
         //Adds the rubble and clamps the value between 0 and our max
+        Debug.Log("Ran rubble gain");
         currRubbleAmt = Mathf.Clamp(currRubbleAmt + rubble, 0, MAX_AMT);
         UpdateUI();
     }
@@ -72,6 +73,7 @@ public class RubbleMeter : MonoBehaviour
 /// </summary>
     private void UpdateUI()
     {
+
         if (currRubbleAmt == MAX_AMT)
         {
             rubbleBar.fillAmount = 1;
@@ -81,8 +83,9 @@ public class RubbleMeter : MonoBehaviour
         {
             int rubbleCharges = currRubbleAmt / rubbleChargeAmt;
             rubbleText.text = "Rubble: " + rubbleCharges;
-            float barFill = ((currRubbleAmt * 1.0f - (rubbleCharges * rubbleChargeAmt * 1.0f)) / rubbleChargeAmt * 1.0f);
+            float barFill = (currRubbleAmt - (rubbleCharges * rubbleChargeAmt)) / (float)rubbleChargeAmt;
             rubbleBar.fillAmount = barFill;
+            Debug.Log(barFill);
         }
     }
 }
