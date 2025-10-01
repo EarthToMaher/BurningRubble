@@ -4,7 +4,7 @@ using TMPro;
 public class Kart : MonoBehaviour, I_Damageable
 {
     [SerializeField] private int MAX_HP;
-    private int hp;
+    [SerializeField] private int hp;
     public KartMovement kartMovement;
     private RubbleMeter rubbleMeter;
     [SerializeField] private Image hpImage;
@@ -41,6 +41,11 @@ public class Kart : MonoBehaviour, I_Damageable
     private void KartDeath()
     {
         Debug.Log("Oh my god you got a game over what the noob");
+        GameObject _lapManager = GameObject.Find("LapManager");
+        CheckpointDetection _checkDetect = this.GetComponent<CheckpointDetection>();
+        Vector3 _respawnPoint = _lapManager.GetComponent<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
+        this.transform.position = _respawnPoint;
+        hp = MAX_HP;
     }
 
     void OnTriggerEnter(Collider collision)
@@ -53,5 +58,14 @@ public class Kart : MonoBehaviour, I_Damageable
     {
         hpText.text = "Health: " + hp;
         hpImage.fillAmount = hp*1.0f / MAX_HP*1.0f;
+    }
+
+    public void Update()
+    {
+        if (hp <= 0)
+        {
+            Debug.Log("Kart death");
+            KartDeath();
+        }
     }
 }

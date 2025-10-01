@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    // This script must be attached to the trigger zone you wish to make a checkpoint or lap point (lap point must be value 0).
+    // If it is a start/finish lap, check _isLapPoint in inspector.
+    // Label each checkpoint with a value in _checkpointPlacement (starting from 1~N where N is the number of checkpoints)
+
     [SerializeField] private int _checkpointPlacement;
+    [SerializeField] private bool _isLapPoint;
     public Vector3 _checkpointPosition;
     public bool _hasPassed;
 
@@ -15,27 +20,47 @@ public class Checkpoint : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
-        if (other.transform.tag.Equals("Player") && _hasPassed == false)
+        if (other.transform.tag.Equals("Player"))
         {
-            // Testing purposes, actual game we take the kart script
+            CheckpointDetection _checkDetect = other.GetComponent<CheckpointDetection>();
+            LapManager _lapManager = GameObject.Find("LapManager").GetComponent<LapManager>();
 
-            TempMoveScript _tempMove = other.GetComponent<TempMoveScript>();
-            
-            // Deprecated
-            // Old ver of the checkpoint system; reworking into incremental
-            // Keeping this here in case we wanna do smth with it
-            // Updating checkpoint system
-            /*if (_tempMove._checkpointCount >= 0)
-            {
-                _tempMove._checkpointCount = GetCheckpoint();
-            }*/
-
-            // Increments checkpoint (determines who's in first)
-            _tempMove._checkpointCount++;
+            // Set current checkpoint
+            _checkDetect._currCheckpoint = _checkpointPlacement;
             // Changes checkpoint placement (teleport location)
-            _tempMove._currCheckpoint = _checkpointPlacement;
-            // Prevents passing through the same checkpoint
-            _hasPassed = true;
+            Debug.Log("Current Checkpoint Placement: " + _checkpointPlacement);
+
+            if (_hasPassed == false)
+            {
+                if (!_isLapPoint)
+                {
+                    // Deprecated
+                    // Old ver of the checkpoint system; reworking into incremental
+                    // Keeping this here in case we wanna do smth with it
+                    // Updating checkpoint system
+                    /*if (_tempMove._checkpointCount >= 0)
+                    {
+                        _tempMove._checkpointCount = GetCheckpoint();
+                    }*/
+
+                    // Incremental checkpoint system
+                    // Increments checkpoint (determines who's in first)
+                    if (!_hasPassed)
+                    {
+                        _checkDetect._checkpointCount++;
+                        Debug.Log("Curr Checkpoint Count: " + _checkDetect._checkpointCount);
+                        // Prevents passing through the same checkpoint
+                        _hasPassed = true;
+                        Debug.Log("Kart has passed");
+                    }
+                }
+                else if (_checkDetect._checkpointCount >= _lapManager.RequirementReturn())
+                {
+                    _checkDetect._lapCount++;
+                    _checkDetect._checkpointCount = 0;
+                    _lapManager.DisableHasPassed();
+                }
+            }
         }
     }
 
