@@ -19,20 +19,21 @@ public class Checkpoint : MonoBehaviour
         {
             // Testing purposes, actual game we take the kart script
 
+            TempMoveScript _tempMove = other.GetComponent<TempMoveScript>();
+            
             // Deprecated
             // Old ver of the checkpoint system; reworking into incremental
             // Keeping this here in case we wanna do smth with it
             // Updating checkpoint system
-            TempMoveScript _tempMove = other.GetComponent<TempMoveScript>();
             /*if (_tempMove._checkpointCount >= 0)
             {
                 _tempMove._checkpointCount = GetCheckpoint();
             }*/
 
             // Increments checkpoint (determines who's in first)
-            //_tempMove._checkpointCount++;
+            _tempMove._checkpointCount++;
             // Changes checkpoint placement (teleport location)
-            //_tempMove._currCheckpoint = _checkpointPlacement;
+            _tempMove._currCheckpoint = _checkpointPlacement;
             // Prevents passing through the same checkpoint
             _hasPassed = true;
         }

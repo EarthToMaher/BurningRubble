@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TempMoveScript : MonoBehaviour
 {
-   /* public int _lapCount = 1;
+    public int _lapCount = 1;
     public int _checkpointCount = 0;
     public int _currCheckpoint = 0;
 
@@ -31,31 +31,11 @@ public class TempMoveScript : MonoBehaviour
         Vector3 move = new Vector3(input.x, 0f, input.y);
         transform.position += move * moveSpeed * Time.deltaTime;
 
-        
+        _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _checkpointCount;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        // In the actual game, we can create an array of the checkpoints, and if the checkpoint the player is at is higher
-        // Than their previous one, they can't increase their checkpoint.
-        // (Basically, we can set their checkpoint number to whatever number is in the array.)
-
-        if (other.transform.parent.tag.Equals("Checkpoint"))
-        {
-            // Get the Checkpoint Script from other object
-            Checkpoint _checkpointScript = other.GetComponentInParent<Checkpoint>();
-            // Set the _checkpointCount to the scripts Checkpoint number
-            _checkpointCount = _checkpointScript.SetCheckpoint();
-            // If the _currCheckpoint is less than the next checkpoint, increment to the next
-            if (_currCheckpoint < _checkpointScript.SetCheckpoint())
-            {
-                // Display current checkpoint
-                _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _checkpointCount;
-                // Set currCheckpoint to the current checkpoint
-                _currCheckpoint = _checkpointScript.SetCheckpoint();
-            }
-        }
-
         //Debug.Log("Entered Trigger");
         if (other.transform.parent.tag.Equals("Lap"))
         {
@@ -69,11 +49,4 @@ public class TempMoveScript : MonoBehaviour
         }
 
     }
-
-    public void ResetScene()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.buildIndex);
-    }
-   */
 }
