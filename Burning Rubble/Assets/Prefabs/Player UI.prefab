@@ -423,6 +423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaceTimer
   raceTime: {fileID: 7049193242164455548}
+  raceComplete: 0
 --- !u!1 &6255074937723671003
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +487,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8091430357424580202
 MonoBehaviour:
