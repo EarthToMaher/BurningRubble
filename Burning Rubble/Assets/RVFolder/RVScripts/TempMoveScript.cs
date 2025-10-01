@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TempMoveScript : MonoBehaviour
 {
-    public int _lapCount = 1;
+   /* public int _lapCount = 1;
     public int _checkpointCount = 0;
-    private int _currCheckpoint = 0;
+    public int _currCheckpoint = 0;
 
     public GameObject _txtCheckpoint;
     public GameObject _txtLapCount;
@@ -75,5 +75,5 @@ public class TempMoveScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.buildIndex);
     }
-
+   */
 }
