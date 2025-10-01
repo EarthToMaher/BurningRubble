@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 public class Kart : MonoBehaviour, I_Damageable
 {
     //This is a change to try to make it appear in Richard's branch
@@ -10,6 +11,7 @@ public class Kart : MonoBehaviour, I_Damageable
     private RubbleMeter rubbleMeter;
     [SerializeField] private Image hpImage;
     [SerializeField] private TextMeshProUGUI hpText;
+    private bool invincible = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -26,6 +28,7 @@ public class Kart : MonoBehaviour, I_Damageable
 
     public void TakeDamage(int dmg)
     {
+        if (invincible) return;
         hp -= dmg;
         UpdateUI();
         if (hp <= 0) KartDeath();
@@ -39,18 +42,36 @@ public class Kart : MonoBehaviour, I_Damageable
         return true;
     }
 
+    public void StopKart(){ kartMovement.ResetVelocity(); }
+
     private void KartDeath()
     {
+        invincible = true;
+        kartMovement.ResetVelocity();
         GameObject _lapManager = GameObject.Find("LapManager");
         CheckpointDetection _checkDetect = this.GetComponent<CheckpointDetection>();
         Vector3 _respawnPoint = _lapManager.GetComponent<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
         this.transform.position = _respawnPoint;
+        StartCoroutine(HealUponDeath());
+    }
+
+    private IEnumerator HealUponDeath()
+    {
+        yield return new WaitForEndOfFrame();
         hp = MAX_HP;
+        invincible = false;
         UpdateUI();
+    }
+
+    public bool NeedsHealing()
+    {
+        if (hp < MAX_HP) return true;
+        return false;
     }
 
     void OnTriggerEnter(Collider collision)
     {
+        if (hp <= 0) return;
         PitStop pitStop = collision.gameObject.GetComponent<PitStop>();
         if (pitStop != null) StartCoroutine(pitStop.HealObject(this));
     }
@@ -61,7 +82,7 @@ public class Kart : MonoBehaviour, I_Damageable
         hpImage.fillAmount = hp*1.0f / MAX_HP*1.0f;
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if (hp <= 0)
         {

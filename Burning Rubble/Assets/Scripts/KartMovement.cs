@@ -66,7 +66,7 @@ public class KartMovement : MonoBehaviour
         currBraking *= brakingMultiplier;
 
         //determine whether kart is drifting
-        if(driftAction.WasPressedThisFrame() && moveDirection.x != 0 && currAcceleration != 0)
+        if (driftAction.WasPressedThisFrame() && moveDirection.x != 0 && currAcceleration != 0)
         {
             isDrifting = true;
             rb.constraints = RigidbodyConstraints.None;
@@ -74,8 +74,8 @@ public class KartMovement : MonoBehaviour
             Debug.Log(driftDirection);
             Debug.Log("started drifting");
         }
-        
-        if(isDrifting && (!driftAction.IsPressed() || currAcceleration == 0))
+
+        if (isDrifting && (!driftAction.IsPressed() || currAcceleration == 0))
         {
             isDrifting = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -86,35 +86,35 @@ public class KartMovement : MonoBehaviour
     void FixedUpdate()
     {
         // steering and drifting
-        if(isDrifting)
-        { 
+        if (isDrifting)
+        {
             //drifting
             //decrease max speed
             currMaxSpeed = defaultMaxSpeed - driftMaxSpeedReducer;
 
             //adjust drift angle based on input
-            if((driftDirection < 0 && moveDirection.x > 0) || (driftDirection > 0 && moveDirection.x < 0))
+            if ((driftDirection < 0 && moveDirection.x > 0) || (driftDirection > 0 && moveDirection.x < 0))
             {
                 //widening drift
-                if(rb.maxAngularVelocity < maxDriftAngle)
+                if (rb.maxAngularVelocity < maxDriftAngle)
                 {
-                    rb.maxAngularVelocity -= driftAngleAdjuster;
+                    rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity - driftAngleAdjuster, minDriftAngle, maxDriftAngle);
                 }
                 Debug.Log("Widening: " + rb.maxAngularVelocity);
             }
-            else if((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
+            else if ((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
             {
                 //tightening drift
-                if(rb.maxAngularVelocity > minDriftAngle)
+                if (rb.maxAngularVelocity > minDriftAngle)
                 {
-                    rb.maxAngularVelocity += (driftAngleAdjuster * 2);
+                    rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity + (driftAngleAdjuster * 2), minDriftAngle, maxDriftAngle);
                 }
                 Debug.Log("Tightening: " + rb.maxAngularVelocity);
             }
             else
             {
                 //standard drift, no adjustment
-                if(rb.maxAngularVelocity < defaultDriftAngle)
+                if (rb.maxAngularVelocity < defaultDriftAngle)
                 {
                     rb.maxAngularVelocity += driftAngleAdjuster;
                 }
@@ -130,6 +130,7 @@ public class KartMovement : MonoBehaviour
         }
         else
         {
+            rb.maxAngularVelocity = defaultDriftAngle;
             //regular steering
             //set max speed to default
             currMaxSpeed = defaultMaxSpeed;
@@ -186,8 +187,11 @@ public class KartMovement : MonoBehaviour
         I_Destructible destructible = other.gameObject.GetComponent<I_Destructible>();
         if (destructible != null) destructible.DestroyMe(this.gameObject, this.gameObject);
     }
-}
 
+    public void SetVelocity(Vector3 velocity){ rb.linearVelocity = velocity;}
+
+    public void ResetVelocity() { SetVelocity(Vector3.zero); }
+}
 
 // old code we could need later can go here
 // prevent reversing on forward movement

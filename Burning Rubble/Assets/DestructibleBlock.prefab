@@ -127,5 +127,5 @@ MonoBehaviour:
   rubble: 5
   rubblePickUp: {fileID: 8089078263614197573, guid: 02d693c7035ffc5428f1963049b9ec64, type: 3}
   numOfPickUps: 1
-  hp: 5
+  hp: 2
   particle: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
