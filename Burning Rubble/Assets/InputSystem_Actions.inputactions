@@ -500,7 +500,7 @@
                 {
                     "name": "",
                     "id": "b4d8388b-91e8-4093-af55-9bd67aa6ad4c",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -522,7 +522,7 @@
                 {
                     "name": "",
                     "id": "452d5fa4-8df7-4095-af72-79309d723e9d",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -556,6 +556,17 @@
                     "name": "",
                     "id": "717895cb-bc8b-445f-b3ec-262ea4824f1c",
                     "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da7318b4-cf7e-48e8-85d6-a28a3b0c732a",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
