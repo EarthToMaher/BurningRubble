@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  defaultMaxSpeed: 400
+  defaultMaxSpeed: 200
   driftMaxSpeedReducer: 50
   accelerationMultiplier: 20
   brakingMultiplier: 20
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Kart
   MAX_HP: 100
   hp: 0
-  kartMovement: {fileID: 0}
+  kartMovement: {fileID: 669269744311773407}
   hpImage: {fileID: 3756922032697944917}
   hpText: {fileID: 6497622641598906599}
 --- !u!114 &2874562642783703097
