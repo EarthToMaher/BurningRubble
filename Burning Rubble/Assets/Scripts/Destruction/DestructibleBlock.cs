@@ -35,7 +35,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
         reMgr = FindFirstObjectByType<ReenableManager>();
-        particle = Instantiate(particle, transform.position, Quaternion.identity);
+        if(particle!=null) particle = Instantiate(particle, transform.position, Quaternion.identity);
 
 
         if (numOfPickUps < 1) return;
@@ -58,13 +58,13 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         if (damageable != null) damageable.TakeDamage(hp);
         RubbleMeter rm = instigator.GetComponent<RubbleMeter>();
         if (rm != null) rm.GainRubble(rubble);
-        particle.SetActive(true);
+        if(particle!=null)particle.SetActive(true);
         SetObjectActive(false);
         reMgr.AddToBatch(this);
         Vector2 launchDirection = new Vector2(1, 1);
         Rigidbody causeRb = cause.GetComponent<Rigidbody>();
         if (causeRb != null) launchDirection = new Vector2(causeRb.linearVelocity.x, causeRb.linearVelocity.z);
-            if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Spawn(launchDirection);
+        if (numOfPickUps > 0) foreach (RubblePickUp pickUp in pickUps) pickUp.Spawn(launchDirection);
     }
 
     /// <summary>
