@@ -2235,7 +2235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 152009511047465187, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: rubbleBoostIntensity
-      value: 75
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2283,7 +2283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5217396144746263836, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: rubbleChargeAmt
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
