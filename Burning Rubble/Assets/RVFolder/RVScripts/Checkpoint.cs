@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
         if (other.transform.tag.Equals("Player"))
         {
             CheckpointDetection _checkDetect = other.GetComponent<CheckpointDetection>();
-            LapManager _lapManager = GameObject.Find("LapManager").GetComponent<LapManager>();
+            LapManager _lapManager = FindFirstObjectByType<LapManager>();
 
             // Set current checkpoint
             _checkDetect._currCheckpoint = _checkpointPlacement;
