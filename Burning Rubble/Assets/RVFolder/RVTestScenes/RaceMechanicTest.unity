@@ -2277,6 +2277,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kart
       objectReference: {fileID: 0}
+    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: _lapManager
+      value: 
+      objectReference: {fileID: 442714428}
+    - target: {fileID: 6337508745764245784, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_text
+      value: 'Checkpoint Remaining: 0/3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337508745764245784, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_fontSize
+      value: 18.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6337508745764245784, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_margin.z
+      value: -26.022308
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
