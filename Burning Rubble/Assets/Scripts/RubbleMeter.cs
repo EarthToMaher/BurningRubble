@@ -38,13 +38,13 @@ public class RubbleMeter : MonoBehaviour
     void Update()
     {
         //Temporary Debug to Perform a Rubble Action
-        if (rubbleAction.WasPerformedThisFrame()) UseRubble(rubbleChargeAmt); //UseRubble(rubbleChargeAmt);
+        //if (rubbleAction.WasPerformedThisFrame()) UseRubble(rubbleChargeAmt); //UseRubble(rubbleChargeAmt);
     }
 
-/// <summary>
-/// Function for adding rubble to the rubble meter
-/// </summary>
-/// <param name="rubble">The amount of rubble added to the meter</param>
+    /// <summary>
+    /// Function for adding rubble to the rubble meter
+    /// </summary>
+    /// <param name="rubble">The amount of rubble added to the meter</param>
     public void GainRubble(int rubble)
     {
         //Adds the rubble and clamps the value between 0 and our max
@@ -52,6 +52,13 @@ public class RubbleMeter : MonoBehaviour
         currRubbleAmt = Mathf.Clamp(currRubbleAmt + rubble, 0, MAX_AMT);
         UpdateUI();
     }
+
+    public bool CanPerformRubbleAction()
+    {
+        if (currRubbleAmt >= rubbleChargeAmt) return true;
+        return false;
+    }
+
 
 /// <summary>
 /// Function for using rubble
@@ -67,6 +74,11 @@ public class RubbleMeter : MonoBehaviour
         }
     }
 
+    public void UseRubble()
+    {
+        UseRubble(rubbleChargeAmt);
+    }
+
 
 /// <summary>
 /// Function for updating our UI
@@ -74,14 +86,14 @@ public class RubbleMeter : MonoBehaviour
     private void UpdateUI()
     {
 
-        if (currRubbleAmt == MAX_AMT)
+        if (currRubbleAmt == MAX_AMT||rubbleChargeAmt==0)
         {
             rubbleBar.fillAmount = 1;
             rubbleText.text = "MAX";
         }
         else
         {
-            int rubbleCharges = currRubbleAmt / rubbleChargeAmt;
+            int rubbleCharges = currRubbleAmt / (rubbleChargeAmt);
             rubbleText.text = "Rubble: " + rubbleCharges;
             float barFill = (currRubbleAmt - (rubbleCharges * rubbleChargeAmt)) / (float)rubbleChargeAmt;
             rubbleBar.fillAmount = barFill;

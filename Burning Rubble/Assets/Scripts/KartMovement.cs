@@ -1,3 +1,5 @@
+//using System.Numerics;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +38,12 @@ public class KartMovement : MonoBehaviour
 
     //booleans
     private bool isDrifting;
+
+    //currently doesn't do anything, but here to handle situations in the future and there so I can put it in RubbleBoost for now
+    private bool canMove = true;
+    private bool interpolating = false;
+    private Vector3? boostTargetDirection;
+    private float rotationSpeed = 720f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -79,7 +87,25 @@ public class KartMovement : MonoBehaviour
         {
             isDrifting = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            Debug.Log("stopped drifting");
+        }
+
+        if (interpolating)
+        {
+            Debug.Log(interpolating);
+            Vector3 direction = boostTargetDirection.Value;
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.RotateTowards(
+                    transform.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.deltaTime
+                );
+                if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
+                {
+                    interpolating = false;
+                }
+            }
         }
     }
 
@@ -188,10 +214,33 @@ public class KartMovement : MonoBehaviour
         if (destructible != null) destructible.DestroyMe(this.gameObject, this.gameObject);
     }
 
-    public void SetVelocity(Vector3 velocity){ rb.linearVelocity = velocity;}
+    public void SetVelocity(Vector3 velocity) { rb.linearVelocity = velocity; }
 
     public void ResetVelocity() { SetVelocity(Vector3.zero); }
+
+    /// <summary>
+    /// Logic for doing a rubble boost
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerator RubbleBoost(float intensity)
+    {
+        Quaternion startingRotation = transform.rotation;
+
+        Vector2 boostDirection = moveDirection;
+        if (boostDirection == Vector2.zero) boostDirection = new Vector2(0, 1f);
+        Vector3 localDirection = new Vector3(boostDirection.x, 0f, boostDirection.y);
+        Vector3 worldDirection = transform.TransformDirection(localDirection).normalized;
+        boostTargetDirection = worldDirection;
+
+        interpolating = true;
+        yield return new WaitUntil(() => !interpolating);
+        rb.linearVelocity = transform.forward * intensity;
+    }
+
+    public bool CanMove() { return canMove; }
 }
+
 
 // old code we could need later can go here
 // prevent reversing on forward movement

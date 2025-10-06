@@ -201,6 +201,7 @@ MonoBehaviour:
   kartMovement: {fileID: 0}
   hpImage: {fileID: 3756922032697944917}
   hpText: {fileID: 6497622641598906599}
+  rubbleBoostIntensity: 75
 --- !u!114 &2874562642783703097
 MonoBehaviour:
   m_ObjectHideFlags: 0

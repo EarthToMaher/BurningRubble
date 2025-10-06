@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 using System.Collections;
 public class Kart : MonoBehaviour, I_Damageable
 {
@@ -12,6 +13,9 @@ public class Kart : MonoBehaviour, I_Damageable
     [SerializeField] private Image hpImage;
     [SerializeField] private TextMeshProUGUI hpText;
     private bool invincible = false;
+    [SerializeField] private float rubbleBoostIntensity;
+
+    private InputAction rubbleAction;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -24,8 +28,13 @@ public class Kart : MonoBehaviour, I_Damageable
         else rubbleMeter = gameObject.AddComponent<RubbleMeter>();
 
         hp = MAX_HP;
-    }
 
+        rubbleAction = InputSystem.actions.FindAction("Rubble");
+    }
+    void Update()
+    {
+        if (rubbleAction.WasPerformedThisFrame()) RubbleBoost();
+    }
     public void TakeDamage(int dmg)
     {
         if (invincible) return;
@@ -42,7 +51,7 @@ public class Kart : MonoBehaviour, I_Damageable
         return true;
     }
 
-    public void StopKart(){ kartMovement.ResetVelocity(); }
+    public void StopKart() { kartMovement.ResetVelocity(); }
 
     private void KartDeath()
     {
@@ -79,7 +88,7 @@ public class Kart : MonoBehaviour, I_Damageable
     public void UpdateUI()
     {
         hpText.text = "Health: " + hp;
-        hpImage.fillAmount = hp*1.0f / MAX_HP*1.0f;
+        hpImage.fillAmount = hp * 1.0f / MAX_HP * 1.0f;
     }
 
     public void LateUpdate()
@@ -89,5 +98,23 @@ public class Kart : MonoBehaviour, I_Damageable
             Debug.Log("Kart death");
             KartDeath();
         }
+    }
+
+    public void RubbleBoost()
+    {
+        if (rubbleMeter.CanPerformRubbleAction() && kartMovement.CanMove())
+        {
+            StartCoroutine(BecomeInvincible(2f));
+            StartCoroutine(kartMovement.RubbleBoost(rubbleBoostIntensity));
+            rubbleMeter.UseRubble();
+        }
+    }
+
+    public IEnumerator BecomeInvincible(float seconds)
+    {
+        if (invincible) StopCoroutine("BecomeInvincible");
+        invincible = true;
+        yield return new WaitForSeconds(seconds);
+        invincible = false;
     }
 }
