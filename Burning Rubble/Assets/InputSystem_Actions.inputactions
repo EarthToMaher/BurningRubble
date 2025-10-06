@@ -131,6 +131,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "79855af3-91b9-43f8-87a7-f78f191cdaa1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -500,7 +509,7 @@
                 {
                     "name": "",
                     "id": "b4d8388b-91e8-4093-af55-9bd67aa6ad4c",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<DualSenseGampadiOS>/rightStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -522,7 +531,7 @@
                 {
                     "name": "",
                     "id": "452d5fa4-8df7-4095-af72-79309d723e9d",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -615,6 +624,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rubble",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f6d941c-3dd8-48ca-af1f-c51d308baae9",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
