@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour
 
     [SerializeField] private int _checkpointPlacement;
     [SerializeField] private bool _isLapPoint;
+    [SerializeField] private int _remainingCheckpoints = 0;
     public Vector3 _checkpointPosition;
     public bool _hasPassed;
 
@@ -19,16 +20,14 @@ public class Checkpoint : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
+        // Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
         if (other.transform.tag.Equals("Player"))
         {
+            LapManager _lapManager = GameObject.Find("LapManager").GetComponent<LapManager>();
             CheckpointDetection _checkDetect = other.GetComponent<CheckpointDetection>();
-            LapManager _lapManager = FindFirstObjectByType<LapManager>();
 
-            // Set current checkpoint
-            _checkDetect._currCheckpoint = _checkpointPlacement;
             // Changes checkpoint placement (teleport location)
-            Debug.Log("Current Checkpoint Placement: " + _checkpointPlacement);
+            // Debug.Log("Current Checkpoint Placement: " + _checkpointPlacement);
 
             if (_hasPassed == false)
             {
@@ -48,16 +47,23 @@ public class Checkpoint : MonoBehaviour
                     if (!_hasPassed)
                     {
                         _checkDetect._checkpointCount++;
-                        Debug.Log("Curr Checkpoint Count: " + _checkDetect._checkpointCount);
+                        if (_checkDetect._checkpointRemaining < _lapManager.RequirementReturn())
+                        {
+                            _checkDetect._checkpointRemaining++;
+                            Debug.Log("Checkpoint count: " + _checkDetect._checkpointRemaining);
+                        }
+
+                        // Debug.Log("Curr Checkpoint Count: " + _checkDetect._checkpointCount);
                         // Prevents passing through the same checkpoint
                         _hasPassed = true;
-                        Debug.Log("Kart has passed");
+                        // Debug.Log("Kart has passed");
                     }
                 }
                 else if (_checkDetect._checkpointCount >= _lapManager.RequirementReturn())
                 {
                     _checkDetect._lapCount++;
                     _checkDetect._checkpointCount = 0;
+                    _checkDetect._checkpointRemaining = 0;
                     _lapManager.DisableHasPassed();
                 }
             }
