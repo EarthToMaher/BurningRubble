@@ -4156,6 +4156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kart
       objectReference: {fileID: 0}
+    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: _lapManager
+      value: 
+      objectReference: {fileID: 133892104}
     - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.01
