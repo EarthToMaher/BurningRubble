@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -16,6 +17,8 @@ public class Checkpoint : MonoBehaviour
     {
         _hasPassed = false;
         _checkpointPosition = this.transform.position;
+        //_checkpointPosition = new Vector3(Mathf.Abs(_checkpointPosition.x) - 50, _checkpointPosition.y, _checkpointPosition.z);
+        //if (this.transform.position.x < 0) _checkpointPosition = new Vector3(_checkpointPosition.x * - 1, _checkpointPosition.y, _checkpointPosition.z);
     }
 
     public void OnTriggerEnter(Collider other)
