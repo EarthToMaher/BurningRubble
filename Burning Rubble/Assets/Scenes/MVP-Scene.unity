@@ -4232,6 +4232,10 @@ PrefabInstance:
       propertyPath: MAX_HP
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 152009511047465187, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: rubbleBoostIntensity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: turnSpeed
       value: 1
@@ -4255,6 +4259,10 @@ PrefabInstance:
     - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: driftMaxSpeedReducer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: accelerationMultiplier
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
       propertyPath: m_LocalPosition.x
