@@ -46,6 +46,7 @@ public class Checkpoint : MonoBehaviour
                     // Increments checkpoint (determines who's in first)
                     if (!_hasPassed)
                     {
+                        _checkDetect._currCheckpoint = _checkpointPlacement;
                         _checkDetect._checkpointCount++;
                         if (_checkDetect._checkpointRemaining < _lapManager.RequirementReturn())
                         {
