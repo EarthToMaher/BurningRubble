@@ -223,7 +223,7 @@ public class KartMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided: " + collision.gameObject);
-        if(isDrifting && !collision.gameObject.CompareTag("Ground"))
+        if(!collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Changed COM to low");
             rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
