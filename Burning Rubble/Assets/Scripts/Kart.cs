@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class Kart : MonoBehaviour, I_Damageable
 {
     //This is a change to try to make it appear in Richard's branch
@@ -16,9 +17,11 @@ public class Kart : MonoBehaviour, I_Damageable
     [SerializeField] private float rubbleBoostIntensity;
 
     private InputAction rubbleAction;
+    private InputAction restart;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        transform.position = new Vector3(transform.position.x, 2.0001f, transform.position.z);
         if (gameObject.GetComponent<KartMovement>() != null) kartMovement = gameObject.GetComponent<KartMovement>();
         else if (gameObject.GetComponentInChildren<KartMovement>() != null) kartMovement = gameObject.GetComponentInChildren<KartMovement>();
         else kartMovement = gameObject.AddComponent<KartMovement>();
@@ -30,10 +33,13 @@ public class Kart : MonoBehaviour, I_Damageable
         hp = MAX_HP;
 
         rubbleAction = InputSystem.actions.FindAction("Rubble");
+        restart = InputSystem.actions.FindAction("Reset");
     }
     void Update()
     {
+        transform.position = new Vector3(transform.position.x, 2.0001f, transform.position.z);
         if (rubbleAction.WasPerformedThisFrame()) RubbleBoost();
+        if (restart.WasPerformedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void TakeDamage(int dmg)
     {
