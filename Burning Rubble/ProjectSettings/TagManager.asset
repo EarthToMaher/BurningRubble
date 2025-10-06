@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - Lap
+  - Ground
   layers:
   - Default
   - TransparentFX

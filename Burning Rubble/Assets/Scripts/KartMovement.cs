@@ -38,6 +38,7 @@ public class KartMovement : MonoBehaviour
 
     //booleans
     private bool isDrifting;
+    private bool lowCOMActive;
 
     //currently doesn't do anything, but here to handle situations in the future and there so I can put it in RubbleBoost for now
     private bool canMove = true;
@@ -78,8 +79,9 @@ public class KartMovement : MonoBehaviour
         {
             isDrifting = true;
             rb.constraints = RigidbodyConstraints.None;
+            Debug.Log("COM: " + rb.centerOfMass);
             driftDirection = moveDirection.x;
-            Debug.Log(driftDirection);
+            //Debug.Log(driftDirection);
             Debug.Log("started drifting");
         }
 
@@ -126,7 +128,7 @@ public class KartMovement : MonoBehaviour
                 {
                     rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity - driftAngleAdjuster, minDriftAngle, maxDriftAngle);
                 }
-                Debug.Log("Widening: " + rb.maxAngularVelocity);
+                //Debug.Log("Widening: " + rb.maxAngularVelocity);
             }
             else if ((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
             {
@@ -135,7 +137,7 @@ public class KartMovement : MonoBehaviour
                 {
                     rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity + (driftAngleAdjuster * 2), minDriftAngle, maxDriftAngle);
                 }
-                Debug.Log("Tightening: " + rb.maxAngularVelocity);
+                //Debug.Log("Tightening: " + rb.maxAngularVelocity);
             }
             else
             {
@@ -217,6 +219,28 @@ public class KartMovement : MonoBehaviour
     public void SetVelocity(Vector3 velocity) { rb.linearVelocity = velocity; }
 
     public void ResetVelocity() { SetVelocity(Vector3.zero); }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collided: " + collision.gameObject);
+        if(isDrifting && !collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Changed COM to low");
+            rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
+            lowCOMActive = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Collision ended: " + collision.gameObject);
+        if(lowCOMActive)
+        {
+            Debug.Log("Changed COM back");
+            rb.centerOfMass = new Vector3(0f, 0f, 0f);
+            lowCOMActive = false;
+        }
+    }
 
     /// <summary>
     /// Logic for doing a rubble boost
