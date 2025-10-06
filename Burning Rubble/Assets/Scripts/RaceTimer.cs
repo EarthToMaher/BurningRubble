@@ -17,6 +17,7 @@ public class RaceTimer : MonoBehaviour
 
     void Start()
     {
+        
         //If we do not have a race timer, try to get one on this object
         if (raceTime == null) raceTime = GetComponent<TextMeshProUGUI>();
     }
@@ -29,9 +30,9 @@ public class RaceTimer : MonoBehaviour
 
 
         //Get the number of minutes, seconds, and milliseconds that the scene has been running
-        int minutes = Mathf.FloorToInt(Time.time) / 60;
-        int seconds = Mathf.FloorToInt(Time.time)%60;
-        int milliseconds = Mathf.FloorToInt((Time.time-Mathf.FloorToInt(Time.time)) * Mathf.Pow(10f,3));
+        int minutes = Mathf.FloorToInt(Time.timeSinceLevelLoad) / 60;
+        int seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad)%60;
+        int milliseconds = Mathf.FloorToInt((Time.timeSinceLevelLoad-Mathf.FloorToInt(Time.timeSinceLevelLoad)) * Mathf.Pow(10f,3));
 
         //Format our time as a string and change the text
         String timeString = String.Format("{0}:{1}.{2}", minutes, seconds, milliseconds);
