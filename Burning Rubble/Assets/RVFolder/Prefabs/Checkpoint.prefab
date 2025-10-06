@@ -468,6 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Checkpoint
   _checkpointPlacement: 1
   _isLapPoint: 0
+  _remainingCheckpoints: 0
   _checkpointPosition: {x: 0, y: 0, z: 0}
   _hasPassed: 0
 --- !u!1 &3497022568701772168
@@ -795,8 +796,8 @@ Transform:
   m_GameObject: {fileID: 5137532741487308254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.466667, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 1, z: 1}
+  m_LocalPosition: {x: 0.12, y: 0, z: 0}
+  m_LocalScale: {x: 1.2915416, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6410126956353017704}
@@ -836,6 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Checkpoint
   _checkpointPlacement: 1
   _isLapPoint: 0
+  _remainingCheckpoints: 0
   _checkpointPosition: {x: 0, y: 0, z: 0}
   _hasPassed: 0
 --- !u!1 &5154833743794995956
