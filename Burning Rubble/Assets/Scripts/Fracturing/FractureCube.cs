@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.ProBuilder;
 
 public class FractureCube : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class FractureCube : MonoBehaviour
     void Awake()
     {
         scale = transform.localScale;
+        if (GetComponent<ProBuilderMesh>() != null)
+        {
+            //scale = GetComponent<ProBuilderMesh>();
+            Debug.Log("Using ProBuilder Mesh Bounds for scale: " + scale);
+        }
 
         if (scale.x % voxelScale.x != 0f || scale.y % voxelScale.y != 0f || scale.z % voxelScale.z != 0f)
         {
@@ -21,27 +27,28 @@ public class FractureCube : MonoBehaviour
             {
                 for (float z = 0; z < scale.z; z += voxelScale.z)
                 {
-                    //Vector3 localPos = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
+                    Vector3 localPos = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
 
                     //Convert to world space
-                    //Vector3 worldPos = transform.TransformPoint(localPos);
+                    Vector3 worldPos = transform.TransformPoint(localPos);
 
-                    //if (IsPointInsideMesh(worldPos, this.gameObject.GetComponent<MeshCollider>()))
-                    //{
+                    if (IsPointInsideMesh(worldPos, this.gameObject.GetComponent<MeshCollider>()))
+                    {
                         Debug.Log("Creating Cube");
                         GameObject voxel = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        voxel.GetComponent<Collider>().isTrigger = true;
                         voxel.AddComponent<DestructibleBlock>();
                         voxel.transform.parent = transform;
                         voxel.transform.localPosition = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
                         voxel.transform.localScale = new Vector3(voxelScale.x / scale.x, voxelScale.y / scale.y, voxelScale.z / scale.z);
                         //voxel.AddComponent<Rigidbody>();
-                    //}
+                    }
                 }
             }
 
         }
     }
-    bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
+    /*bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
     {
         Debug.Log("I EXIST!!!");
         // Cast a ray upward and count intersections
@@ -62,25 +69,31 @@ public class FractureCube : MonoBehaviour
         return (count % 2) == 1;
     }//*/
 
-    /*bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
+    bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
     {
+        Debug.Log("I EXIST!!!");
         // tiny overlap sphere at the point
-        Collider[] overlaps = Physics.OverlapSphere(point, 0.001f);
+        Collider[] overlaps = Physics.OverlapSphere(point, 0.0001f);
 
         foreach (var c in overlaps)
         {
+            Debug.Log("Overlap with " + c.name);
             if (c == mc)
                 return true; // definitely inside
         }
 
         // fallback: raycast test (for points near the outside)
         Ray ray = new Ray(point, Vector3.up);
+        Debug.DrawLine(point, new Vector3(point.x, point.y + scale.y, point.z), Color.red, Mathf.Infinity);
+        Debug.Log("I Drew a line!!!");
         int count = 0;
         foreach (var hit in Physics.RaycastAll(ray, 100f))
         {
             if (hit.collider == mc)
                 count++;
         }
+        Debug.Log(count);
+
         return (count % 2) == 1;
-    }*/
+    }//*/
 }
