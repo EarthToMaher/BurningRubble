@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
         // Debug.Log("Triggered Checkpoint " + _checkpointPlacement + " collider");
         if (other.transform.tag.Equals("Player"))
         {
-            LapManager _lapManager = GameObject.Find("LapManager").GetComponent<LapManager>();
+            LapManager _lapManager = FindFirstObjectByType<LapManager>();
             CheckpointDetection _checkDetect = other.GetComponent<CheckpointDetection>();
 
             // Changes checkpoint placement (teleport location)
@@ -46,6 +46,7 @@ public class Checkpoint : MonoBehaviour
                     // Increments checkpoint (determines who's in first)
                     if (!_hasPassed)
                     {
+                        _checkDetect._currCheckpoint = _checkpointPlacement;
                         _checkDetect._checkpointCount++;
                         if (_checkDetect._checkpointRemaining < _lapManager.RequirementReturn())
                         {
