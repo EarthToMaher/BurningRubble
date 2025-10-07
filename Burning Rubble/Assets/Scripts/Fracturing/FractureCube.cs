@@ -10,11 +10,9 @@ public class FractureCube : MonoBehaviour
     void Awake()
     {
         scale = transform.localScale;
-        if (GetComponent<ProBuilderMesh>() != null)
-        {
-            //scale = GetComponent<ProBuilderMesh>();
-            Debug.Log("Using ProBuilder Mesh Bounds for scale: " + scale);
-        }
+        //for (int i=0; i < this.GetComonent<>; i++) {
+            
+        //}
 
         if (scale.x % voxelScale.x != 0f || scale.y % voxelScale.y != 0f || scale.z % voxelScale.z != 0f)
         {
@@ -85,16 +83,16 @@ public class FractureCube : MonoBehaviour
         }
 
         // fallback: raycast test (for points near the outside)
-        Ray ray = new Ray(point, Vector3.up);
-        Debug.DrawLine(point, new Vector3(point.x, point.y + scale.y, point.z), Color.red, Mathf.Infinity);
-        Debug.Log("I Drew a line!!!");
+        // Ray ray = new Ray(point, Vector3.up);
+        // Debug.DrawLine(point, new Vector3(point.x, point.y + scale.y, point.z), Color.red, Mathf.Infinity);
+        // Debug.Log("I Drew a line!!!");
         int count = 0;
-        foreach (var hit in Physics.RaycastAll(ray, 100f))
-        {
-            if (hit.collider == mc)
-                count++;
-        }
-        Debug.Log(count);
+        // foreach (var hit in Physics.RaycastAll(ray, 100f))
+        // {
+        //     if (hit.collider == mc)
+        //         count++;
+        // }
+        // Debug.Log(count);
 
         return (count % 2) == 1;
     }//*/
