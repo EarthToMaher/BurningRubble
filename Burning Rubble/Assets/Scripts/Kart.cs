@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 using System.Collections;
 public class Kart : MonoBehaviour, I_Damageable
 {
+    // GameManager variable here, please do not remove
+    public GameManager GameManager;
+
     //This is a change to try to make it appear in Richard's branch
     [SerializeField] private int MAX_HP;
     [SerializeField] private int hp;
@@ -30,6 +33,10 @@ public class Kart : MonoBehaviour, I_Damageable
         hp = MAX_HP;
 
         rubbleAction = InputSystem.actions.FindAction("Rubble");
+
+        // Calling GameManager here for AudioManager and LapManager
+        // Will refactor Laps later
+        GameManager = FindFirstObjectByType<GameManager>();
     }
     void Update()
     {
