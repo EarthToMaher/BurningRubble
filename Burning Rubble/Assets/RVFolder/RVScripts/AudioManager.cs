@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(_sounds, sound => sound._name == name);
         if (s == null)
         {
-            Debug.Log("Couldn't find sound: " + name);
+            Debug.Log("Couldn't find Sound: " + name);
             return;
         }
         s._source.Play();
@@ -46,12 +46,29 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.Log("Couldn't find sound: " + name);
+            Debug.Log("Couldn't find Single Sound: " + name);
             return;
         }
         else if (!s._source.isPlaying)
         { 
             s._source.Play();
         }
+    }
+
+    // Plays a sustained sound with a min/max pitch. 'Anchor' referrs to the float that is connected by the min/max pitch
+    // (i.e., the min/max pitch of the audio is 1 to 3, and the anchor is the speed of a kart.)
+    public void PlayLoopSFX(string name, float minPitch, float maxPitch, float anchor)
+    {
+        Sound s = Array.Find(_sounds, sound => sound._name == name);
+
+        if (s == null) {
+            Debug.Log("Couldn't find Sustained Sound: " + name);
+        } else
+        {
+            float sustainPitch = Mathf.Lerp(maxPitch, minPitch, anchor);
+            s._pitch = sustainPitch;
+            s._source.Play();
+        }
+        
     }
 }
