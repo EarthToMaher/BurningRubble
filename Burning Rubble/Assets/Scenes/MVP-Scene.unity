@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 17192429}
   m_Layer: 0
   m_Name: Track
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17192428}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 50865296}
   m_Layer: 0
   m_Name: Track (75)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +256,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50865295}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 62325028}
   m_Layer: 0
   m_Name: Track (83)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,7 +367,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62325027}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 77848954}
   m_Layer: 0
   m_Name: Track (38)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -730,7 +730,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77848953}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -943,7 +943,7 @@ GameObject:
   - component: {fileID: 122515146}
   m_Layer: 0
   m_Name: Track (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,7 +955,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122515145}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 134560472}
   m_Layer: 0
   m_Name: Track (60)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1066,7 +1066,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134560471}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 135302155}
   m_Layer: 0
   m_Name: Track (77)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,7 +1177,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135302154}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 135677559}
   m_Layer: 0
   m_Name: Track (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1288,7 +1288,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135677558}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 146556274}
   m_Layer: 0
   m_Name: Track (35)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1399,7 +1399,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146556273}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1498,7 +1498,7 @@ GameObject:
   - component: {fileID: 164484024}
   m_Layer: 0
   m_Name: Track (18)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1510,7 +1510,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164484023}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1609,7 +1609,7 @@ GameObject:
   - component: {fileID: 185543637}
   m_Layer: 0
   m_Name: Track (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1621,7 +1621,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185543636}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1846,7 +1846,7 @@ GameObject:
   - component: {fileID: 286824702}
   m_Layer: 0
   m_Name: Track (37)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1858,7 +1858,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286824701}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2083,7 +2083,7 @@ GameObject:
   - component: {fileID: 323429511}
   m_Layer: 0
   m_Name: Track (73)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2095,7 +2095,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323429510}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2194,7 +2194,7 @@ GameObject:
   - component: {fileID: 336086053}
   m_Layer: 0
   m_Name: Track (52)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2206,7 +2206,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336086052}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2305,7 +2305,7 @@ GameObject:
   - component: {fileID: 363592037}
   m_Layer: 0
   m_Name: Track (13)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2317,7 +2317,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363592036}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2498,7 +2498,7 @@ GameObject:
   - component: {fileID: 404837486}
   m_Layer: 0
   m_Name: Track (14)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2510,7 +2510,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404837485}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2735,7 +2735,7 @@ GameObject:
   - component: {fileID: 462737724}
   m_Layer: 0
   m_Name: Track (41)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2747,7 +2747,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462737723}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2846,7 +2846,7 @@ GameObject:
   - component: {fileID: 508927892}
   m_Layer: 0
   m_Name: Track (78)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2858,7 +2858,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508927891}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2957,7 +2957,7 @@ GameObject:
   - component: {fileID: 518495812}
   m_Layer: 0
   m_Name: Track (48)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2969,7 +2969,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518495811}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3068,7 +3068,7 @@ GameObject:
   - component: {fileID: 527185362}
   m_Layer: 0
   m_Name: Track (61)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3080,7 +3080,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527185361}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3179,7 +3179,7 @@ GameObject:
   - component: {fileID: 536910419}
   m_Layer: 0
   m_Name: Track (71)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3191,7 +3191,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536910418}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3290,7 +3290,7 @@ GameObject:
   - component: {fileID: 538160382}
   m_Layer: 0
   m_Name: Track (45)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3302,7 +3302,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538160381}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3401,7 +3401,7 @@ GameObject:
   - component: {fileID: 567205497}
   m_Layer: 0
   m_Name: Track (24)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3413,7 +3413,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567205496}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3512,7 +3512,7 @@ GameObject:
   - component: {fileID: 598552200}
   m_Layer: 0
   m_Name: Track (47)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3524,7 +3524,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598552199}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3623,7 +3623,7 @@ GameObject:
   - component: {fileID: 608865485}
   m_Layer: 0
   m_Name: Track (44)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3635,7 +3635,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608865484}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3734,7 +3734,7 @@ GameObject:
   - component: {fileID: 615693011}
   m_Layer: 0
   m_Name: Track (50)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3746,7 +3746,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615693010}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3845,7 +3845,7 @@ GameObject:
   - component: {fileID: 635077383}
   m_Layer: 0
   m_Name: Track (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3857,7 +3857,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635077382}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4068,154 +4068,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &679842028
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: turnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: defaultMaxSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: defaultDriftAngle
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftAngleAdjuster
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftMaxSpeedReducer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 361
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7045786
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.70962596
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.409
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.8956667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.85300004
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1.4146118
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_Name
-      value: Kart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: _lapManager
-      value: 
-      objectReference: {fileID: 1033914116}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929753089790435627, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929753089790435627, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 5620073329339329373, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_fontSize
-      value: 27.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763523198417422037, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.808
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.753
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -0.5853882
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.19999695
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1939359411}
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
 --- !u!1 &686642705
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,7 +4082,7 @@ GameObject:
   - component: {fileID: 686642706}
   m_Layer: 0
   m_Name: Track (25)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4242,7 +4094,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686642705}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4341,7 +4193,7 @@ GameObject:
   - component: {fileID: 690572281}
   m_Layer: 0
   m_Name: Track (31)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4353,7 +4205,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690572280}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4452,7 +4304,7 @@ GameObject:
   - component: {fileID: 705419172}
   m_Layer: 0
   m_Name: Track (34)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4464,7 +4316,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705419171}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4690,7 +4542,7 @@ GameObject:
   - component: {fileID: 710667372}
   m_Layer: 0
   m_Name: Track (64)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4702,7 +4554,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710667371}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4801,7 +4653,7 @@ GameObject:
   - component: {fileID: 743747524}
   m_Layer: 0
   m_Name: Track (29)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4813,7 +4665,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743747523}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -4912,7 +4764,7 @@ GameObject:
   - component: {fileID: 746332940}
   m_Layer: 0
   m_Name: Track (27)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4924,7 +4776,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746332939}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5023,7 +4875,7 @@ GameObject:
   - component: {fileID: 750762649}
   m_Layer: 0
   m_Name: Track (26)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5035,7 +4887,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750762648}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5220,7 +5072,7 @@ GameObject:
   - component: {fileID: 791426684}
   m_Layer: 0
   m_Name: Track (20)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5232,7 +5084,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791426683}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5331,7 +5183,7 @@ GameObject:
   - component: {fileID: 823195958}
   m_Layer: 0
   m_Name: Track (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5343,7 +5195,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823195957}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5568,7 +5420,7 @@ GameObject:
   - component: {fileID: 929684326}
   m_Layer: 0
   m_Name: Track (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5580,7 +5432,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929684325}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5679,7 +5531,7 @@ GameObject:
   - component: {fileID: 933226377}
   m_Layer: 0
   m_Name: Track (16)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5691,7 +5543,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933226376}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5864,7 +5716,7 @@ GameObject:
   - component: {fileID: 936189798}
   m_Layer: 0
   m_Name: Track (62)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5876,7 +5728,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936189797}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5975,7 +5827,7 @@ GameObject:
   - component: {fileID: 939021382}
   m_Layer: 0
   m_Name: Track (12)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5987,7 +5839,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939021381}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6086,7 +5938,7 @@ GameObject:
   - component: {fileID: 974369331}
   m_Layer: 0
   m_Name: Track (58)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6098,7 +5950,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974369330}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6197,7 +6049,7 @@ GameObject:
   - component: {fileID: 1015656050}
   m_Layer: 0
   m_Name: Track (23)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6209,7 +6061,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015656049}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6354,7 +6206,7 @@ GameObject:
   - component: {fileID: 1113605097}
   m_Layer: 0
   m_Name: Track (66)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6366,7 +6218,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113605096}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6465,7 +6317,7 @@ GameObject:
   - component: {fileID: 1129584943}
   m_Layer: 0
   m_Name: Track (32)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6477,7 +6329,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129584942}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6576,7 +6428,7 @@ GameObject:
   - component: {fileID: 1143982621}
   m_Layer: 0
   m_Name: Track (57)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6588,7 +6440,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143982620}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6687,7 +6539,7 @@ GameObject:
   - component: {fileID: 1162480020}
   m_Layer: 0
   m_Name: Track (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6699,7 +6551,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162480019}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6798,7 +6650,7 @@ GameObject:
   - component: {fileID: 1179486564}
   m_Layer: 0
   m_Name: Track (72)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6810,7 +6662,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179486563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6909,7 +6761,7 @@ GameObject:
   - component: {fileID: 1208565182}
   m_Layer: 0
   m_Name: Track (63)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6921,7 +6773,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208565181}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7086,7 +6938,7 @@ GameObject:
   - component: {fileID: 1230626738}
   m_Layer: 0
   m_Name: Track (39)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7098,7 +6950,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230626737}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7197,7 +7049,7 @@ GameObject:
   - component: {fileID: 1235389780}
   m_Layer: 0
   m_Name: Track (74)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7209,7 +7061,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235389779}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7305,7 +7157,7 @@ GameObject:
   - component: {fileID: 1267029690}
   m_Layer: 0
   m_Name: Track Layout
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7550,7 +7402,7 @@ GameObject:
   - component: {fileID: 1288393473}
   m_Layer: 0
   m_Name: Track (81)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7562,7 +7414,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288393472}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7661,7 +7513,7 @@ GameObject:
   - component: {fileID: 1328172559}
   m_Layer: 0
   m_Name: Track (28)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7673,7 +7525,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328172558}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7898,7 +7750,7 @@ GameObject:
   - component: {fileID: 1347380949}
   m_Layer: 0
   m_Name: Track (42)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7910,7 +7762,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347380948}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8009,7 +7861,7 @@ GameObject:
   - component: {fileID: 1367803035}
   m_Layer: 0
   m_Name: Track (43)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8021,7 +7873,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367803034}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8246,7 +8098,7 @@ GameObject:
   - component: {fileID: 1441389696}
   m_Layer: 0
   m_Name: Track (55)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8258,7 +8110,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441389695}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8357,7 +8209,7 @@ GameObject:
   - component: {fileID: 1463340234}
   m_Layer: 0
   m_Name: Track (84)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8369,7 +8221,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463340233}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8594,7 +8446,7 @@ GameObject:
   - component: {fileID: 1496726700}
   m_Layer: 0
   m_Name: Track (70)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8606,7 +8458,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496726699}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8705,7 +8557,7 @@ GameObject:
   - component: {fileID: 1507056003}
   m_Layer: 0
   m_Name: Track (68)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8717,7 +8569,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507056002}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8942,7 +8794,7 @@ GameObject:
   - component: {fileID: 1537320910}
   m_Layer: 0
   m_Name: Track (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8954,7 +8806,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537320909}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9179,7 +9031,7 @@ GameObject:
   - component: {fileID: 1557347793}
   m_Layer: 0
   m_Name: Track (53)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9191,7 +9043,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557347792}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9290,7 +9142,7 @@ GameObject:
   - component: {fileID: 1567303602}
   m_Layer: 0
   m_Name: Track (30)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9302,7 +9154,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567303601}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9401,7 +9253,7 @@ GameObject:
   - component: {fileID: 1568964821}
   m_Layer: 0
   m_Name: Track (80)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9413,7 +9265,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568964820}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9512,7 +9364,7 @@ GameObject:
   - component: {fileID: 1572925439}
   m_Layer: 0
   m_Name: Track (36)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9524,7 +9376,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572925438}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9623,7 +9475,7 @@ GameObject:
   - component: {fileID: 1573380857}
   m_Layer: 0
   m_Name: Track (21)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9635,7 +9487,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573380856}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9860,7 +9712,7 @@ GameObject:
   - component: {fileID: 1595364674}
   m_Layer: 0
   m_Name: Track (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9872,7 +9724,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595364673}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9971,7 +9823,7 @@ GameObject:
   - component: {fileID: 1605067558}
   m_Layer: 0
   m_Name: Track (67)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9983,7 +9835,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605067557}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10082,7 +9934,7 @@ GameObject:
   - component: {fileID: 1605690143}
   m_Layer: 0
   m_Name: Track (82)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10094,7 +9946,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605690142}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10193,7 +10045,7 @@ GameObject:
   - component: {fileID: 1650612330}
   m_Layer: 0
   m_Name: Track (40)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10205,7 +10057,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650612329}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10304,7 +10156,7 @@ GameObject:
   - component: {fileID: 1693838522}
   m_Layer: 0
   m_Name: Track (46)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10316,7 +10168,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693838521}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10415,7 +10267,7 @@ GameObject:
   - component: {fileID: 1702543312}
   m_Layer: 0
   m_Name: Track (59)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10427,7 +10279,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1702543311}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10526,7 +10378,7 @@ GameObject:
   - component: {fileID: 1707194308}
   m_Layer: 0
   m_Name: Track (11)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10538,7 +10390,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707194307}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10637,7 +10489,7 @@ GameObject:
   - component: {fileID: 1709016013}
   m_Layer: 0
   m_Name: Track (56)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10649,7 +10501,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709016012}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10748,7 +10600,7 @@ GameObject:
   - component: {fileID: 1711352927}
   m_Layer: 0
   m_Name: Track (79)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10760,7 +10612,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711352926}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10859,7 +10711,7 @@ GameObject:
   - component: {fileID: 1730338195}
   m_Layer: 0
   m_Name: Track (33)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10871,7 +10723,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730338194}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10970,7 +10822,7 @@ GameObject:
   - component: {fileID: 1777914561}
   m_Layer: 0
   m_Name: Track (51)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10982,7 +10834,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777914560}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11193,11 +11045,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1833235130 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-  m_PrefabInstance: {fileID: 679842028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840490498
 GameObject:
   m_ObjectHideFlags: 0
@@ -11212,7 +11059,7 @@ GameObject:
   - component: {fileID: 1840490499}
   m_Layer: 0
   m_Name: Track (22)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11224,7 +11071,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840490498}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11323,7 +11170,7 @@ GameObject:
   - component: {fileID: 1911242749}
   m_Layer: 0
   m_Name: Track (76)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11335,7 +11182,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911242748}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11434,7 +11281,7 @@ GameObject:
   - component: {fileID: 1926002387}
   m_Layer: 0
   m_Name: Track (54)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11446,7 +11293,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926002386}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11545,7 +11392,7 @@ GameObject:
   - component: {fileID: 1937719328}
   m_Layer: 0
   m_Name: Track (69)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11557,7 +11404,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937719327}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11642,11 +11489,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -405.638, z: 0}
---- !u!4 &1939359411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-  m_PrefabInstance: {fileID: 2135794497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962529448
 GameObject:
   m_ObjectHideFlags: 0
@@ -11661,7 +11503,7 @@ GameObject:
   - component: {fileID: 1962529449}
   m_Layer: 0
   m_Name: Track (65)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11673,7 +11515,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962529448}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11772,7 +11614,7 @@ GameObject:
   - component: {fileID: 1982278771}
   m_Layer: 0
   m_Name: Ground Layer
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11784,7 +11626,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982278770}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11883,7 +11725,7 @@ GameObject:
   - component: {fileID: 2026246393}
   m_Layer: 0
   m_Name: Track (19)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11895,7 +11737,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026246392}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11994,7 +11836,7 @@ GameObject:
   - component: {fileID: 2035194165}
   m_Layer: 0
   m_Name: Track (17)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12006,7 +11848,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035194164}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12091,6 +11933,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -93.364, z: 0}
+--- !u!1001 &2043796552
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -27.96882
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26.01386
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 360.46286
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_Name
+      value: Kart
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3848864580003950117, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2043796554}
+  m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+--- !u!1 &2043796553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+  m_PrefabInstance: {fileID: 2043796552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2043796554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043796553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2059162934
 GameObject:
   m_ObjectHideFlags: 0
@@ -12105,7 +12034,7 @@ GameObject:
   - component: {fileID: 2059162935}
   m_Layer: 0
   m_Name: Track (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12117,7 +12046,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059162934}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12216,7 +12145,7 @@ GameObject:
   - component: {fileID: 2132176980}
   m_Layer: 0
   m_Name: Track (15)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12228,7 +12157,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132176979}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12313,75 +12242,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -90.782, z: 0}
---- !u!1001 &2135794497
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1833235130}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.498
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0069531505
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.99997586
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -179.203
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_Name
-      value: FirstKart
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
 --- !u!1 &2136483563
 GameObject:
   m_ObjectHideFlags: 0
@@ -12396,7 +12256,7 @@ GameObject:
   - component: {fileID: 2136483564}
   m_Layer: 0
   m_Name: Track (49)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12408,7 +12268,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136483563}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4b5bc6726fc73de4b967964fa36988e9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12515,7 +12375,7 @@ SceneRoots:
   - {fileID: 235450776}
   - {fileID: 1815410176}
   - {fileID: 1575238710}
-  - {fileID: 679842028}
+  - {fileID: 2043796552}
   - {fileID: 93672389}
   - {fileID: 1210099761}
   - {fileID: 934989263}

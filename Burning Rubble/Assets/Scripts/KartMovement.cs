@@ -205,7 +205,9 @@ public class KartMovement : MonoBehaviour
         // caps acceleration to maxSpeed
         if (rb.linearVelocity.magnitude > currMaxSpeed)
         {
+            //Debug.Log("speed: " + rb.linearVelocity.magnitude);
             rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
+            //Debug.Log("speed: " + rb.linearVelocity.magnitude);
         }
     }
 
@@ -220,24 +222,25 @@ public class KartMovement : MonoBehaviour
 
     public void ResetVelocity() { SetVelocity(Vector3.zero); }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Collided: " + collision.gameObject);
+        //Debug.Log("Collided: " + collision.gameObject);
         if(!collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Changed COM to low");
-            rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
+            //rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
             lowCOMActive = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("Collision ended: " + collision.gameObject);
+        //Debug.Log("Collision ended: " + collision.gameObject);
         if(lowCOMActive)
         {
             Debug.Log("Changed COM back");
-            rb.centerOfMass = new Vector3(0f, 0f, 0f);
+            //rb.centerOfMass = new Vector3(0f, 0f, 0f);
             lowCOMActive = false;
         }
     }
