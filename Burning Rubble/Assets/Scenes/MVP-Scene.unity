@@ -4272,9 +4272,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kart
       objectReference: {fileID: 0}
+    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: _lapManager
+      value: 
+      objectReference: {fileID: 1033914116}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4649730911728647178, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
