@@ -12712,14 +12712,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewKart
       objectReference: {fileID: 0}
-    - target: {fileID: 2178833679126813474, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928690258014801397, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
-      propertyPath: m_Convex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.073
