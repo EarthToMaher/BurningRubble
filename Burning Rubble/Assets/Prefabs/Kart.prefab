@@ -351,12 +351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  defaultMaxSpeed: 80
+  defaultMaxSpeed: 70
   driftMaxSpeedReducer: 5
   accelerationMultiplier: 30
   brakingMultiplier: 20
   reverseMultiplier: 20
-  turnSpeed: 0.8
+  turnSpeed: 1
   driftSpeed: 1000
   minDriftAngle: 0.1
   defaultDriftAngle: 0.5
@@ -374,10 +374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921f716f89a914f4ba47f669db146801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RubbleMeter
-  MAX_AMT: 400
+  MAX_AMT: 600
   rubbleBar: {fileID: 1678257554847030131}
   rubbleText: {fileID: 5515433356873924506}
-  rubbleChargeAmt: 200
+  rubbleChargeAmt: 300
 --- !u!114 &152009511047465187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c85ffe730f63154aa9f728cae21c837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kart
-  MAX_HP: 350
+  MAX_HP: 500
   hp: 0
   kartMovement: {fileID: 669269744311773407}
   hpImage: {fileID: 3756922032697944917}
@@ -798,7 +798,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 570917994016291130, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_fontSize
-      value: 22.85
+      value: 22.5
       objectReference: {fileID: 0}
     - target: {fileID: 1494516897907589133, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_LocalScale.x
