@@ -69,6 +69,7 @@ public class KartMovement : MonoBehaviour
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
         currAcceleration *= accelerationMultiplier;
+        Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
         currBraking = brakeAction.ReadValue<float>();
@@ -227,14 +228,14 @@ public class KartMovement : MonoBehaviour
         //Debug.Log("Collided: " + collision.gameObject);
         if(!collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Changed COM to low");
+            Debug.Log("Adjusted rotation for wall collision");
             //rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
             transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-            lowCOMActive = true;
+            //lowCOMActive = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+/*    private void OnCollisionExit(Collision collision)
     {
         //Debug.Log("Collision ended: " + collision.gameObject);
         if(lowCOMActive)
@@ -243,7 +244,7 @@ public class KartMovement : MonoBehaviour
             //rb.centerOfMass = new Vector3(0f, 0f, 0f);
             lowCOMActive = false;
         }
-    }
+    }*/
 
     /// <summary>
     /// Logic for doing a rubble boost
