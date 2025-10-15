@@ -12712,6 +12712,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewKart
       objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: driftSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: defaultMaxSpeed
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: driftAngleAdjuster
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.073
