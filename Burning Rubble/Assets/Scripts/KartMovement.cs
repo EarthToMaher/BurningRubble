@@ -25,6 +25,10 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
 
+    private float hoverOffset = 1.48f;   // desired height above ground
+    private float correctionForce = 1000f;  // how strong to push down
+    [SerializeField] private LayerMask groundMask;        // assign your track layer here
+
     //updating movement values
     private Vector2 moveDirection;
     private float currAcceleration;
@@ -69,9 +73,10 @@ public class KartMovement : MonoBehaviour
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
         currAcceleration *= accelerationMultiplier;
-        Debug.Log("Acceleration: " + currAcceleration);
+        //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
+        //Debug.Log("Reverse: " + currReverse);
         currBraking = brakeAction.ReadValue<float>();
         currBraking *= brakingMultiplier;
 
@@ -114,6 +119,18 @@ public class KartMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.0f, groundMask))
+        {
+            float diff = (hit.distance - hoverOffset);
+            Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.green);
+            Debug.Log("raycast hit");
+            Debug.Log("dist: " + hit.distance);
+
+            // If too high, push down gently
+            if (diff > 0.001f)
+                rb.AddForce(-Vector3.up * diff * correctionForce * Time.fixedDeltaTime, ForceMode.Acceleration);
+        }
+
         // steering and drifting
         if (isDrifting)
         {
@@ -164,9 +181,12 @@ public class KartMovement : MonoBehaviour
             //set max speed to default
             currMaxSpeed = defaultMaxSpeed;
 
-            //determine current speed of kart and how much to turn
-            float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
-            Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+            //kart turn (no drift, not accounting for current speed of kart)
+            Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed, 0f);
+
+            //kart turn with speed factor (based on current speed of kart)
+            //float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
+            //Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
 
             rb.MoveRotation(rb.rotation * turnValue);
 
