@@ -59,18 +59,11 @@ public class PaintTrackArea : MonoBehaviour
                 );
 
                 // Check if inside or near the track area
-                float dist = DistanceToTrack(worldPos, leftPoints, rightPoints);
-                if (dist < blendFalloff)
-                {
-                    float blend = Mathf.Clamp01(1f - dist / blendFalloff);
-
-                    // Paint asphalt layer
-                    for (int layer = 0; layer < numLayers; layer++)
-                    {
-                        alphaMap[y, x, layer] *= (1f - blend);
-                    }
-                    alphaMap[y, x, terrainTextureIndex] += blend;
-                }
+                if (PointIsBetweenSplines(worldPos, leftPoints, rightPoints))
+{
+    for (int layer = 0; layer < numLayers; layer++)
+        alphaMap[y, x, layer] = (layer == terrainTextureIndex) ? 1f : 0f;
+}
             }
         }
 
@@ -142,4 +135,41 @@ public class PaintTrackArea : MonoBehaviour
         t = Mathf.Clamp01(t);
         return a + ab * t;
     }
+
+    bool PointIsBetweenSplines(Vector3 point, Vector3[] left, Vector3[] right)
+{
+    for (int i = 0; i < left.Length - 1; i++)
+    {
+        if (PointInQuadXZ(point, left[i], left[i + 1], right[i + 1], right[i]))
+            return true;
+    }
+    return false;
+}
+
+bool PointInQuadXZ(Vector3 p, Vector3 a, Vector3 b, Vector3 c, Vector3 d)
+{
+    return PointInTriangleXZ(p, a, b, c) || PointInTriangleXZ(p, a, c, d);
+}
+
+bool PointInTriangleXZ(Vector3 p, Vector3 a, Vector3 b, Vector3 c)
+{
+    Vector2 p2 = new Vector2(p.x, p.z);
+    Vector2 a2 = new Vector2(a.x, a.z);
+    Vector2 b2 = new Vector2(b.x, b.z);
+    Vector2 c2 = new Vector2(c.x, c.z);
+
+    float area = TriangleArea(a2, b2, c2);
+    float area1 = TriangleArea(p2, b2, c2);
+    float area2 = TriangleArea(a2, p2, c2);
+    float area3 = TriangleArea(a2, b2, p2);
+
+    return Mathf.Abs(area - (area1 + area2 + area3)) < 0.001f;
+}
+
+float TriangleArea(Vector2 a, Vector2 b, Vector2 c)
+{
+    return Mathf.Abs((a.x * (b.y - c.y) +
+                      b.x * (c.y - a.y) +
+                      c.x * (a.y - b.y)) * 0.5f);
+}
 }
