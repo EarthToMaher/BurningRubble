@@ -23,8 +23,8 @@ public class PaintTrackArea : MonoBehaviour
             return;
         }
 
-        leftSpline = container[1];
-        rightSpline = container[2];
+        leftSpline = container[0];
+        rightSpline = container[1];
 
         TerrainData terrainData = terrain.terrainData;
         Vector3 terrainPos = terrain.transform.position;
