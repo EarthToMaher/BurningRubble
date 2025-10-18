@@ -1,117 +1,153 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.ProBuilder;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteInEditMode]
 public class WorldVoxelization : MonoBehaviour
 {
-    [SerializeField] private Vector3 voxelScale = new Vector3(1, 1, 1);
-    private Vector3 scale;
+    [Header("Grid Settings")]
+    public float cellSize = 1f;
+    public Color gridColor = Color.gray;
+    public bool includeInactive = false;
+    public bool fitToRenderers = true;
+    public bool fitToColliders = true;
 
-    [ContextMenu("Generate Prefab")]
-    public void GeneratePrefab()
+    [Header("Layer Settings")]
+    public string targetLayerName = "Voxelize";
+
+    [Header("Cube Placement")]
+    public GameObject cubePrefab;       // Optional prefab — if null, will use a built-in cube
+    public bool clearOldCubes = true;   // Destroys previously placed cubes before spawning new ones
+    public string spawnedParentName = "VoxelGrid";
+
+    private Bounds sceneBounds;
+    private int targetLayer;
+
+    [ContextMenu("Generate Voxel Grid")]
+    public void GenerateVoxelGrid()
     {
-        scale = transform.localScale;
-
-        if (scale.x % voxelScale.x != 0f || scale.y % voxelScale.y != 0f || scale.z % voxelScale.z != 0f)
+        targetLayer = LayerMask.NameToLayer(targetLayerName);
+        if (targetLayer < 0)
         {
-            Debug.LogWarning("The scale of the object is not a multiple of the voxel scale. This may lead to unexpected results.");
-
+            Debug.LogWarning($"Layer \"{targetLayerName}\" not found. Please create it in the Tags & Layers settings.");
+            return;
         }
 
-        GameObject parentObject = new GameObject(this.gameObject.name + " Parent");
+        UpdateSceneBounds();
 
-        for (float x = 0; x < scale.x; x += voxelScale.x)
+        // Optionally clear previously spawned cubes
+        if (clearOldCubes)
         {
-            for (float y = 0; y < scale.y; y += voxelScale.y)
-            {
-                for (float z = 0; z < scale.z; z += voxelScale.z)
-                {
-                    Vector3 localPos = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
-
-                    //Convert to world space
-                    Vector3 worldPos = transform.TransformPoint(localPos);
-
-                    if (IsPointInsideMesh(worldPos, this.gameObject.GetComponent<MeshCollider>()))
-                    {
-                        Debug.Log("Creating Cube");
-                        GameObject voxel = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        voxel.GetComponent<Collider>().isTrigger = true;
-                        voxel.AddComponent<DestructibleBlock>();
-                        voxel.transform.parent = transform;
-                        voxel.transform.localPosition = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
-                        voxel.transform.localScale = new Vector3(voxelScale.x / scale.x, voxelScale.y / scale.y, voxelScale.z / scale.z);
-                        voxel.transform.parent = parentObject.transform;
-                        //voxel.AddComponent<Rigidbody>();
-                    }
-                }
-            }
-
+            var oldParent = GameObject.Find(spawnedParentName);
+            if (oldParent != null)
+                DestroyImmediate(oldParent);
         }
-        this.gameObject.SetActive(false);
-    }
 
-    /*void Awake()
-    {
-        scale = transform.localScale;
+        // Create parent to hold cubes
+        GameObject parent = new GameObject(spawnedParentName);
+        parent.transform.position = Vector3.zero;
 
-        if (scale.x % voxelScale.x != 0f || scale.y % voxelScale.y != 0f || scale.z % voxelScale.z != 0f)
-        {
-            Debug.LogWarning("The scale of the object is not a multiple of the voxel scale. This may lead to unexpected results.");
+        Vector3 start = new Vector3(
+            Mathf.Floor(sceneBounds.min.x / cellSize) * cellSize,
+            Mathf.Floor(sceneBounds.min.y / cellSize) * cellSize,
+            Mathf.Floor(sceneBounds.min.z / cellSize) * cellSize
+        );
 
-        }
-        for (float x = 0; x < scale.x; x += voxelScale.x)
-        {
-            for (float y = 0; y < scale.y; y += voxelScale.y)
-            {
-                for (float z = 0; z < scale.z; z += voxelScale.z)
-                {
-                    Vector3 localPos = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
-
-                    //Convert to world space
-                    Vector3 worldPos = transform.TransformPoint(localPos);
-
-                    if (IsPointInsideMesh(worldPos, this.gameObject.GetComponent<MeshCollider>()))
-                    {
-                        Debug.Log("Creating Cube");
-                        GameObject voxel = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        voxel.GetComponent<Collider>().isTrigger = true;
-                        voxel.AddComponent<DestructibleBlock>();
-                        voxel.transform.parent = transform;
-                        voxel.transform.localPosition = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
-                        voxel.transform.localScale = new Vector3(voxelScale.x / scale.x, voxelScale.y / scale.y, voxelScale.z / scale.z);
-                        voxel.transform.parent = transform.parent;
-                        //voxel.AddComponent<Rigidbody>();
-                    }
-                }
-            }
-
-        }
-        this.gameObject.SetActive(false);
-    }*/
-
-    /*bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
-    {
-        Debug.Log("I EXIST!!!");
-        // Cast a ray upward and count intersections
-        Ray ray = new Ray(point, new Vector3(point.x, point.y + scale.y, point.z));
-        Debug.DrawLine(point, new Vector3(point.x, point.y + scale.y, point.z), Color.red, Mathf.Infinity);
-        Debug.Log("I Drew a line!!!");
-        RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
+        Vector3 end = new Vector3(
+            Mathf.Ceil(sceneBounds.max.x / cellSize) * cellSize,
+            Mathf.Ceil(sceneBounds.max.y / cellSize) * cellSize,
+            Mathf.Ceil(sceneBounds.max.z / cellSize) * cellSize
+        );
 
         int count = 0;
-        foreach (RaycastHit hit in hits)
+
+        List<MeshCollider> mcList = GetMeshCollidersInLayer();
+
+
+        // Main loop to fill the grid
+        for (float x = start.x; x < end.x; x += cellSize)
         {
-            if (hit.collider == mc)
-                count++;
+            for (float y = start.y; y < end.y; y += cellSize)
+            {
+                for (float z = start.z; z < end.z; z += cellSize)
+                {
+
+                    Vector3 cellCenter = new Vector3(x + cellSize / 2f, y + cellSize / 2f, z + cellSize / 2f);
+
+                    if (IsPointInsideMesh(cellCenter, mcList))
+                    {
+                        GameObject cube;
+                        if (cubePrefab != null)
+                            cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
+                        else
+                            cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                        cube.transform.position = cellCenter;
+                        cube.transform.localScale = Vector3.one * cellSize;
+                        cube.transform.SetParent(parent.transform);
+
+                        count++;
+                    }
+                }
+            }
         }
-        Debug.Log(count);
 
-        // Odd = inside, even = outside
-        return (count % 2) == 1;
-    }//*/
+        Debug.Log($"Generated {count} cubes inside grid fitting \"{targetLayerName}\" objects.");
+    }
 
-    bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
+    void UpdateSceneBounds()
+    {
+        bool initialized = false;
+        sceneBounds = new Bounds();
+
+        if (fitToRenderers)
+        {
+            Renderer[] renderers = includeInactive ? FindObjectsOfType<Renderer>(true) : FindObjectsOfType<Renderer>();
+            foreach (Renderer r in renderers)
+            {
+                if (r.gameObject.layer != targetLayer) continue;
+
+                if (!initialized)
+                {
+                    sceneBounds = r.bounds;
+                    initialized = true;
+                }
+                else
+                {
+                    sceneBounds.Encapsulate(r.bounds);
+                }
+            }
+        }
+
+        if (fitToColliders)
+        {
+            Collider[] colliders = includeInactive ? FindObjectsOfType<Collider>(true) : FindObjectsOfType<Collider>();
+            foreach (Collider c in colliders)
+            {
+                if (c.gameObject.layer != targetLayer) continue;
+
+                if (!initialized)
+                {
+                    sceneBounds = c.bounds;
+                    initialized = true;
+                }
+                else
+                {
+                    sceneBounds.Encapsulate(c.bounds);
+                }
+            }
+        }
+
+        if (!initialized)
+        {
+            sceneBounds = new Bounds(Vector3.zero, Vector3.one * 10f);
+        }
+    }
+
+    bool IsPointInsideMesh(Vector3 point, List<MeshCollider> mcList)
     {
         Debug.Log("I EXIST!!!");
         // tiny overlap sphere at the point
@@ -120,22 +156,28 @@ public class WorldVoxelization : MonoBehaviour
         foreach (var c in overlaps)
         {
             Debug.Log("Overlap with " + c.name);
-            if (c == mc)
-                return true; // definitely inside
+            foreach (var mc in mcList)
+            {
+                if (c == mc)
+                    return true; // definitely inside
+            }
         }
+        //int count = 0;
 
-        // fallback: raycast test (for points near the outside)
-        // Ray ray = new Ray(point, Vector3.up);
-        // Debug.DrawLine(point, new Vector3(point.x, point.y + scale.y, point.z), Color.red, Mathf.Infinity);
-        // Debug.Log("I Drew a line!!!");
-        int count = 0;
-        // foreach (var hit in Physics.RaycastAll(ray, 100f))
-        // {
-        //     if (hit.collider == mc)
-        //         count++;
-        // }
-        // Debug.Log(count);
+        return false;
+    }
 
-        return (count % 2) == 1;
-    }//*/
+    public List<MeshCollider> GetMeshCollidersInLayer()
+    {
+        List<MeshCollider> mcList = new List<MeshCollider>();
+        MeshCollider[] colliders = includeInactive ? FindObjectsOfType<MeshCollider>(true) : FindObjectsOfType<MeshCollider>();
+        foreach (MeshCollider mc in colliders)
+        {
+            if (mc.gameObject.layer != targetLayer) continue;
+            mcList.Add(mc);
+        }
+        Debug.Log("Found " + mcList.Count + " colliders in layer " + targetLayerName);
+        return mcList;
+    }
+
 }

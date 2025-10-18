@@ -1,9 +1,11 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
+[ExecuteInEditMode]
 public class GridDrawer : MonoBehaviour
 {
     [Header("Grid Settings")]
@@ -16,10 +18,16 @@ public class GridDrawer : MonoBehaviour
     [Header("Layer Settings")]
     public string targetLayerName = "Voxelize";
 
+    [Header("Cube Placement")]
+    public GameObject cubePrefab;       // Optional prefab — if null, will use a built-in cube
+    public bool clearOldCubes = true;   // Destroys previously placed cubes before spawning new ones
+    public string spawnedParentName = "VoxelGrid";
+
     private Bounds sceneBounds;
     private int targetLayer;
 
-    void OnDrawGizmos()
+    [ContextMenu("Generate Voxel Grid")]
+    public void GenerateVoxelGrid()
     {
         targetLayer = LayerMask.NameToLayer(targetLayerName);
         if (targetLayer < 0)
@@ -30,7 +38,17 @@ public class GridDrawer : MonoBehaviour
 
         UpdateSceneBounds();
 
-        Gizmos.color = gridColor;
+        // Optionally clear previously spawned cubes
+        if (clearOldCubes)
+        {
+            var oldParent = GameObject.Find(spawnedParentName);
+            if (oldParent != null)
+                DestroyImmediate(oldParent);
+        }
+
+        // Create parent to hold cubes
+        GameObject parent = new GameObject(spawnedParentName);
+        parent.transform.position = Vector3.zero;
 
         Vector3 start = new Vector3(
             Mathf.Floor(sceneBounds.min.x / cellSize) * cellSize,
@@ -44,23 +62,40 @@ public class GridDrawer : MonoBehaviour
             Mathf.Ceil(sceneBounds.max.z / cellSize) * cellSize
         );
 
-        // Draw XZ grid lines per Y level (3D-aligned grid)
-        for (float y = start.y; y <= end.y; y += cellSize)
-        {
-            for (float x = start.x; x <= end.x; x += cellSize)
-            {
-                Vector3 from = new Vector3(x, y, start.z);
-                Vector3 to = new Vector3(x, y, end.z);
-                Gizmos.DrawLine(from, to);
-            }
+        int count = 0;
 
-            for (float z = start.z; z <= end.z; z += cellSize)
+        List<MeshCollider> mcList = GetMeshCollidersInLayer();
+
+
+        // Main loop to fill the grid
+        for (float x = start.x; x < end.x; x += cellSize)
+        {
+            for (float y = start.y; y < end.y; y += cellSize)
             {
-                Vector3 from = new Vector3(start.x, y, z);
-                Vector3 to = new Vector3(end.x, y, z);
-                Gizmos.DrawLine(from, to);
+                for (float z = start.z; z < end.z; z += cellSize)
+                {
+
+                    Vector3 cellCenter = new Vector3(x + cellSize / 2f, y + cellSize / 2f, z + cellSize / 2f);
+
+                    if (IsPointInsideMesh(cellCenter, mcList))
+                    {
+                        GameObject cube;
+                        if (cubePrefab != null)
+                            cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
+                        else
+                            cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                        cube.transform.position = cellCenter;
+                        cube.transform.localScale = Vector3.one * cellSize;
+                        cube.transform.SetParent(parent.transform);
+
+                        count++;
+                    }
+                }
             }
         }
+
+        Debug.Log($"Generated {count} cubes inside grid fitting \"{targetLayerName}\" objects.");
     }
 
     void UpdateSceneBounds()
@@ -68,7 +103,6 @@ public class GridDrawer : MonoBehaviour
         bool initialized = false;
         sceneBounds = new Bounds();
 
-        // Include renderers
         if (fitToRenderers)
         {
             Renderer[] renderers = includeInactive ? FindObjectsOfType<Renderer>(true) : FindObjectsOfType<Renderer>();
@@ -88,7 +122,6 @@ public class GridDrawer : MonoBehaviour
             }
         }
 
-        // Include colliders
         if (fitToColliders)
         {
             Collider[] colliders = includeInactive ? FindObjectsOfType<Collider>(true) : FindObjectsOfType<Collider>();
@@ -108,10 +141,43 @@ public class GridDrawer : MonoBehaviour
             }
         }
 
-        // Fallback if nothing found
         if (!initialized)
         {
             sceneBounds = new Bounds(Vector3.zero, Vector3.one * 10f);
         }
     }
+
+    bool IsPointInsideMesh(Vector3 point, List<MeshCollider> mcList)
+    {
+        Debug.Log("I EXIST!!!");
+        // tiny overlap sphere at the point
+        Collider[] overlaps = Physics.OverlapSphere(point, 0.0001f);
+
+        foreach (var c in overlaps)
+        {
+            Debug.Log("Overlap with " + c.name);
+            foreach (var mc in mcList)
+            {
+                if (c == mc)
+                    return true; // definitely inside
+            }
+        }
+        //int count = 0;
+
+        return false;
+    }
+
+    public List<MeshCollider> GetMeshCollidersInLayer()
+    {
+        List<MeshCollider> mcList = new List<MeshCollider>();
+        MeshCollider[] colliders = includeInactive ? FindObjectsOfType<MeshCollider>(true) : FindObjectsOfType<MeshCollider>();
+        foreach (MeshCollider mc in colliders)
+        {
+            if (mc.gameObject.layer != targetLayer) continue;
+            mcList.Add(mc);
+        }
+        Debug.Log("Found " + mcList.Count + " colliders in layer " + targetLayerName);
+        return mcList;
+    }
+
 }
