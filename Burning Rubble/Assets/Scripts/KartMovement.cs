@@ -46,7 +46,7 @@ public class KartMovement : MonoBehaviour
     private Vector3? boostTargetDirection;
     private float rotationSpeed = 720f;
 
-    public float maxAngle = 135f;
+    public float rubbleAngle = 135f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -274,7 +274,7 @@ public class KartMovement : MonoBehaviour
         Vector3 worldDirection = transform.TransformDirection(localDirection).normalized;
         //boostTargetDirection = worldDirection;
 
-        Vector3 clampedDirection = Vector3.RotateTowards(transform.forward, worldDirection, Mathf.Deg2Rad * maxAngle, 0f).normalized;
+        Vector3 clampedDirection = Vector3.RotateTowards(transform.forward, worldDirection, Mathf.Deg2Rad * rubbleAngle, 0f).normalized;
 
         boostTargetDirection = clampedDirection;
 
