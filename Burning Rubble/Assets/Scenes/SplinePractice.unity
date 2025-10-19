@@ -1890,6 +1890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewKart
       objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: maxDriftAngle
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 334.69998
@@ -1929,6 +1933,10 @@ PrefabInstance:
     - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8195122574622100377, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_Mass
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

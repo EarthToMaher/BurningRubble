@@ -71,7 +71,7 @@ public class KartMovement : MonoBehaviour
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
         currAcceleration *= accelerationMultiplier;
-        Debug.Log("Acceleration: " + currAcceleration);
+        //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
         currBraking = brakeAction.ReadValue<float>();
@@ -116,6 +116,7 @@ public class KartMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
         // steering and drifting
         if (isDrifting)
         {
@@ -153,11 +154,15 @@ public class KartMovement : MonoBehaviour
                 {
                     rb.maxAngularVelocity -= driftAngleAdjuster;
                 }
-                Debug.Log("Standard: " + rb.maxAngularVelocity);
+                //Debug.Log("Standard: " + rb.maxAngularVelocity);
             }
 
             //apply torque to make sliding effect
             rb.AddTorque(Vector3.up * driftDirection * driftSpeed, ForceMode.Acceleration);
+
+            //Correctional Torque
+            Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
+            rb.AddTorque(torque * 10000, ForceMode.Acceleration);
         }
         else
         {
@@ -233,7 +238,7 @@ public class KartMovement : MonoBehaviour
         //Debug.Log("Collided: " + collision.gameObject);
         if(!collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Adjusted rotation for wall collision");
+            //Debug.Log("Adjusted rotation for wall collision");
             rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
             transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
             lowCOMActive = true;
