@@ -110,17 +110,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965551e460d124f458c1f5f4edf32a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KartMovement
-  defaultMaxSpeed: 100
+  defaultMaxSpeed: 70
   driftMaxSpeedReducer: 5
   accelerationMultiplier: 30
   brakingMultiplier: 20
   reverseMultiplier: 20
-  turnSpeed: 1
-  driftSpeed: 30
+  turnSpeed: 0.35
+  driftSpeed: 1000
   minDriftAngle: 0.1
   defaultDriftAngle: 0.5
   maxDriftAngle: 0.9
-  driftAngleAdjuster: 0.1
+  driftAngleAdjuster: 0.3
+  maxAngle: 45
 --- !u!114 &2025931923907981312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   kartMovement: {fileID: 3061438949976556318}
   hpImage: {fileID: 5039328961408456115}
   hpText: {fileID: 3089980371931569989}
-  rubbleBoostIntensity: 100
+  rubbleBoostIntensity: 105
 --- !u!114 &8808765690040648270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +807,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 570917994016291130, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_fontSize
-      value: 21.55
+      value: 18.4
       objectReference: {fileID: 0}
     - target: {fileID: 1494516897907589133, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_LocalScale.x
