@@ -231,7 +231,7 @@ public class KartMovement : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("Collided: " + collision.gameObject);
-        if(!collision.gameObject.CompareTag("Ground")&&isDrifting)
+        if(!collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Adjusted rotation for wall collision");
             rb.centerOfMass = new Vector3(0f, -0.5f, 0f);

@@ -115,11 +115,11 @@ MonoBehaviour:
   accelerationMultiplier: 30
   brakingMultiplier: 20
   reverseMultiplier: 20
-  turnSpeed: 0.35
+  turnSpeed: 1
   driftSpeed: 1000
   minDriftAngle: 0.1
   defaultDriftAngle: 0.5
-  maxDriftAngle: 0.9
+  maxDriftAngle: 1.5
   driftAngleAdjuster: 0.3
   maxAngle: 45
 --- !u!114 &2025931923907981312
