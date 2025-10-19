@@ -167,7 +167,7 @@ public class KartMovement : MonoBehaviour
             currMaxSpeed = defaultMaxSpeed;
 
             //determine current speed of kart and how much to turn
-            float speedFactor = Mathf.Clamp(rb.linearVelocity.magnitude / currMaxSpeed, 1f, 2f);
+            float speedFactor = Mathf.Clamp(rb.linearVelocity.magnitude / currMaxSpeed,0f,2f);
             Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
 
             rb.MoveRotation(rb.rotation * turnValue);
@@ -231,12 +231,12 @@ public class KartMovement : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("Collided: " + collision.gameObject);
-        if(!collision.gameObject.CompareTag("Ground"))
+        if(!collision.gameObject.CompareTag("Ground")&&isDrifting)
         {
             Debug.Log("Adjusted rotation for wall collision");
-            //rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
+            rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
             transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-            //lowCOMActive = true;
+            lowCOMActive = true;
         }
     }
 

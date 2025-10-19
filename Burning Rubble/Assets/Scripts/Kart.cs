@@ -37,7 +37,7 @@ public class Kart : MonoBehaviour, I_Damageable
     }
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, 2.001f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 2.001f, transform.position.z);
         if (rubbleAction.WasPerformedThisFrame()) RubbleBoost();
         if (restart.WasPerformedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
