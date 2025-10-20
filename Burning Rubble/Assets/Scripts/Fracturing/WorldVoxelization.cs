@@ -88,6 +88,7 @@ public class WorldVoxelization : MonoBehaviour
                         cube.transform.position = cellCenter;
                         cube.transform.localScale = Vector3.one * cellSize;
                         cube.transform.SetParent(parent.transform);
+                        cube.GetComponent<BoxCollider>().isTrigger = true;
 
                         count++;
                     }
