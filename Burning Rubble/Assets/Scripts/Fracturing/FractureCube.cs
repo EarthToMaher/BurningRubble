@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.ProBuilder;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class FractureCube : MonoBehaviour
 {
     [SerializeField] private Vector3 voxelScale = new Vector3(1, 1, 1);
     private Vector3 scale;
 
-    [ContextMenu("Generate Prefab")]
+    /*[ContextMenu("Generate Prefab")]
     public void GeneratePrefab()
     {
         scale = transform.localScale;
@@ -49,9 +49,9 @@ public class FractureCube : MonoBehaviour
 
         }
         this.gameObject.SetActive(false);
-    }
+    }*/
 
-    /*void Awake()
+    void Awake()
     {
         scale = transform.localScale;
 
@@ -89,7 +89,7 @@ public class FractureCube : MonoBehaviour
 
         }
         this.gameObject.SetActive(false);
-    }*/
+    }
 
     /*bool IsPointInsideMesh(Vector3 point, MeshCollider mc)
     {
