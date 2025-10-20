@@ -53,7 +53,7 @@ public class Countdown : MonoBehaviour
                     if(intensity > 0) 
                     {
                         Debug.Log("Calling coroutine...");
-                        StartCoroutine(move.StartBoost(intensity));
+                        move.StartCoroutine(move.StartBoost(intensity));
                         Debug.Log("Boost with intensity: " + intensity); 
                     }
                     hasBoosted = true;
