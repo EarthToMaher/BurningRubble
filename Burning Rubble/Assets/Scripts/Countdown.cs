@@ -63,7 +63,7 @@ public class Countdown : MonoBehaviour
             if (count.ToString("F0").Equals("0"))
             {
                 countText.SetText("GO!");
-                //StartCoroutine(RemoveCountdown());
+                StartCoroutine(RemoveCountdown());
             }
             else { countText.SetText(count.ToString("F0")); }
 
