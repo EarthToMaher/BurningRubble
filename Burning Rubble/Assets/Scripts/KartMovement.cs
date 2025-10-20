@@ -262,16 +262,16 @@ public class KartMovement : MonoBehaviour
         }
     }
 
-/*    private void OnCollisionExit(Collision collision)
-    {
-        //Debug.Log("Collision ended: " + collision.gameObject);
-        if(lowCOMActive)
+    /*    private void OnCollisionExit(Collision collision)
         {
-            Debug.Log("Changed COM back");
-            //rb.centerOfMass = new Vector3(0f, 0f, 0f);
-            lowCOMActive = false;
-        }
-    }*/
+            //Debug.Log("Collision ended: " + collision.gameObject);
+            if(lowCOMActive)
+            {
+                Debug.Log("Changed COM back");
+                //rb.centerOfMass = new Vector3(0f, 0f, 0f);
+                lowCOMActive = false;
+            }
+        }*/
 
     /// <summary>
     /// Logic for doing a rubble boost
@@ -290,6 +290,17 @@ public class KartMovement : MonoBehaviour
         defaultMaxSpeed -= 100;
         startBoostActive = false;
         Debug.Log("end coroutine");
+    }
+    
+    public IEnumerator Boost(float intensity)
+    {
+        float storedDefaultMaxSpeed = defaultMaxSpeed;
+        defaultMaxSpeed = intensity;
+        currMaxSpeed = intensity;
+        rb.linearVelocity = intensity * transform.forward;
+        yield return new WaitForSeconds(0.5f);
+        defaultMaxSpeed = storedDefaultMaxSpeed;
+        currMaxSpeed = defaultMaxSpeed;
     }
 
     public IEnumerator RubbleBoost(float intensity)
