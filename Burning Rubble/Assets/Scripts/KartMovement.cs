@@ -50,6 +50,8 @@ public class KartMovement : MonoBehaviour
     private Vector3? boostTargetDirection;
     private float rotationSpeed = 720f;
 
+    public float rubbleAngle = 135f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -130,7 +132,7 @@ public class KartMovement : MonoBehaviour
             if (diff > 0.001f)
                 rb.AddForce(-Vector3.up * diff * correctionForce * Time.fixedDeltaTime, ForceMode.Acceleration);
         }
-
+        Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
         // steering and drifting
         if (isDrifting)
         {
@@ -168,11 +170,15 @@ public class KartMovement : MonoBehaviour
                 {
                     rb.maxAngularVelocity -= driftAngleAdjuster;
                 }
-                Debug.Log("Standard: " + rb.maxAngularVelocity);
+                //Debug.Log("Standard: " + rb.maxAngularVelocity);
             }
 
             //apply torque to make sliding effect
             rb.AddTorque(Vector3.up * driftDirection * driftSpeed, ForceMode.Acceleration);
+
+            //Correctional Torque
+            Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
+            rb.AddTorque(torque * 10000, ForceMode.Acceleration);
         }
         else
         {
@@ -187,6 +193,9 @@ public class KartMovement : MonoBehaviour
             //kart turn with speed factor (based on current speed of kart)
             //float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
             //Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+            //determine current speed of kart and how much to turn
+            float speedFactor = Mathf.Clamp(rb.linearVelocity.magnitude / currMaxSpeed,0f,2f);
+            Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
 
             rb.MoveRotation(rb.rotation * turnValue);
 
@@ -220,14 +229,17 @@ public class KartMovement : MonoBehaviour
         else
         {
             //add forward acceleration
-            rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
+            if(rb.linearVelocity.magnitude<currMaxSpeed) rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
         }
 
         // caps acceleration to maxSpeed
         if (rb.linearVelocity.magnitude > currMaxSpeed)
         {
             //Debug.Log("speed: " + rb.linearVelocity.magnitude);
-            rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
+
+            //float currentSpeed = rb.linearVelocity.magnitude;
+            //currentSpeed = Mathf.Clamp(currentSpeed-acc)
+            //rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
             //Debug.Log("speed: " + rb.linearVelocity.magnitude);
         }
     }
@@ -248,10 +260,10 @@ public class KartMovement : MonoBehaviour
         //Debug.Log("Collided: " + collision.gameObject);
         if(!collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Adjusted rotation for wall collision");
-            //rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
+            //Debug.Log("Adjusted rotation for wall collision");
+            rb.centerOfMass = new Vector3(0f, -0.5f, 0f);
             transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-            //lowCOMActive = true;
+            lowCOMActive = true;
         }
     }
 
@@ -274,16 +286,26 @@ public class KartMovement : MonoBehaviour
     public IEnumerator RubbleBoost(float intensity)
     {
         Quaternion startingRotation = transform.rotation;
+        float storedDefaultMaxSpeed = defaultMaxSpeed;
+        defaultMaxSpeed = intensity;
+        currMaxSpeed = intensity;
 
         Vector2 boostDirection = moveDirection;
         if (boostDirection == Vector2.zero) boostDirection = new Vector2(0, 1f);
         Vector3 localDirection = new Vector3(boostDirection.x, 0f, boostDirection.y);
         Vector3 worldDirection = transform.TransformDirection(localDirection).normalized;
-        boostTargetDirection = worldDirection;
+        //boostTargetDirection = worldDirection;
+
+        Vector3 clampedDirection = Vector3.RotateTowards(transform.forward, worldDirection, Mathf.Deg2Rad * rubbleAngle, 0f).normalized;
+
+        boostTargetDirection = clampedDirection;
 
         interpolating = true;
         yield return new WaitUntil(() => !interpolating);
         rb.linearVelocity = transform.forward * intensity;
+        yield return new WaitForSeconds(1f);
+        defaultMaxSpeed = storedDefaultMaxSpeed;
+        currMaxSpeed = defaultMaxSpeed;
     }
 
     public bool CanMove() { return canMove; }

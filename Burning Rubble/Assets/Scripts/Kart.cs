@@ -21,7 +21,7 @@ public class Kart : MonoBehaviour, I_Damageable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        transform.position = new Vector3(transform.position.x, 2.0001f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 2.0001f, transform.position.z);
         if (gameObject.GetComponent<KartMovement>() != null) kartMovement = gameObject.GetComponent<KartMovement>();
         else if (gameObject.GetComponentInChildren<KartMovement>() != null) kartMovement = gameObject.GetComponentInChildren<KartMovement>();
         else kartMovement = gameObject.AddComponent<KartMovement>();
@@ -37,7 +37,7 @@ public class Kart : MonoBehaviour, I_Damageable
     }
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, 2.001f, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, 2.001f, transform.position.z);
         if (rubbleAction.WasPerformedThisFrame()) RubbleBoost();
         if (restart.WasPerformedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
