@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
@@ -65,10 +66,63 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Couldn't find Sustained Sound: " + name);
         } else
         {
-            float sustainPitch = Mathf.Lerp(maxPitch, minPitch, anchor);
-            s._pitch = sustainPitch;
+            s._source.pitch = Mathf.Lerp(minPitch, maxPitch, anchor);
             s._source.Play();
         }
-        
+    }
+
+    public void UpdatePitch(string name, float minPitch, float maxPitch, float anchor)
+    {
+        Sound s = Array.Find(_sounds, sound => sound._name == name);
+        if (s == null || s._source == null) return;
+
+        anchor = Mathf.Clamp01(anchor);
+        float targetPitch = Mathf.Lerp(minPitch, maxPitch, anchor);
+
+        // Smoothly interpolate toward target pitch
+        s._source.pitch = Mathf.Lerp(s._source.pitch, targetPitch, Time.deltaTime * 5f);
+    }
+
+    public void PlayRandomizedCategory(string categoryName)
+    {
+        Sound[] matchingSounds = _sounds
+            .Where(s => s._name.StartsWith(categoryName, System.StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+
+        if (matchingSounds.Length == 0)
+        {
+            Debug.Log("No Sounds located for category '{categoryName}'");
+            return;
+        }
+
+        int numToPlay = UnityEngine.Random.Range(1, Mathf.Min(4, matchingSounds.Length + 1));
+
+        matchingSounds = matchingSounds.OrderBy(x => UnityEngine.Random.value).Take(numToPlay).ToArray();
+
+        foreach (var sound in matchingSounds)
+        {
+            if (sound._source == null)
+            {
+                sound._source = gameObject.AddComponent<AudioSource>();
+                sound._source.clip = sound._clip;
+                sound._source.loop = true;
+                sound._source.volume = sound._volume;
+            }
+            sound._source.Play();
+        }
+    }
+
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(_sounds, sound => sound._name == name);
+        s._source.Stop();
+    }
+
+    public void StopCategory(string categoryName)
+    {
+        foreach (var sound in _sounds.Where(s => s._name.StartsWith(categoryName)))
+        {
+            sound._source?.Stop();
+        }
     }
 }

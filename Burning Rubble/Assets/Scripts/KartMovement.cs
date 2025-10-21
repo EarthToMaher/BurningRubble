@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class KartMovement : MonoBehaviour
 {
+    // GameManager declaration please do not remove
+    [SerializeField] private GameManager GameManager;
+    bool wasAccelerating = false;
+
     //input actions 
     private InputAction moveAction;
     private InputAction reverseAction;
@@ -54,6 +58,11 @@ public class KartMovement : MonoBehaviour
 
     public float rubbleAngle = 135f;
 
+    private void Awake()
+    {
+        GameManager = GameObject.FindFirstObjectByType<GameManager>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,6 +82,22 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Audio Input
+        bool isAccelerating = currAcceleration > 0; 
+        if (isAccelerating && !wasAccelerating)
+        {
+            GameManager.AudioManager.StopCategory("EngineLoop");
+            GameManager.AudioManager.PlayLoopSFX("Accelerate", 1f, 2f, currAcceleration);
+        } else if (!isAccelerating && wasAccelerating)
+        {
+            GameManager.AudioManager.StopSound("Accelerate");
+            GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
+        }
+        if (isAccelerating)
+        {
+            GameManager.AudioManager.UpdatePitch("Accelerate", 1f, 2f, currAcceleration / currMaxSpeed);
+        }
+
         // read in move input
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
@@ -119,6 +144,7 @@ public class KartMovement : MonoBehaviour
                 }
             }
         }
+        wasAccelerating = isAccelerating;
     }
 
     void FixedUpdate()
