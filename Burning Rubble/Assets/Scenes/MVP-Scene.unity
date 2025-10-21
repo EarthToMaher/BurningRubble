@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 17192429}
   m_Layer: 0
   m_Name: Track
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 50865296}
   m_Layer: 0
   m_Name: Track (75)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 62325028}
   m_Layer: 0
   m_Name: Track (83)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 68927278}
   - component: {fileID: 68927277}
   - component: {fileID: 68927276}
+  - component: {fileID: 68927275}
   - component: {fileID: 68927274}
   - component: {fileID: 68927279}
   m_Layer: 0
@@ -485,6 +486,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &68927275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68927273}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &68927276
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -589,6 +611,7 @@ GameObject:
   - component: {fileID: 75803972}
   - component: {fileID: 75803971}
   - component: {fileID: 75803970}
+  - component: {fileID: 75803969}
   - component: {fileID: 75803968}
   - component: {fileID: 75803973}
   m_Layer: 0
@@ -611,6 +634,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &75803969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75803967}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &75803970
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -718,7 +762,7 @@ GameObject:
   - component: {fileID: 77848954}
   m_Layer: 0
   m_Name: Track (38)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -843,6 +887,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 45688a1d3154b6d4d9a989938510e12a, type: 2}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Size.x
+      value: 5.894871
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Center.x
+      value: -0.44743675
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Center.z
+      value: -1.618065e-15
+      objectReference: {fileID: 0}
     - target: {fileID: 3745527107727778313, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -943,7 +999,7 @@ GameObject:
   - component: {fileID: 122515146}
   m_Layer: 0
   m_Name: Track (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1054,7 +1110,7 @@ GameObject:
   - component: {fileID: 134560472}
   m_Layer: 0
   m_Name: Track (60)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,7 +1221,7 @@ GameObject:
   - component: {fileID: 135302155}
   m_Layer: 0
   m_Name: Track (77)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1276,7 +1332,7 @@ GameObject:
   - component: {fileID: 135677559}
   m_Layer: 0
   m_Name: Track (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,7 +1443,7 @@ GameObject:
   - component: {fileID: 146556274}
   m_Layer: 0
   m_Name: Track (35)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1498,7 +1554,7 @@ GameObject:
   - component: {fileID: 164484024}
   m_Layer: 0
   m_Name: Track (18)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1609,7 +1665,7 @@ GameObject:
   - component: {fileID: 185543637}
   m_Layer: 0
   m_Name: Track (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1717,6 +1773,7 @@ GameObject:
   - component: {fileID: 235450776}
   - component: {fileID: 235450775}
   - component: {fileID: 235450774}
+  - component: {fileID: 235450773}
   - component: {fileID: 235450772}
   - component: {fileID: 235450777}
   m_Layer: 0
@@ -1739,6 +1796,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &235450773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235450771}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &235450774
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1846,7 +1924,7 @@ GameObject:
   - component: {fileID: 286824702}
   m_Layer: 0
   m_Name: Track (37)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1954,6 +2032,7 @@ GameObject:
   - component: {fileID: 315151475}
   - component: {fileID: 315151474}
   - component: {fileID: 315151473}
+  - component: {fileID: 315151472}
   - component: {fileID: 315151471}
   - component: {fileID: 315151476}
   m_Layer: 0
@@ -1976,6 +2055,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &315151472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315151470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &315151473
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2083,7 +2183,7 @@ GameObject:
   - component: {fileID: 323429511}
   m_Layer: 0
   m_Name: Track (73)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2194,7 +2294,7 @@ GameObject:
   - component: {fileID: 336086053}
   m_Layer: 0
   m_Name: Track (52)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2305,7 +2405,7 @@ GameObject:
   - component: {fileID: 363592037}
   m_Layer: 0
   m_Name: Track (13)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2418,6 +2518,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 6.333333
       objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Size.x
+      value: 11.618242
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Center.x
+      value: 2.878128
+      objectReference: {fileID: 0}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (4)
@@ -2498,7 +2606,7 @@ GameObject:
   - component: {fileID: 404837486}
   m_Layer: 0
   m_Name: Track (14)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2606,6 +2714,7 @@ GameObject:
   - component: {fileID: 412843986}
   - component: {fileID: 412843985}
   - component: {fileID: 412843984}
+  - component: {fileID: 412843983}
   - component: {fileID: 412843982}
   - component: {fileID: 412843987}
   m_Layer: 0
@@ -2628,6 +2737,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &412843983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412843981}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &412843984
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2735,7 +2865,7 @@ GameObject:
   - component: {fileID: 462737724}
   m_Layer: 0
   m_Name: Track (41)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2846,7 +2976,7 @@ GameObject:
   - component: {fileID: 508927892}
   m_Layer: 0
   m_Name: Track (78)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2957,7 +3087,7 @@ GameObject:
   - component: {fileID: 518495812}
   m_Layer: 0
   m_Name: Track (48)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3068,7 +3198,7 @@ GameObject:
   - component: {fileID: 527185362}
   m_Layer: 0
   m_Name: Track (61)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3179,7 +3309,7 @@ GameObject:
   - component: {fileID: 536910419}
   m_Layer: 0
   m_Name: Track (71)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3290,7 +3420,7 @@ GameObject:
   - component: {fileID: 538160382}
   m_Layer: 0
   m_Name: Track (45)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3401,7 +3531,7 @@ GameObject:
   - component: {fileID: 567205497}
   m_Layer: 0
   m_Name: Track (24)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3512,7 +3642,7 @@ GameObject:
   - component: {fileID: 598552200}
   m_Layer: 0
   m_Name: Track (47)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3623,7 +3753,7 @@ GameObject:
   - component: {fileID: 608865485}
   m_Layer: 0
   m_Name: Track (44)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3734,7 +3864,7 @@ GameObject:
   - component: {fileID: 615693011}
   m_Layer: 0
   m_Name: Track (50)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3845,7 +3975,7 @@ GameObject:
   - component: {fileID: 635077383}
   m_Layer: 0
   m_Name: Track (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3953,6 +4083,7 @@ GameObject:
   - component: {fileID: 662271206}
   - component: {fileID: 662271205}
   - component: {fileID: 662271204}
+  - component: {fileID: 662271203}
   - component: {fileID: 662271202}
   - component: {fileID: 662271207}
   m_Layer: 0
@@ -3975,6 +4106,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &662271203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662271201}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &662271204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4068,154 +4220,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &679842028
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: turnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: defaultMaxSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: defaultDriftAngle
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftAngleAdjuster
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 669269744311773407, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: driftMaxSpeedReducer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 361
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7045786
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.70962596
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90.409
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.8956667
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.85300004
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1.4146118
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704010493562390832, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_Name
-      value: Kart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: _lapManager
-      value: 
-      objectReference: {fileID: 1033914116}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915634690305710013, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929753089790435627, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929753089790435627, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 5620073329339329373, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_fontSize
-      value: 27.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8763523198417422037, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.808
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.753
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -0.5853882
-      objectReference: {fileID: 0}
-    - target: {fileID: 8881922572358659665, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.2000122
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1939359411}
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
 --- !u!1 &686642705
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,7 +4234,7 @@ GameObject:
   - component: {fileID: 686642706}
   m_Layer: 0
   m_Name: Track (25)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4341,7 +4345,7 @@ GameObject:
   - component: {fileID: 690572281}
   m_Layer: 0
   m_Name: Track (31)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4452,7 +4456,7 @@ GameObject:
   - component: {fileID: 705419172}
   m_Layer: 0
   m_Name: Track (34)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4560,6 +4564,7 @@ GameObject:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
   - component: {fileID: 705507996}
+  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4676,6 +4681,21 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &705507997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7433426ec4c524d8e75ab8c90ca7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReenableManager
+  checkRate: 3
+  maxRespawnAmount: 5
+  minWaitTime: 5
 --- !u!1 &710667371
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,7 +4710,7 @@ GameObject:
   - component: {fileID: 710667372}
   m_Layer: 0
   m_Name: Track (64)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4801,7 +4821,7 @@ GameObject:
   - component: {fileID: 743747524}
   m_Layer: 0
   m_Name: Track (29)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4912,7 +4932,7 @@ GameObject:
   - component: {fileID: 746332940}
   m_Layer: 0
   m_Name: Track (27)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5023,7 +5043,7 @@ GameObject:
   - component: {fileID: 750762649}
   m_Layer: 0
   m_Name: Track (26)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5140,6 +5160,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 6.333333
       objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Size.x
+      value: 10.683977
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Size.z
+      value: 2.0000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Center.x
+      value: 3.121365
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486063957378829983, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_Center.z
+      value: -0.0000005363483
+      objectReference: {fileID: 0}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (2)
@@ -5220,7 +5256,7 @@ GameObject:
   - component: {fileID: 791426684}
   m_Layer: 0
   m_Name: Track (20)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5331,7 +5367,7 @@ GameObject:
   - component: {fileID: 823195958}
   m_Layer: 0
   m_Name: Track (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5439,6 +5475,7 @@ GameObject:
   - component: {fileID: 920053219}
   - component: {fileID: 920053218}
   - component: {fileID: 920053217}
+  - component: {fileID: 920053216}
   - component: {fileID: 920053215}
   - component: {fileID: 920053220}
   m_Layer: 0
@@ -5461,6 +5498,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &920053216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920053214}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &920053217
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5568,7 +5626,7 @@ GameObject:
   - component: {fileID: 929684326}
   m_Layer: 0
   m_Name: Track (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5679,7 +5737,7 @@ GameObject:
   - component: {fileID: 933226377}
   m_Layer: 0
   m_Name: Track (16)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5864,7 +5922,7 @@ GameObject:
   - component: {fileID: 936189798}
   m_Layer: 0
   m_Name: Track (62)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5975,7 +6033,7 @@ GameObject:
   - component: {fileID: 939021382}
   m_Layer: 0
   m_Name: Track (12)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6086,7 +6144,7 @@ GameObject:
   - component: {fileID: 974369331}
   m_Layer: 0
   m_Name: Track (58)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6183,80 +6241,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -89.23, z: 0}
---- !u!1 &980150766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 980150768}
-  - component: {fileID: 980150767}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &980150767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980150766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05cba892da66dd48ae2fd0df0d33251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  _mixerGroup: []
-  _sounds:
-  - _name: EngineLoop1
-    _clip: {fileID: 8300000, guid: ede77a40e45b805478b8b55fb5ab68e7, type: 3}
-    _volume: 50
-    _pitch: 1
-    _loop: 1
-    _playOnAwake: 0
-    _source: {fileID: 0}
-  - _name: EngineLoop2
-    _clip: {fileID: 8300000, guid: 1db953d6a906b6f4a98a4c03036dd42f, type: 3}
-    _volume: 50
-    _pitch: 1
-    _loop: 1
-    _playOnAwake: 0
-    _source: {fileID: 0}
-  - _name: EngineLoop3
-    _clip: {fileID: 8300000, guid: 081bb1396d4a65648837a6718ed99674, type: 3}
-    _volume: 50
-    _pitch: 1
-    _loop: 1
-    _playOnAwake: 0
-    _source: {fileID: 0}
-  - _name: EngineLoop4
-    _clip: {fileID: 8300000, guid: eb04ec5817699ed4a83ac7268131a8dd, type: 3}
-    _volume: 50
-    _pitch: 1
-    _loop: 1
-    _playOnAwake: 0
-    _source: {fileID: 0}
---- !u!4 &980150768
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980150766}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1825731709}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1015656049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,7 +6255,7 @@ GameObject:
   - component: {fileID: 1015656050}
   m_Layer: 0
   m_Name: Track (23)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6407,12 +6391,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033914115}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -128.6752, y: 5.48999, z: 229.90717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1825731709}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113605096
 GameObject:
@@ -6428,7 +6412,7 @@ GameObject:
   - component: {fileID: 1113605097}
   m_Layer: 0
   m_Name: Track (66)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6539,7 +6523,7 @@ GameObject:
   - component: {fileID: 1129584943}
   m_Layer: 0
   m_Name: Track (32)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6650,7 +6634,7 @@ GameObject:
   - component: {fileID: 1143982621}
   m_Layer: 0
   m_Name: Track (57)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6761,7 +6745,7 @@ GameObject:
   - component: {fileID: 1162480020}
   m_Layer: 0
   m_Name: Track (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6872,7 +6856,7 @@ GameObject:
   - component: {fileID: 1179486564}
   m_Layer: 0
   m_Name: Track (72)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6983,7 +6967,7 @@ GameObject:
   - component: {fileID: 1208565182}
   m_Layer: 0
   m_Name: Track (63)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7088,14 +7072,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 850281455696897059, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.096436
-      objectReference: {fileID: 0}
-    - target: {fileID: 850281455696897059, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.27
-      objectReference: {fileID: 0}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
@@ -7141,8 +7117,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2717279009703470504, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
@@ -7160,7 +7135,7 @@ GameObject:
   - component: {fileID: 1230626738}
   m_Layer: 0
   m_Name: Track (39)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7271,7 +7246,7 @@ GameObject:
   - component: {fileID: 1235389780}
   m_Layer: 0
   m_Name: Track (74)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7368,6 +7343,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -270.396, z: 0}
+--- !u!1001 &1240906975
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 361
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_Name
+      value: Kart
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750092324257871241, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874562642783703097, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
+      propertyPath: _lapManager
+      value: 
+      objectReference: {fileID: 1033914116}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
 --- !u!1 &1267029689
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,7 +7419,7 @@ GameObject:
   - component: {fileID: 1267029690}
   m_Layer: 0
   m_Name: Track Layout
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7495,6 +7535,7 @@ GameObject:
   - component: {fileID: 1272179516}
   - component: {fileID: 1272179515}
   - component: {fileID: 1272179514}
+  - component: {fileID: 1272179513}
   - component: {fileID: 1272179512}
   - component: {fileID: 1272179517}
   m_Layer: 0
@@ -7517,6 +7558,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1272179513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272179511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1272179514
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7624,7 +7686,7 @@ GameObject:
   - component: {fileID: 1288393473}
   m_Layer: 0
   m_Name: Track (81)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7735,7 +7797,7 @@ GameObject:
   - component: {fileID: 1328172559}
   m_Layer: 0
   m_Name: Track (28)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7843,6 +7905,7 @@ GameObject:
   - component: {fileID: 1330912126}
   - component: {fileID: 1330912125}
   - component: {fileID: 1330912124}
+  - component: {fileID: 1330912123}
   - component: {fileID: 1330912122}
   - component: {fileID: 1330912127}
   m_Layer: 0
@@ -7865,6 +7928,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1330912123
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330912121}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1330912124
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7972,7 +8056,7 @@ GameObject:
   - component: {fileID: 1347380949}
   m_Layer: 0
   m_Name: Track (42)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8083,7 +8167,7 @@ GameObject:
   - component: {fileID: 1367803035}
   m_Layer: 0
   m_Name: Track (43)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8191,6 +8275,7 @@ GameObject:
   - component: {fileID: 1403854848}
   - component: {fileID: 1403854847}
   - component: {fileID: 1403854846}
+  - component: {fileID: 1403854845}
   - component: {fileID: 1403854844}
   - component: {fileID: 1403854849}
   m_Layer: 0
@@ -8213,6 +8298,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1403854845
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403854843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1403854846
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8320,7 +8426,7 @@ GameObject:
   - component: {fileID: 1441389696}
   m_Layer: 0
   m_Name: Track (55)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8431,7 +8537,7 @@ GameObject:
   - component: {fileID: 1463340234}
   m_Layer: 0
   m_Name: Track (84)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8539,6 +8645,7 @@ GameObject:
   - component: {fileID: 1477694351}
   - component: {fileID: 1477694350}
   - component: {fileID: 1477694349}
+  - component: {fileID: 1477694348}
   - component: {fileID: 1477694347}
   - component: {fileID: 1477694352}
   m_Layer: 0
@@ -8561,6 +8668,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1477694348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477694346}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1477694349
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8668,7 +8796,7 @@ GameObject:
   - component: {fileID: 1496726700}
   m_Layer: 0
   m_Name: Track (70)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8779,7 +8907,7 @@ GameObject:
   - component: {fileID: 1507056003}
   m_Layer: 0
   m_Name: Track (68)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8887,6 +9015,7 @@ GameObject:
   - component: {fileID: 1511002124}
   - component: {fileID: 1511002123}
   - component: {fileID: 1511002122}
+  - component: {fileID: 1511002121}
   - component: {fileID: 1511002120}
   - component: {fileID: 1511002125}
   m_Layer: 0
@@ -8909,6 +9038,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1511002121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511002119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1511002122
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9016,7 +9166,7 @@ GameObject:
   - component: {fileID: 1537320910}
   m_Layer: 0
   m_Name: Track (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9124,6 +9274,7 @@ GameObject:
   - component: {fileID: 1542303147}
   - component: {fileID: 1542303146}
   - component: {fileID: 1542303145}
+  - component: {fileID: 1542303144}
   - component: {fileID: 1542303143}
   - component: {fileID: 1542303148}
   m_Layer: 0
@@ -9146,6 +9297,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1542303144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542303142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1542303145
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9253,7 +9425,7 @@ GameObject:
   - component: {fileID: 1557347793}
   m_Layer: 0
   m_Name: Track (53)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9364,7 +9536,7 @@ GameObject:
   - component: {fileID: 1567303602}
   m_Layer: 0
   m_Name: Track (30)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9475,7 +9647,7 @@ GameObject:
   - component: {fileID: 1568964821}
   m_Layer: 0
   m_Name: Track (80)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9586,7 +9758,7 @@ GameObject:
   - component: {fileID: 1572925439}
   m_Layer: 0
   m_Name: Track (36)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9697,7 +9869,7 @@ GameObject:
   - component: {fileID: 1573380857}
   m_Layer: 0
   m_Name: Track (21)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9805,6 +9977,7 @@ GameObject:
   - component: {fileID: 1575238710}
   - component: {fileID: 1575238709}
   - component: {fileID: 1575238708}
+  - component: {fileID: 1575238707}
   - component: {fileID: 1575238706}
   - component: {fileID: 1575238711}
   m_Layer: 0
@@ -9827,6 +10000,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1575238707
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575238705}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1575238708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9934,7 +10128,7 @@ GameObject:
   - component: {fileID: 1595364674}
   m_Layer: 0
   m_Name: Track (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10045,7 +10239,7 @@ GameObject:
   - component: {fileID: 1605067558}
   m_Layer: 0
   m_Name: Track (67)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10156,7 +10350,7 @@ GameObject:
   - component: {fileID: 1605690143}
   m_Layer: 0
   m_Name: Track (82)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10267,7 +10461,7 @@ GameObject:
   - component: {fileID: 1650612330}
   m_Layer: 0
   m_Name: Track (40)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10378,7 +10572,7 @@ GameObject:
   - component: {fileID: 1693838522}
   m_Layer: 0
   m_Name: Track (46)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10489,7 +10683,7 @@ GameObject:
   - component: {fileID: 1702543312}
   m_Layer: 0
   m_Name: Track (59)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10600,7 +10794,7 @@ GameObject:
   - component: {fileID: 1707194308}
   m_Layer: 0
   m_Name: Track (11)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10711,7 +10905,7 @@ GameObject:
   - component: {fileID: 1709016013}
   m_Layer: 0
   m_Name: Track (56)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10822,7 +11016,7 @@ GameObject:
   - component: {fileID: 1711352927}
   m_Layer: 0
   m_Name: Track (79)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10933,7 +11127,7 @@ GameObject:
   - component: {fileID: 1730338195}
   m_Layer: 0
   m_Name: Track (33)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11044,7 +11238,7 @@ GameObject:
   - component: {fileID: 1777914561}
   m_Layer: 0
   m_Name: Track (51)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11152,6 +11346,7 @@ GameObject:
   - component: {fileID: 1815410176}
   - component: {fileID: 1815410175}
   - component: {fileID: 1815410174}
+  - component: {fileID: 1815410173}
   - component: {fileID: 1815410172}
   - component: {fileID: 1815410177}
   m_Layer: 0
@@ -11174,6 +11369,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FractureCube
   voxelScale: {x: 5, y: 5, z: 5}
+--- !u!65 &1815410173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815410171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1815410174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11267,59 +11483,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1825731707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1825731709}
-  - component: {fileID: 1825731710}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1825731709
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825731707}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1033914117}
-  - {fileID: 980150768}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1825731710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825731707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9904aae056efe5a469ab3ce2168fbb40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  LapManager: {fileID: 1033914116}
-  AudioManager: {fileID: 980150767}
---- !u!4 &1833235130 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1319566091882404209, guid: c0da5ec77f55bf14380c10e2111dc482, type: 3}
-  m_PrefabInstance: {fileID: 679842028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840490498
 GameObject:
   m_ObjectHideFlags: 0
@@ -11334,7 +11497,7 @@ GameObject:
   - component: {fileID: 1840490499}
   m_Layer: 0
   m_Name: Track (22)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11445,7 +11608,7 @@ GameObject:
   - component: {fileID: 1911242749}
   m_Layer: 0
   m_Name: Track (76)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11556,7 +11719,7 @@ GameObject:
   - component: {fileID: 1926002387}
   m_Layer: 0
   m_Name: Track (54)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11667,7 +11830,7 @@ GameObject:
   - component: {fileID: 1937719328}
   m_Layer: 0
   m_Name: Track (69)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11764,11 +11927,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -405.638, z: 0}
---- !u!4 &1939359411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-  m_PrefabInstance: {fileID: 2135794497}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962529448
 GameObject:
   m_ObjectHideFlags: 0
@@ -11783,7 +11941,7 @@ GameObject:
   - component: {fileID: 1962529449}
   m_Layer: 0
   m_Name: Track (65)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11894,7 +12052,7 @@ GameObject:
   - component: {fileID: 1982278771}
   m_Layer: 0
   m_Name: Ground Layer
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12005,7 +12163,7 @@ GameObject:
   - component: {fileID: 2026246393}
   m_Layer: 0
   m_Name: Track (19)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12116,7 +12274,7 @@ GameObject:
   - component: {fileID: 2035194165}
   m_Layer: 0
   m_Name: Track (17)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12227,7 +12385,7 @@ GameObject:
   - component: {fileID: 2059162935}
   m_Layer: 0
   m_Name: Track (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12338,7 +12496,7 @@ GameObject:
   - component: {fileID: 2132176980}
   m_Layer: 0
   m_Name: Track (15)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12435,75 +12593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -90.782, z: 0}
---- !u!1001 &2135794497
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1833235130}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.498
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0069531505
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.99997586
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -179.203
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
-      propertyPath: m_Name
-      value: FirstKart
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 82034260573048a4688bd04f9e2fffce, type: 3}
 --- !u!1 &2136483563
 GameObject:
   m_ObjectHideFlags: 0
@@ -12518,7 +12607,7 @@ GameObject:
   - component: {fileID: 2136483564}
   m_Layer: 0
   m_Name: Track (49)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12615,6 +12704,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -56.307, z: 0}
+--- !u!1001 &1270638749313333204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2178833679126813474, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_Name
+      value: NewKart
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.073
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 361
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7897416164895099928, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808765690040648270, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: _lapManager
+      value: 
+      objectReference: {fileID: 1033914116}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12637,10 +12787,11 @@ SceneRoots:
   - {fileID: 235450776}
   - {fileID: 1815410176}
   - {fileID: 1575238710}
-  - {fileID: 679842028}
+  - {fileID: 1240906975}
+  - {fileID: 1270638749313333204}
   - {fileID: 93672389}
   - {fileID: 1210099761}
   - {fileID: 934989263}
   - {fileID: 783288765}
   - {fileID: 397105786}
-  - {fileID: 1825731709}
+  - {fileID: 1033914117}
