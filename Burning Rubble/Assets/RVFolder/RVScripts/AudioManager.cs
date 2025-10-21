@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     
     public Sound[] _sounds;
 
+    public Music[] _BGM;
+
     // On Awake, foreach sound in _sounds, it will add an AudioSource for each clip it finds with the correct parameters
     // Set within the AudioManager
     void Awake()
@@ -25,6 +27,18 @@ public class AudioManager : MonoBehaviour
 
             s._source.loop = s._loop;
             s._source.playOnAwake = s._playOnAwake;
+        }
+
+        foreach (Music m in _BGM)
+        {
+            m._source = gameObject.AddComponent<AudioSource>();
+            m._source.clip = m._clip;
+
+            m._source.volume = m._volume;
+            m._source.pitch = m._pitch;
+
+            m._source.loop = m._loop;
+            m._source.playOnAwake = m._playOnAwake;
         }
     }
 
@@ -112,12 +126,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Stop functions for audio, should work universally
     public void StopSound(string name)
     {
         Sound s = Array.Find(_sounds, sound => sound._name == name);
         s._source.Stop();
     }
 
+    // Only works with groups of audio (such as PlayRandomizedCategory())
     public void StopCategory(string categoryName)
     {
         foreach (var sound in _sounds.Where(s => s._name.StartsWith(categoryName)))

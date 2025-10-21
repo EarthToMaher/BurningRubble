@@ -12743,8 +12743,32 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
       propertyPath: _sounds.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.data[0]._clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a91e12d76d3283849b7c5b7ae8764273, type: 3}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.data[0]._loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.data[0]._name
+      value: Temp_Race
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.data[0]._pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _BGM.Array.data[0]._volume
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
       propertyPath: _sounds.Array.data[4]._clip
