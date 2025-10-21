@@ -78,6 +78,7 @@ public class FractureCube : MonoBehaviour
                         voxel.GetComponent<Collider>().isTrigger = true;
                         voxel.AddComponent<DestructibleBlock>();
                         voxel.transform.parent = transform;
+                        voxel.GetComponent<Renderer>().material = Resources.Load<Material>("Default");
                         voxel.transform.localPosition = new Vector3(((x + voxelScale.x * 0.5f) / scale.x) - 0.5f, ((y + voxelScale.y * 0.5f) / scale.y) - 0.5f, ((z + voxelScale.z * 0.5f) / scale.z) - 0.5f);
                         voxel.transform.localScale = new Vector3(voxelScale.x / scale.x, voxelScale.y / scale.y, voxelScale.z / scale.z);
                         voxel.transform.parent = transform.parent;
