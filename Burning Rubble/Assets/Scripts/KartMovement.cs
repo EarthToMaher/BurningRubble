@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class KartMovement : MonoBehaviour
 {
+    // GameManager declaration please do not remove
+    [SerializeField] private GameManager GameManager;
+    bool wasAccelerating = false;
+
     //input actions 
     private InputAction moveAction;
     private InputAction reverseAction;
@@ -25,6 +29,11 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
 
+    private float hoverOffset = 1.48f;   // desired height above ground
+    private float correctionForce = 1000f;  // how strong to push down
+    [SerializeField] private LayerMask groundMask;        // assign your track layer here
+    [SerializeField] private Countdown countdown;
+
     //updating movement values
     private Vector2 moveDirection;
     private float currAcceleration;
@@ -39,6 +48,7 @@ public class KartMovement : MonoBehaviour
     //booleans
     private bool isDrifting;
     private bool lowCOMActive;
+    private bool startBoostActive;
 
     //currently doesn't do anything, but here to handle situations in the future and there so I can put it in RubbleBoost for now
     private bool canMove = true;
@@ -46,7 +56,12 @@ public class KartMovement : MonoBehaviour
     private Vector3? boostTargetDirection;
     private float rotationSpeed = 720f;
 
-    public float maxAngle = 135f;
+    public float rubbleAngle = 135f;
+
+    private void Awake()
+    {
+        GameManager = GameObject.FindFirstObjectByType<GameManager>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +82,22 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Audio Input
+        bool isAccelerating = currAcceleration > 0; 
+        if (isAccelerating && !wasAccelerating)
+        {
+            GameManager.AudioManager.StopCategory("EngineLoop");
+            GameManager.AudioManager.PlayLoopSFX("Accelerate", 1f, 2f, currAcceleration);
+        } else if (!isAccelerating && wasAccelerating)
+        {
+            GameManager.AudioManager.StopSound("Accelerate");
+            GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
+        }
+        if (isAccelerating)
+        {
+            GameManager.AudioManager.UpdatePitch("Accelerate", 1f, 2f, currAcceleration / currMaxSpeed);
+        }
+
         // read in move input
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
@@ -74,6 +105,7 @@ public class KartMovement : MonoBehaviour
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
+        //Debug.Log("Reverse: " + currReverse);
         currBraking = brakeAction.ReadValue<float>();
         currBraking *= brakingMultiplier;
 
@@ -112,113 +144,124 @@ public class KartMovement : MonoBehaviour
                 }
             }
         }
+        wasAccelerating = isAccelerating;
     }
 
     void FixedUpdate()
-    {
-        Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
-        // steering and drifting
-        if (isDrifting)
+    { 
+        //check that countdown is not running before allowing movement logic to run
+        if(!countdown.GetActive())
         {
-            //drifting
-            //decrease max speed
-            currMaxSpeed = defaultMaxSpeed - driftMaxSpeedReducer;
+            // steering and drifting
+            if (isDrifting)
+            {
+                //drifting
+                //decrease max speed
+                currMaxSpeed = defaultMaxSpeed - driftMaxSpeedReducer;
 
-            //adjust drift angle based on input
-            if ((driftDirection < 0 && moveDirection.x > 0) || (driftDirection > 0 && moveDirection.x < 0))
-            {
-                //widening drift
-                if (rb.maxAngularVelocity < maxDriftAngle)
+                //adjust drift angle based on input
+                if ((driftDirection < 0 && moveDirection.x > 0) || (driftDirection > 0 && moveDirection.x < 0))
                 {
-                    rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity - driftAngleAdjuster, minDriftAngle, maxDriftAngle);
+                    //widening drift
+                    if (rb.maxAngularVelocity < maxDriftAngle)
+                    {
+                        rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity - driftAngleAdjuster, minDriftAngle, maxDriftAngle);
+                    }
+                    //Debug.Log("Widening: " + rb.maxAngularVelocity);
                 }
-                //Debug.Log("Widening: " + rb.maxAngularVelocity);
-            }
-            else if ((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
-            {
-                //tightening drift
-                if (rb.maxAngularVelocity > minDriftAngle)
+                else if ((driftDirection < 0 && moveDirection.x < 0) || (driftDirection > 0 && moveDirection.x > 0))
                 {
-                    rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity + (driftAngleAdjuster * 2), minDriftAngle, maxDriftAngle);
-                }
-                //Debug.Log("Tightening: " + rb.maxAngularVelocity);
-            }
-            else
-            {
-                //standard drift, no adjustment
-                if (rb.maxAngularVelocity < defaultDriftAngle)
-                {
-                    rb.maxAngularVelocity += driftAngleAdjuster;
+                    //tightening drift
+                    if (rb.maxAngularVelocity > minDriftAngle)
+                    {
+                        rb.maxAngularVelocity = Mathf.Clamp(rb.maxAngularVelocity + (driftAngleAdjuster * 2), minDriftAngle, maxDriftAngle);
+                    }
+                    //Debug.Log("Tightening: " + rb.maxAngularVelocity);
                 }
                 else
                 {
-                    rb.maxAngularVelocity -= driftAngleAdjuster;
+                    //standard drift, no adjustment
+                    if (rb.maxAngularVelocity < defaultDriftAngle)
+                    {
+                        rb.maxAngularVelocity += driftAngleAdjuster;
+                    }
+                    else
+                    {
+                        rb.maxAngularVelocity -= driftAngleAdjuster;
+                    }
+                    //Debug.Log("Standard: " + rb.maxAngularVelocity);
                 }
-                //Debug.Log("Standard: " + rb.maxAngularVelocity);
+
+                //apply torque to make sliding effect
+                rb.AddTorque(Vector3.up * driftDirection * driftSpeed, ForceMode.Acceleration);
+
+                //Correctional Torque
+                Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
+                rb.AddTorque(torque * 10000, ForceMode.Acceleration);
+            }
+            else
+            {
+                rb.maxAngularVelocity = defaultDriftAngle;
+                //regular steering
+                //set max speed to default
+                currMaxSpeed = defaultMaxSpeed;
+
+                //kart turn (no drift, not accounting for current speed of kart)
+                //Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed, 0f);
+
+                //kart turn with speed factor (based on current speed of kart)
+                //float speedFactor = rb.linearVelocity.magnitude / currMaxSpeed;
+                //Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+
+                //determine current speed of kart and how much to turn
+                float speedFactor = Mathf.Clamp(rb.linearVelocity.magnitude / currMaxSpeed, 0f, 2f);
+                Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+
+                rb.MoveRotation(rb.rotation * turnValue);
+
+                // eliminate sideways velocity resulting from steering
+                Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+                localVel.x = 0;
+
+                // convert to world velocity and apply to kart's rigidbody
+                rb.linearVelocity = transform.TransformDirection(localVel);
             }
 
-            //apply torque to make sliding effect
-            rb.AddTorque(Vector3.up * driftDirection * driftSpeed, ForceMode.Acceleration);
+            //Debug.Log(currReverse);
+            // kart acceleration
+            if (currBraking != 0 && !isDrifting)
+            {
+                // Step 1: Get current velocity in local space
+                Vector3 localVelocity = rb.transform.InverseTransformDirection(rb.linearVelocity);
 
-            //Correctional Torque
-            Vector3 torque = Vector3.Cross(transform.up, Vector3.up);
-            rb.AddTorque(torque * 10000, ForceMode.Acceleration);
-        }
-        else
-        {
-            rb.maxAngularVelocity = defaultDriftAngle;
-            //regular steering
-            //set max speed to default
-            currMaxSpeed = defaultMaxSpeed;
+                // Step 2: Modify the local Z velocity
+                localVelocity.z = Mathf.Abs(localVelocity.z) - currBraking;
+                if (localVelocity.z < 0) localVelocity.z = 0;
 
-            //determine current speed of kart and how much to turn
-            float speedFactor = Mathf.Clamp(rb.linearVelocity.magnitude / currMaxSpeed,0f,2f);
-            Quaternion turnValue = Quaternion.Euler(0f, moveDirection.x * turnSpeed * speedFactor, 0f);
+                // Step 3: Convert modified local velocity back to world space
+                rb.linearVelocity = rb.transform.TransformDirection(localVelocity);
+            }
+            else if (currAcceleration == 0 && !isDrifting && !startBoostActive)
+            {
+                //add reverse acceleration
+                rb.AddRelativeForce(new Vector3(0f, 0f, -1f) * currReverse, ForceMode.Acceleration);
+            }
+            else if(!startBoostActive)
+            {
+                //add forward acceleration
+                if (rb.linearVelocity.magnitude < currMaxSpeed) rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
+            }
 
-            rb.MoveRotation(rb.rotation * turnValue);
+            // caps acceleration to maxSpeed
+            if (rb.linearVelocity.magnitude > currMaxSpeed)
+            {
+                //Debug.Log("speed: " + rb.linearVelocity.magnitude);
 
-            // eliminate sideways velocity resulting from steering
-            Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
-            localVel.x = 0;
-
-            // convert to world velocity and apply to kart's rigidbody
-            rb.linearVelocity = transform.TransformDirection(localVel);
-        }
-
-        //Debug.Log(currReverse);
-        // kart acceleration
-        if (currBraking != 0 && !isDrifting)
-        {
-            // Step 1: Get current velocity in local space
-            Vector3 localVelocity = rb.transform.InverseTransformDirection(rb.linearVelocity);
-
-            // Step 2: Modify the local Z velocity
-            localVelocity.z = Mathf.Abs(localVelocity.z) - currBraking;
-            if (localVelocity.z < 0) localVelocity.z = 0;
-
-            // Step 3: Convert modified local velocity back to world space
-            rb.linearVelocity = rb.transform.TransformDirection(localVelocity);
-        }
-        else if (currAcceleration == 0 && !isDrifting)
-        {
-            //add reverse acceleration
-            rb.AddRelativeForce(new Vector3(0f, 0f, -1f) * currReverse, ForceMode.Acceleration);
-        }
-        else
-        {
-            //add forward acceleration
-            if(rb.linearVelocity.magnitude<currMaxSpeed) rb.AddRelativeForce(new Vector3(0f, 0f, 1f) * currAcceleration, ForceMode.Acceleration);
-        }
-
-        // caps acceleration to maxSpeed
-        if (rb.linearVelocity.magnitude > currMaxSpeed)
-        {
-            //Debug.Log("speed: " + rb.linearVelocity.magnitude);
-
-            //float currentSpeed = rb.linearVelocity.magnitude;
-            //currentSpeed = Mathf.Clamp(currentSpeed-acc)
-            //rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
-            //Debug.Log("speed: " + rb.linearVelocity.magnitude);
+                //float currentSpeed = rb.linearVelocity.magnitude;
+                //currentSpeed = Mathf.Clamp(currentSpeed-acc)
+                //rb.linearVelocity = rb.linearVelocity.normalized * currMaxSpeed;
+                //Debug.Log("speed: " + rb.linearVelocity.magnitude);
+            }
         }
     }
 
@@ -245,21 +288,46 @@ public class KartMovement : MonoBehaviour
         }
     }
 
-/*    private void OnCollisionExit(Collision collision)
-    {
-        //Debug.Log("Collision ended: " + collision.gameObject);
-        if(lowCOMActive)
+    /*    private void OnCollisionExit(Collision collision)
         {
-            Debug.Log("Changed COM back");
-            //rb.centerOfMass = new Vector3(0f, 0f, 0f);
-            lowCOMActive = false;
-        }
-    }*/
+            //Debug.Log("Collision ended: " + collision.gameObject);
+            if(lowCOMActive)
+            {
+                Debug.Log("Changed COM back");
+                //rb.centerOfMass = new Vector3(0f, 0f, 0f);
+                lowCOMActive = false;
+            }
+        }*/
 
     /// <summary>
     /// Logic for doing a rubble boost
     /// </summary>
     /// <returns></returns>
+    /// 
+    public IEnumerator StartBoost(float boostLevel)
+    {
+        Debug.Log("in coroutine");
+        startBoostActive = true;
+        defaultMaxSpeed += 100;
+        rb.linearVelocity = transform.forward * defaultMaxSpeed;
+        Debug.Log("Velocity expected: " + transform.forward * defaultMaxSpeed);
+        Debug.Log("Actual velocity: " + rb.linearVelocity);
+        yield return new WaitForSeconds(boostLevel);
+        defaultMaxSpeed -= 100;
+        startBoostActive = false;
+        Debug.Log("end coroutine");
+    }
+    
+    public IEnumerator Boost(float intensity)
+    {
+        float storedDefaultMaxSpeed = defaultMaxSpeed;
+        defaultMaxSpeed = intensity;
+        currMaxSpeed = intensity;
+        rb.linearVelocity = intensity * transform.forward;
+        yield return new WaitForSeconds(0.5f);
+        defaultMaxSpeed = storedDefaultMaxSpeed;
+        currMaxSpeed = defaultMaxSpeed;
+    }
 
     public IEnumerator RubbleBoost(float intensity)
     {
@@ -274,7 +342,7 @@ public class KartMovement : MonoBehaviour
         Vector3 worldDirection = transform.TransformDirection(localDirection).normalized;
         //boostTargetDirection = worldDirection;
 
-        Vector3 clampedDirection = Vector3.RotateTowards(transform.forward, worldDirection, Mathf.Deg2Rad * maxAngle, 0f).normalized;
+        Vector3 clampedDirection = Vector3.RotateTowards(transform.forward, worldDirection, Mathf.Deg2Rad * rubbleAngle, 0f).normalized;
 
         boostTargetDirection = clampedDirection;
 
@@ -287,6 +355,8 @@ public class KartMovement : MonoBehaviour
     }
 
     public bool CanMove() { return canMove; }
+
+    public float GetAccelerateValue() { return currAcceleration; }
 }
 
 
@@ -312,3 +382,16 @@ public class KartMovement : MonoBehaviour
 //calculate kart's angle
 /*Vector3 velocityDirection = rb.linearVelocity.normalized;
 float driftAngle = Vector3.SignedAngle(velocityDirection, transform.forward, Vector3.up);*/
+
+/*        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.0f, groundMask))
+        {
+            float diff = (hit.distance - hoverOffset);
+            Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.green);
+            Debug.Log("raycast hit");
+            Debug.Log("dist: " + hit.distance);
+
+            // If too high, push down gently
+            if (diff > 0.001f)
+                rb.AddForce(-Vector3.up * diff * correctionForce * Time.fixedDeltaTime, ForceMode.Acceleration);
+        }*/
+//Debug.Log("Velocity: " + rb.linearVelocity.magnitude);
