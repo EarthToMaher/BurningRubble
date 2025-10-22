@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
+
 
 [ExecuteInEditMode]
 public class WorldVoxelization : MonoBehaviour
@@ -26,7 +26,13 @@ public class WorldVoxelization : MonoBehaviour
     private Bounds sceneBounds;
     private int targetLayer;
 
+    //[Header("Grid Locations")]
+    public Vector3[,,] gridLocations = new Vector3[0,0,0];
+    public byte[,,] voxelData = new byte[0,0,0];
+
+
     [ContextMenu("Generate Voxel Grid")]
+
     public void GenerateVoxelGrid()
     {
         targetLayer = LayerMask.NameToLayer(targetLayerName);
@@ -38,7 +44,7 @@ public class WorldVoxelization : MonoBehaviour
 
         UpdateSceneBounds();
 
-        // Optionally clear previously spawned cubes
+        // Optionally clear previously spawned cubes //does not work as far as I can tell
         if (clearOldCubes)
         {
             var oldParent = GameObject.Find(spawnedParentName);
@@ -62,11 +68,18 @@ public class WorldVoxelization : MonoBehaviour
             Mathf.Ceil(sceneBounds.max.z / cellSize) * cellSize
         );
 
+        // Initialize grid locations array
+        gridLocations = new Vector3[Mathf.CeilToInt((end.x - start.x) / cellSize), Mathf.CeilToInt((end.y - start.y) / cellSize), Mathf.CeilToInt((end.z - start.z) / cellSize)];
+        voxelData = new byte[gridLocations.GetLength(0), gridLocations.GetLength(1), gridLocations.GetLength(2)];
+        //Debug.Log("Grid size: " + gridLocations.GetLength(0) + " x " + gridLocations.GetLength(1) + " x " + gridLocations.GetLength(2));
+        //Debug.Log("Start X: " + start.x + " End X: " + end.x + "\nStart Y: " + start.y + " End Y: " + end.y + "\nStart Z: " + start.z + " End Z: " + end.z);
+
+
         int count = 0;
 
         List<MeshCollider> mcList = GetMeshCollidersInLayer();
 
-
+        int a=0, b=0, c=0;
         // Main loop to fill the grid
         for (float x = start.x; x < end.x; x += cellSize)
         {
@@ -76,6 +89,7 @@ public class WorldVoxelization : MonoBehaviour
                 {
 
                     Vector3 cellCenter = new Vector3(x + cellSize / 2f, y + cellSize / 2f, z + cellSize / 2f);
+                    gridLocations[a,b,c] = cellCenter;
 
                     if (IsPointInsideMesh(cellCenter, mcList))
                     {
@@ -92,9 +106,17 @@ public class WorldVoxelization : MonoBehaviour
                         cube.AddComponent<DestructibleBlock>();
 
                         count++;
+                        voxelData[a, b, c] = 1; // Mark voxel as occupied
+                    }else{
+                        voxelData[a, b, c] = 0; // Mark voxel as empty
                     }
+                    c++;
                 }
+                c = 0;
+                b++;
             }
+            b = 0;
+            a++;
         }
 
         Debug.Log($"Generated {count} cubes inside grid fitting \"{targetLayerName}\" objects.");
@@ -183,3 +205,5 @@ public class WorldVoxelization : MonoBehaviour
     }
 
 }
+
+#endif
