@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
+
 
 [ExecuteInEditMode]
 public class GridDrawer : MonoBehaviour
@@ -181,3 +181,4 @@ public class GridDrawer : MonoBehaviour
     }
 
 }
+#endif
