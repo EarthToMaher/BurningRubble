@@ -7,10 +7,12 @@ public class AudioManager : MonoBehaviour
 {
     // Here in case I wanna test AudioMixers
     public AudioMixerGroup[] _mixerGroup;
-    
+
     public Sound[] _sounds;
 
     public Music[] _BGM;
+
+    public GameObject _audioRanConatiner;
 
     // On Awake, foreach sound in _sounds, it will add an AudioSource for each clip it finds with the correct parameters
     // Set within the AudioManager
@@ -131,6 +133,11 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(_sounds, sound => sound._name == name);
         s._source.Stop();
+    }
+
+    public void PlayRanContainer(string name)
+    {
+        private GameObject _audioContainer = _audioRanConatiner.GetComponent<AudioSource>();
     }
 
     // Only works with groups of audio (such as PlayRandomizedCategory())

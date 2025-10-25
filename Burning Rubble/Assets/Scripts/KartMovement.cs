@@ -84,18 +84,10 @@ public class KartMovement : MonoBehaviour
     {
         // Audio Input
         bool isAccelerating = currAcceleration > 0; 
-        if (isAccelerating && !wasAccelerating)
-        {
-            GameManager.AudioManager.StopCategory("EngineLoop");
-            GameManager.AudioManager.PlayLoopSFX("Accelerate", 1f, 2f, currAcceleration);
-        } else if (!isAccelerating && wasAccelerating)
-        {
-            GameManager.AudioManager.StopSound("Accelerate");
-            GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
-        }
+        GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
         if (isAccelerating)
         {
-            GameManager.AudioManager.UpdatePitch("Accelerate", 1f, 2f, currAcceleration / currMaxSpeed);
+            GameManager.AudioManager.UpdatePitch("EngineLoop", 1f, 2f, currAcceleration / currMaxSpeed);
         }
 
         // read in move input
