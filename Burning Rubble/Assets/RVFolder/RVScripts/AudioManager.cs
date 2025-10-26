@@ -1,16 +1,21 @@
-using UnityEngine;
-using UnityEngine.Audio;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     // Here in case I wanna test AudioMixers
     public AudioMixerGroup[] _mixerGroup;
-    
+
     public Sound[] _sounds;
 
     public Music[] _BGM;
+
+    public AudioClip[] _randomEngine;
+
+    public Sound _updatePitch;
 
     // On Awake, foreach sound in _sounds, it will add an AudioSource for each clip it finds with the correct parameters
     // Set within the AudioManager
@@ -124,6 +129,24 @@ public class AudioManager : MonoBehaviour
             }
             sound._source.Play();
         }
+    }
+
+    public void PlayCategoryOnce(string categoryName)
+    {
+        Sound[] matchingSounds = _sounds
+            .Where(s => s._name.StartsWith(categoryName, System.StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+
+        if (matchingSounds.Length == 0)
+        {
+            Debug.Log("No Sounds Located for category '{categoryName}'");
+            return;
+        }
+
+        Sound randomChosen = matchingSounds[UnityEngine.Random.Range(0, matchingSounds.Length)];
+
+        _updatePitch = randomChosen;
+        randomChosen._source.Play();
     }
 
     // Stop functions for audio, should work universally

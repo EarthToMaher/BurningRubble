@@ -61,6 +61,7 @@ public class KartMovement : MonoBehaviour
     private void Awake()
     {
         GameManager = GameObject.FindFirstObjectByType<GameManager>();
+        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,21 +83,12 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Current Speed is: " + currAcceleration);
         // Audio Input
-        bool isAccelerating = currAcceleration > 0; 
-        if (isAccelerating && !wasAccelerating)
-        {
-            GameManager.AudioManager.StopCategory("EngineLoop");
-            GameManager.AudioManager.PlayLoopSFX("Accelerate", 1f, 2f, currAcceleration);
-        } else if (!isAccelerating && wasAccelerating)
-        {
-            GameManager.AudioManager.StopSound("Accelerate");
-            GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
-        }
-        if (isAccelerating)
-        {
-            GameManager.AudioManager.UpdatePitch("Accelerate", 1f, 2f, currAcceleration / currMaxSpeed);
-        }
+        //bool isAccelerating = currAcceleration > 0;
+        
+        GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
+        
 
         // read in move input
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
@@ -144,7 +136,7 @@ public class KartMovement : MonoBehaviour
                 }
             }
         }
-        wasAccelerating = isAccelerating;
+        //wasAccelerating = isAccelerating;
     }
 
     void FixedUpdate()
