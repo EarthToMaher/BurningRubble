@@ -61,6 +61,7 @@ public class KartMovement : MonoBehaviour
     private void Awake()
     {
         GameManager = GameObject.FindFirstObjectByType<GameManager>();
+        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -77,19 +78,17 @@ public class KartMovement : MonoBehaviour
         //assign rigidbody and fix max angular velocity for drift
         rb = this.gameObject.GetComponent<Rigidbody>();
         rb.maxAngularVelocity = defaultDriftAngle;
-
-        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Current Speed is: " + currAcceleration);
         // Audio Input
-        bool isAccelerating = currAcceleration > 0;
-        if (isAccelerating)
-        {
-            GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
-        }
+        //bool isAccelerating = currAcceleration > 0;
+        
+        GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
+        
 
         // read in move input
         moveDirection = moveAction.ReadValue<Vector2>().normalized;
@@ -137,7 +136,7 @@ public class KartMovement : MonoBehaviour
                 }
             }
         }
-        wasAccelerating = isAccelerating;
+        //wasAccelerating = isAccelerating;
     }
 
     void FixedUpdate()

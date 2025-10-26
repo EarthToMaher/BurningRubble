@@ -143,10 +143,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        matchingSounds = matchingSounds.OrderBy(x => UnityEngine.Random.value)
-            .Take(UnityEngine.Random.Range(0, matchingSounds.Length))
-            .ToArray();
-
         Sound randomChosen = matchingSounds[UnityEngine.Random.Range(0, matchingSounds.Length)];
 
         _updatePitch = randomChosen;
