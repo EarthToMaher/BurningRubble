@@ -1,7 +1,8 @@
-using UnityEngine;
-using UnityEngine.Audio;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class AudioManager : MonoBehaviour
 
     public Music[] _BGM;
 
-    public GameObject _audioRanConatiner;
+    public AudioClip[] _randomEngine;
+
+    public Sound _updatePitch;
 
     // On Awake, foreach sound in _sounds, it will add an AudioSource for each clip it finds with the correct parameters
     // Set within the AudioManager
@@ -128,16 +131,33 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayCategoryOnce(string categoryName)
+    {
+        Sound[] matchingSounds = _sounds
+            .Where(s => s._name.StartsWith(categoryName, System.StringComparison.OrdinalIgnoreCase))
+            .ToArray();
+
+        if (matchingSounds.Length == 0)
+        {
+            Debug.Log("No Sounds Located for category '{categoryName}'");
+            return;
+        }
+
+        matchingSounds = matchingSounds.OrderBy(x => UnityEngine.Random.value)
+            .Take(UnityEngine.Random.Range(0, matchingSounds.Length))
+            .ToArray();
+
+        Sound randomChosen = matchingSounds[UnityEngine.Random.Range(0, matchingSounds.Length)];
+
+        _updatePitch = randomChosen;
+        randomChosen._source.Play();
+    }
+
     // Stop functions for audio, should work universally
     public void StopSound(string name)
     {
         Sound s = Array.Find(_sounds, sound => sound._name == name);
         s._source.Stop();
-    }
-
-    public void PlayRanContainer(string name)
-    {
-        private GameObject _audioContainer = _audioRanConatiner.GetComponent<AudioSource>();
     }
 
     // Only works with groups of audio (such as PlayRandomizedCategory())

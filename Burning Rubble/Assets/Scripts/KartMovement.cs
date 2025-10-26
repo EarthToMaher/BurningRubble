@@ -77,17 +77,18 @@ public class KartMovement : MonoBehaviour
         //assign rigidbody and fix max angular velocity for drift
         rb = this.gameObject.GetComponent<Rigidbody>();
         rb.maxAngularVelocity = defaultDriftAngle;
+
+        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
     }
 
     // Update is called once per frame
     void Update()
     {
         // Audio Input
-        bool isAccelerating = currAcceleration > 0; 
-        GameManager.AudioManager.PlayRandomizedCategory("EngineLoop");
+        bool isAccelerating = currAcceleration > 0;
         if (isAccelerating)
         {
-            GameManager.AudioManager.UpdatePitch("EngineLoop", 1f, 2f, currAcceleration / currMaxSpeed);
+            GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
         }
 
         // read in move input
