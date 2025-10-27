@@ -1910,6 +1910,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &254509565 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+  m_PrefabInstance: {fileID: 1210099761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &286824701
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,6 +2531,10 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: 2.878128
       objectReference: {fileID: 0}
+    - target: {fileID: 3148684890352971325, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: exitDirection
+      value: 
+      objectReference: {fileID: 820043323}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (4)
@@ -5176,6 +5185,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.0000005363483
       objectReference: {fileID: 0}
+    - target: {fileID: 3148684890352971325, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: exitDirection
+      value: 
+      objectReference: {fileID: 1209517155}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (2)
@@ -5353,6 +5366,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -110.283, z: 0}
+--- !u!4 &820043323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+  m_PrefabInstance: {fileID: 397105786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &823195957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,6 +5860,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3148684890352971325, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: exitDirection
+      value: 
+      objectReference: {fileID: 963633233}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (3)
@@ -5897,6 +5919,18 @@ PrefabInstance:
     - target: {fileID: 6410126956353017704, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8857222236101420395, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: _checkpointPlacement
@@ -6130,6 +6164,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -237.236, z: 0}
+--- !u!4 &963633233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+  m_PrefabInstance: {fileID: 934989263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &974369330
 GameObject:
   m_ObjectHideFlags: 0
@@ -7029,6 +7068,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1267029690}
   m_LocalEulerAnglesHint: {x: 0, y: -90.547, z: 0}
+--- !u!4 &1209517155 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+  m_PrefabInstance: {fileID: 783288765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1210099761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7037,6 +7081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3148684890352971325, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: exitDirection
+      value: 
+      objectReference: {fileID: 254509565}
     - target: {fileID: 4714123489077265056, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
@@ -7080,6 +7128,18 @@ PrefabInstance:
     - target: {fileID: 6410126956353017704, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428671176659121552, guid: 14d6d40becd676f418a7856871c463fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
