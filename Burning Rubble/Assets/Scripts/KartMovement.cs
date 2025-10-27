@@ -60,13 +60,14 @@ public class KartMovement : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("This is Kart Movement");
         GameManager = GameObject.FindFirstObjectByType<GameManager>();
-        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
         if (currMaxSpeed <= 0) currMaxSpeed = 1f;
         //assign input action references
         moveAction = InputSystem.actions.FindAction("Move");

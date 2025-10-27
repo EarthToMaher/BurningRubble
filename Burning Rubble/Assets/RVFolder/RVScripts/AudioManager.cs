@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     // Set within the AudioManager
     void Awake()
     {
-
+        Debug.Log("This array is built");
         foreach (Sound s in _sounds)
         {
             s._source = gameObject.AddComponent<AudioSource>();
@@ -146,6 +146,8 @@ public class AudioManager : MonoBehaviour
         Sound randomChosen = matchingSounds[UnityEngine.Random.Range(0, matchingSounds.Length)];
 
         _updatePitch = randomChosen;
+        Debug.Log(randomChosen._name);
+        Debug.Log("Random Chosen is: " + randomChosen._source);
         randomChosen._source.Play();
     }
 
