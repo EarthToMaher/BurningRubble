@@ -28,6 +28,7 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float defaultDriftAngle; //the drift angle when joystick is not held in a direction
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
+    [SerializeField] private float startBoostIncrementor; //how much the max speed increases for the start boost
 
     private float hoverOffset = 1.48f;   // desired height above ground
     private float correctionForce = 1000f;  // how strong to push down
@@ -301,12 +302,12 @@ public class KartMovement : MonoBehaviour
     {
         Debug.Log("in coroutine");
         startBoostActive = true;
-        defaultMaxSpeed += 100;
+        defaultMaxSpeed += startBoostIncrementor;
         rb.linearVelocity = transform.forward * defaultMaxSpeed;
         Debug.Log("Velocity expected: " + transform.forward * defaultMaxSpeed);
         Debug.Log("Actual velocity: " + rb.linearVelocity);
         yield return new WaitForSeconds(boostLevel);
-        defaultMaxSpeed -= 100;
+        defaultMaxSpeed -= startBoostIncrementor;
         startBoostActive = false;
         Debug.Log("end coroutine");
     }

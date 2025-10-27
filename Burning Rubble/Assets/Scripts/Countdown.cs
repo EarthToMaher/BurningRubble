@@ -4,6 +4,9 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
+    [SerializeField] private float longBoost;
+    [SerializeField] private float mediumBoost;
+    [SerializeField] private float shortBoost;
     private bool isActive;
     private float intensity;
     private float count;
@@ -38,9 +41,9 @@ public class Countdown : MonoBehaviour
             if (move.GetAccelerateValue() != 0)
             {
                 if (count > 2) { intensity = 0; }
-                else if (count >= 1.7f && intensity == -1) { intensity = 2; }
-                else if (count >= 1.4f && intensity == -1) { intensity = 1; }
-                else if (count > 1 && intensity == -1) { intensity = 0.5f; }
+                else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
+                else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
+                else if (count > 1 && intensity == -1) { intensity = shortBoost; }
                 else if (count > 0 && intensity == -1) { intensity = 0; }
             }
             else if (count > 0 && intensity != -1) { intensity = -1; }
