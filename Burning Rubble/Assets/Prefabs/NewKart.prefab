@@ -123,7 +123,7 @@ MonoBehaviour:
   defaultDriftAngle: 1
   maxDriftAngle: 1.5
   driftAngleAdjuster: 0.3
-  startBoostIncrementor: 100
+  startBoostIncrementor: 500
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -832,7 +832,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 570917994016291130, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_fontSize
-      value: 18.4
+      value: 18.85
       objectReference: {fileID: 0}
     - target: {fileID: 1494516897907589133, guid: 5ebef8db5fda57341a085d2c6c491e65, type: 3}
       propertyPath: m_LocalScale.x
