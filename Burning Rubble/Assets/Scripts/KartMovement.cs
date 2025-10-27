@@ -90,15 +90,23 @@ public class KartMovement : MonoBehaviour
         //bool isAccelerating = currAcceleration > 0;
         
         GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
-        
 
         // read in move input
-        moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
         currAcceleration *= accelerationMultiplier;
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
+        if(currReverse == 0 || currAcceleration != 0)
+        {
+            //read in normal movement input while accelerating
+            moveDirection = moveAction.ReadValue<Vector2>().normalized;
+        }
+        else
+        {
+            //read in flipped movement input while reversing
+            moveDirection = -moveAction.ReadValue<Vector2>().normalized;
+        }
         //Debug.Log("Reverse: " + currReverse);
         currBraking = brakeAction.ReadValue<float>();
         currBraking *= brakingMultiplier;
@@ -312,8 +320,9 @@ public class KartMovement : MonoBehaviour
         Debug.Log("end coroutine");
     }
     
-    public IEnumerator Boost(float intensity)
+    public IEnumerator Boost(float intensity, float exitDirection)
     {
+        transform.rotation = Quaternion.Euler(0, exitDirection, 0);
         float storedDefaultMaxSpeed = defaultMaxSpeed;
         defaultMaxSpeed = intensity;
         currMaxSpeed = intensity;
