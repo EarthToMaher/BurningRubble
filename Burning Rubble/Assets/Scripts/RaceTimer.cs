@@ -36,13 +36,14 @@ public class RaceTimer : MonoBehaviour
     {
         time += Time.deltaTime;
         //Don't update timer if the race is complete
-        if (gm._checkpointCount > 3)
+        if (gm._lapCount > 3)
         {
             if (time < bestTime) SaveBestTime();
             return;
         }
 
 
+        time += Time.deltaTime;
         //Get the number of minutes, seconds, and milliseconds that the scene has been running
         int minutes = Mathf.FloorToInt(time) / 60;
         int seconds = Mathf.FloorToInt(time) % 60;
