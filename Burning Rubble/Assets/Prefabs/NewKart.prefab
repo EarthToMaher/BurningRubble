@@ -117,11 +117,11 @@ MonoBehaviour:
   accelerationMultiplier: 30
   brakingMultiplier: 20
   reverseMultiplier: 20
-  turnSpeed: 0.35
+  turnSpeed: 2
   driftSpeed: 1000
-  minDriftAngle: 0.1
-  defaultDriftAngle: 0.5
-  maxDriftAngle: 1.2
+  minDriftAngle: 0.5
+  defaultDriftAngle: 1
+  maxDriftAngle: 1.5
   driftAngleAdjuster: 0.3
   groundMask:
     serializedVersion: 2
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921f716f89a914f4ba47f669db146801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RubbleMeter
-  MAX_AMT: 400
+  MAX_AMT: 600
   rubbleBar: {fileID: 5724278588544787869}
   rubbleText: {fileID: 1490733516019499380}
-  rubbleChargeAmt: 200
+  rubbleChargeAmt: 300
 --- !u!114 &2182521879709887986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,12 +156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c85ffe730f63154aa9f728cae21c837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Kart
-  MAX_HP: 350
+  MAX_HP: 500
   hp: 0
   kartMovement: {fileID: 3061438949976556318}
   hpImage: {fileID: 5039328961408456115}
   hpText: {fileID: 3089980371931569989}
-  rubbleBoostIntensity: 105
+  rubbleBoostIntensity: 60
 --- !u!114 &8808765690040648270
 MonoBehaviour:
   m_ObjectHideFlags: 0
