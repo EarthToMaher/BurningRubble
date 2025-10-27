@@ -320,8 +320,9 @@ public class KartMovement : MonoBehaviour
         Debug.Log("end coroutine");
     }
     
-    public IEnumerator Boost(float intensity)
+    public IEnumerator Boost(float intensity, float exitDirection)
     {
+        transform.rotation = Quaternion.Euler(0, exitDirection, 0);
         float storedDefaultMaxSpeed = defaultMaxSpeed;
         defaultMaxSpeed = intensity;
         currMaxSpeed = intensity;
