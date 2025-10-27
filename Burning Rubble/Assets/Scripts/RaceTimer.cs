@@ -14,6 +14,7 @@ public class RaceTimer : MonoBehaviour
 
     //Bool to check if the race is complete. Hidden in inspector as it shouldn't be modified from there
     [HideInInspector] public bool raceComplete = false;
+    private float time = 0;
 
     void Start()
     {
@@ -25,14 +26,15 @@ public class RaceTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         //Don't update timer if the race is complete
         if (raceComplete) return;
 
 
         //Get the number of minutes, seconds, and milliseconds that the scene has been running
-        int minutes = Mathf.FloorToInt(Time.timeSinceLevelLoad) / 60;
-        int seconds = Mathf.FloorToInt(Time.timeSinceLevelLoad)%60;
-        int milliseconds = Mathf.FloorToInt((Time.timeSinceLevelLoad-Mathf.FloorToInt(Time.timeSinceLevelLoad)) * Mathf.Pow(10f,3));
+        int minutes = Mathf.FloorToInt(time) / 60;
+        int seconds = Mathf.FloorToInt(time)%60;
+        int milliseconds = Mathf.FloorToInt((time-Mathf.FloorToInt(time)) * Mathf.Pow(10f,3));
 
         //Format our time as a string and change the text
         String timeString = String.Format("{0}:{1}.{2}", minutes, seconds, milliseconds);
