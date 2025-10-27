@@ -60,7 +60,7 @@ public class KartMovement : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("This is Kart Movement");
+        //Debug.Log("This is Kart Movement");
         GameManager = GameObject.FindFirstObjectByType<GameManager>();
     }
 
