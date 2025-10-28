@@ -64,7 +64,7 @@ public class Kart : MonoBehaviour, I_Damageable
         invincible = true;
         kartMovement.ResetVelocity();
         //GameObject _lapManager = GameObject.Find("LapManager");
-        CheckpointDetection _checkDetect = this.GetComponent<CheckpointDetection>();
+        CheckpointDetection _checkDetect = FindFirstObjectByType<CheckpointDetection>();
         Vector3 _respawnPoint = FindFirstObjectByType<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
         this.transform.position = _respawnPoint;
         StartCoroutine(HealUponDeath());

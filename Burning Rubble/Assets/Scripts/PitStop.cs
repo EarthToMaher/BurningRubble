@@ -17,7 +17,7 @@ public class PitStop : MonoBehaviour
             yield return new WaitForSeconds(1);
             while (!kart.Heal(healRate)) yield return new WaitForSeconds(1);
             kart.kartMovement.enabled = true;
-            kart.kartMovement.StartCoroutine(kart.kartMovement.Boost(105f, exitDirection.eulerAngles.y));
+            kart.kartMovement.StartCoroutine(kart.kartMovement.Boost(60f, exitDirection.eulerAngles.y));
         }
     }
 }
