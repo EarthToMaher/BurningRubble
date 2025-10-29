@@ -5469,6 +5469,10 @@ PrefabInstance:
       propertyPath: startBoostIncrementor
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3089980371931569989, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: m_text
+      value: 'Health: 500'
+      objectReference: {fileID: 0}
     - target: {fileID: 3479376351593126382, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.3
