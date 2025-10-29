@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -34,12 +35,10 @@ namespace MarchingCubesProject
 
         private NormalRenderer normalRenderer;
 
-        public void getArraySize()
-        {
-            //GameObject[] worldVoxelGrid = FindObjectsOfType<MyScriptType>();
-        }
+        //New Variables, goes from World Voxelization
+        public WorldVoxelization worldVoxelization;
 
-        void Start()
+        /*void Start()
         {
 
             INoise perlin = new PerlinNoise(seed, 1.0f);
@@ -59,9 +58,19 @@ namespace MarchingCubesProject
             marching.Surface = 0.0f;
 
             //The size of voxel array.
-            int width = 32;
-            int height = 32;
-            int depth = 32;
+            int width;
+            int height;
+            int depth;
+            if (worldVoxelization.gridLocations != null)
+            {
+                width = worldVoxelization.gridLocations.GetLength(0);
+                height = worldVoxelization.gridLocations.GetLength(1);
+                depth = worldVoxelization.gridLocations.GetLength(2);
+            } else {
+                width = 32;
+                height = 32;
+                depth = 32;
+            }
 
             var voxels = new VoxelArray(width, height, depth);
 
@@ -118,7 +127,7 @@ namespace MarchingCubesProject
 
             CreateMesh32(verts, normals, indices, position);
 
-        }
+        }*/
 
         private void CreateMesh32(List<Vector3> verts, List<Vector3> normals, List<int> indices, Vector3 position)
         {
@@ -135,7 +144,7 @@ namespace MarchingCubesProject
             mesh.RecalculateBounds();
 
             GameObject go = new GameObject("Mesh");
-            go.transform.parent = transform;
+            go.transform.parent = worldVoxelization.parent.transform;
             go.AddComponent<MeshFilter>();
             go.AddComponent<MeshRenderer>();
             go.GetComponent<Renderer>().material = material;
@@ -155,7 +164,7 @@ namespace MarchingCubesProject
         /// <param name="normals"></param>
         /// <param name="indices"></param>
         /// <param name="position"></param>
-        private void CreateMesh16(List<Vector3> verts, List<Vector3> normals, List<int> indices, Vector3 position)
+        /*private void CreateMesh16(List<Vector3> verts, List<Vector3> normals, List<int> indices, Vector3 position)
         {
 
             int maxVertsPerMesh = 30000; //must be divisible by 3, ie 3 verts == 1 triangle
@@ -205,12 +214,12 @@ namespace MarchingCubesProject
 
                 meshes.Add(go);
             }
-        }
+        }*/
 
-        private void Update()
+        /*private void Update()
         {
             //transform.Rotate(Vector3.up, 10.0f * Time.deltaTime);
-        }
+        }*/
 
         private void OnRenderObject()
         {
@@ -244,11 +253,22 @@ namespace MarchingCubesProject
             marching.Surface = 0.0f;
 
             //The size of voxel array.
-            int width = 32;
-            int height = 32;
-            int depth = 32;
+            int width;
+            int height;
+            int depth;
+            if (worldVoxelization.gridLocations != null && worldVoxelization.gridLocations.Length > 0)
+            {
+                width = worldVoxelization.gridLocations.GetLength(0);
+                height = worldVoxelization.gridLocations.GetLength(1);
+                depth = worldVoxelization.gridLocations.GetLength(2);
+            } else {
+                width = 32;
+                height = 32;
+                depth = 32;
+            }
 
-            var voxels = new VoxelArray(width, height, depth);
+            var voxels = new VoxelArray(width, height, depth); //Creates a 3D array of floats called voxels.
+
 
             //Fill voxels with values. Im using perlin noise but any method to create voxels will work.
             for (int x = 0; x < width; x++)
@@ -261,14 +281,20 @@ namespace MarchingCubesProject
                         float v = y / (height - 1.0f);
                         float w = z / (depth - 1.0f);
 
-                        voxels[x, y, z] = fractal.Sample3D(u, v, w);
+                        //voxels[x, y, z] = fractal.Sample3D(u, v, w); //fills the voxel array with a float number from the fractal noise, typically between -1 and 1. 
+                                                                    // but there is a weird -4 in there
+
+                        //Experimental: try to use the voxel data from world voxelization
+                        voxels[x, y, z] = worldVoxelization.voxelData[x, y, z];
+
+                        //Debug.Log("Sampling voxel at: " + x + ", " + y + ", " + z + "With value of: " + fractal.Sample3D(u, v, w) + "\nTo double check: " +voxels[x, y, z]);
                     }
                 }
             }
 
-            List<Vector3> verts = new List<Vector3>();
-            List<Vector3> normals = new List<Vector3>();
-            List<int> indices = new List<int>();
+            List<Vector3> verts = new List<Vector3>(); //List to hold the vertices of the mesh but only holds 1 for each cube
+            List<Vector3> normals = new List<Vector3>(); //List to hold the normals of the mesh, only needs one for each vertex (I think)
+            List<int> indices = new List<int>(); //List to hold the indices of the mesh, not sure what this is for.
 
             //The mesh produced is not optimal. There is one vert for each index.
             //Would need to weld vertices for better quality mesh.
@@ -299,7 +325,10 @@ namespace MarchingCubesProject
                 normalRenderer.Load(verts, normals);
             }
 
-            var position = new Vector3(-width / 2, -height / 2, -depth / 2);
+            var position = new Vector3(worldVoxelization.gridLocations[0, 0, 0].x, worldVoxelization.gridLocations[0, 0, 0].y, worldVoxelization.gridLocations[0, 0, 0].z);
+            //position = transform.TransformPoint(position);
+
+            Debug.Log("Creating Mesh at position: " + position);
 
             CreateMesh32(verts, normals, indices, position);
 
