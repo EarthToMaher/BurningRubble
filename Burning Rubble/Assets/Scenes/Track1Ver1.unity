@@ -20710,7 +20710,6 @@ GameObject:
   - component: {fileID: 877529747}
   - component: {fileID: 877529746}
   - component: {fileID: 877529748}
-  - component: {fileID: 877529749}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -20769,58 +20768,6 @@ MonoBehaviour:
   cubePrefab: {fileID: 0}
   clearOldCubes: 0
   spawnedParentName: VoxelGrid
---- !u!114 &877529749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877529744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInputManager
-  m_NotificationBehavior: 0
-  m_MaxPlayerCount: 4
-  m_AllowJoining: 1
-  m_JoinBehavior: 0
-  m_PlayerJoinedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlayerLeftEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_JoinAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Join
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: b7aefa54-bfdb-4b70-8a1c-edf604ceb118
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 0ac3ec26-3685-45c6-9c07-9aec506fec73
-        m_Path: 
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Join
-        m_Flags: 0
-      m_Flags: 0
-    m_Reference: {fileID: 6170193564146302309, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_PlayerPrefab: {fileID: 1244226649}
-  m_SplitScreen: 1
-  m_MaintainAspectRatioInSplitScreen: 0
-  m_FixedNumberOfSplitScreens: -1
-  m_SplitScreenRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!1001 &887407538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22859,11 +22806,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1244226649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6470137175446354684, guid: be7b88acf3226f949a1815e19176fa93, type: 3}
-  m_PrefabInstance: {fileID: 5450360144995024924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1266019932
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28036,10 +27978,6 @@ PrefabInstance:
       propertyPath: _lapManager
       value: 
       objectReference: {fileID: 1169511224}
-    - target: {fileID: 1981736834816086225, guid: be7b88acf3226f949a1815e19176fa93, type: 3}
-      propertyPath: _txtLapCount
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4719393565278093218, guid: be7b88acf3226f949a1815e19176fa93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 499.9
