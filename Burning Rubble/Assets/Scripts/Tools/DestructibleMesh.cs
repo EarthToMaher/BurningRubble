@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 public class DestructibleMesh : MonoBehaviour
 {
     public Vector3[,,] voxelPositions;
+    public ReenableManager rm;
     public byte[,,] voxelData;
 
     public int size = 16;       // number of voxels per axis
@@ -20,6 +21,7 @@ public class DestructibleMesh : MonoBehaviour
 
     void Awake()
     {
+        rm = FindFirstObjectByType<ReenableManager>();
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
 
@@ -82,6 +84,8 @@ public class DestructibleMesh : MonoBehaviour
                         voxelCenter.y >= min.y && voxelCenter.y <= max.y &&
                         voxelCenter.z >= min.z && voxelCenter.z <= max.z)
                     {
+                        Vector3 coords = new Vector3(x, y, z);
+                        rm.AddToBatchOneMesh(this,coords,voxelData[x,y,z]);
                         voxelData[x, y, z] = 0;
                         modified = true;
                     }
@@ -93,6 +97,7 @@ public class DestructibleMesh : MonoBehaviour
 
     public void RebuildMesh()
     {
+        Debug.Log("Attempted to rebuild mesh");
         List<Vector3> verts = new List<Vector3>();
         List<int> tris = new List<int>();
 
