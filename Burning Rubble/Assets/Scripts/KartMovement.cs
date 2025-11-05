@@ -7,7 +7,7 @@ public class KartMovement : MonoBehaviour
 {
     // GameManager declaration please do not remove
     [SerializeField] private GameManager GameManager;
-    bool wasAccelerating = false;
+    //bool wasAccelerating = false;
 
     //input actions 
     private InputAction moveAction;
@@ -85,11 +85,12 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current Speed is: " + currAcceleration);
+        //Debug.Log("Current Speed is: " + currAcceleration);
+
         // Audio Input
         //bool isAccelerating = currAcceleration > 0;
         
-        GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
+        GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 1.8f, currAcceleration / currMaxSpeed);
 
         // read in move input
         currAcceleration = accelerateAction.ReadValue<float>();

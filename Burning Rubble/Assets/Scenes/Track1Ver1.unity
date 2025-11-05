@@ -22671,6 +22671,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _sounds.Array.data[0]._volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _sounds.Array.data[1]._volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _sounds.Array.data[2]._volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370279805155958829, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
+      propertyPath: _sounds.Array.data[3]._volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7528243509431543196, guid: 113b404ae371f894dbfc65e9adf25de2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 308.01105
@@ -27977,13 +27993,13 @@ SceneRoots:
   - {fileID: 589252175}
   - {fileID: 558657636}
   - {fileID: 877529747}
+  - {fileID: 1169511223}
   - {fileID: 736628036}
   - {fileID: 2111503815}
   - {fileID: 1142407107}
   - {fileID: 1410748751}
   - {fileID: 1473625505}
   - {fileID: 349347731}
-  - {fileID: 1169511223}
   - {fileID: 154967775}
   - {fileID: 1821092185}
   - {fileID: 1419057633}
