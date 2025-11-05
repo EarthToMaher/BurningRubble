@@ -715,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.75
+  m_fontSize: 18.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7165,7 +7165,7 @@ MonoBehaviour:
   _lapManager: {fileID: 0}
   _txtCheckpoint: {fileID: 6848479040548872917}
   _checkpointsRemaining: {fileID: 718347881174017501}
-  _txtLapCount: {fileID: 0}
+  _txtLapCount: {fileID: 5385212349756746626}
 --- !u!114 &7469469064551229219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,6 +9217,7 @@ MonoBehaviour:
   shortBoost: 0.5
   move: {fileID: 8362042476137343839}
   countText: {fileID: 3943137438478595026}
+  raceTimer: {fileID: 7090025070143277324}
 --- !u!1 &7483195417877942615
 GameObject:
   m_ObjectHideFlags: 0
