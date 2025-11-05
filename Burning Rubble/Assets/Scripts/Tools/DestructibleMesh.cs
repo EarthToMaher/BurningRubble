@@ -2,7 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 
-[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(MeshCollider))]
+//A lot of this script used a ChatGPT script as a base (mainly so I didn't have to deal with typing out as much math)
+
+
 public class DestructibleMesh : MonoBehaviour
 {
     public Vector3[,,] voxelPositions;
@@ -21,7 +23,7 @@ public class DestructibleMesh : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
 
-        if(voxelData == null || voxelPositions == null)
+        if (voxelData == null || voxelPositions == null)
         {
             InitializeVoxels();
             RebuildMesh();
@@ -36,12 +38,12 @@ public class DestructibleMesh : MonoBehaviour
         Vector3 offset = new Vector3(size, size, size) * voxelSize * 0.5f;
 
         for (int x = 0; x < size; x++)
-        for (int y = 0; y < size; y++)
-        for (int z = 0; z < size; z++)
-        {
-            voxelPositions[x, y, z] = new Vector3(x, y, z) * voxelSize - offset;
-            voxelData[x, y, z] = 1;
-        }
+            for (int y = 0; y < size; y++)
+                for (int z = 0; z < size; z++)
+                {
+                    voxelPositions[x, y, z] = new Vector3(x, y, z) * voxelSize - offset;
+                    voxelData[x, y, z] = 1;
+                }
     }
 
     void OnTriggerEnter(Collider other)
@@ -67,22 +69,22 @@ public class DestructibleMesh : MonoBehaviour
         bool modified = false;
 
         for (int x = 0; x < size; x++)
-        for (int y = 0; y < size; y++)
-        for (int z = 0; z < size; z++)
-        {
-            if (voxelData[x, y, z] == 0) continue;
+            for (int y = 0; y < size; y++)
+                for (int z = 0; z < size; z++)
+                {
+                    if (voxelData[x, y, z] == 0) continue;
 
-            Vector3 voxelCenter = voxelPositions[x, y, z];
+                    Vector3 voxelCenter = voxelPositions[x, y, z];
 
-            // Check if voxel center is inside the hit bounds
-            if (voxelCenter.x >= min.x && voxelCenter.x <= max.x &&
-                voxelCenter.y >= min.y && voxelCenter.y <= max.y &&
-                voxelCenter.z >= min.z && voxelCenter.z <= max.z)
-            {
-                voxelData[x, y, z] = 0;
-                modified = true;
-            }
-        }
+                    // Check if voxel center is inside the hit bounds
+                    if (voxelCenter.x >= min.x && voxelCenter.x <= max.x &&
+                        voxelCenter.y >= min.y && voxelCenter.y <= max.y &&
+                        voxelCenter.z >= min.z && voxelCenter.z <= max.z)
+                    {
+                        voxelData[x, y, z] = 0;
+                        modified = true;
+                    }
+                }
 
         if (modified)
             RebuildMesh();
@@ -100,7 +102,7 @@ public class DestructibleMesh : MonoBehaviour
             Vector3.right, Vector3.left
         };
 
-        Vector3[,] faceVerts = new Vector3[6,4]
+        Vector3[,] faceVerts = new Vector3[6, 4]
         {
             { new Vector3(-0.5f,-0.5f,0.5f), new Vector3(0.5f,-0.5f,0.5f), new Vector3(0.5f,0.5f,0.5f), new Vector3(-0.5f,0.5f,0.5f) },
             { new Vector3(0.5f,-0.5f,-0.5f), new Vector3(-0.5f,-0.5f,-0.5f), new Vector3(-0.5f,0.5f,-0.5f), new Vector3(0.5f,0.5f,-0.5f) },
@@ -115,39 +117,39 @@ public class DestructibleMesh : MonoBehaviour
         int sz = voxelData.GetLength(2);
 
         for (int x = 0; x < sx; x++)
-        for (int y = 0; y < sy; y++)
-        for (int z = 0; z < sz; z++)
-        {
-            if (voxelData[x,y,z] == 0) continue;
-
-            Vector3 center = voxelPositions[x,y,z];
-
-            for (int f = 0; f < 6; f++)
-            {
-                Vector3Int neighbor = new Vector3Int(x,y,z) + Vector3Int.RoundToInt(faceDirs[f]);
-                bool neighborSolid = false;
-
-                if (neighbor.x >= 0 && neighbor.x < sx &&
-                    neighbor.y >= 0 && neighbor.y < sy &&
-                    neighbor.z >= 0 && neighbor.z < sz)
+            for (int y = 0; y < sy; y++)
+                for (int z = 0; z < sz; z++)
                 {
-                    neighborSolid = voxelData[neighbor.x,neighbor.y,neighbor.z] == 1;
+                    if (voxelData[x, y, z] == 0) continue;
+
+                    Vector3 center = voxelPositions[x, y, z];
+
+                    for (int f = 0; f < 6; f++)
+                    {
+                        Vector3Int neighbor = new Vector3Int(x, y, z) + Vector3Int.RoundToInt(faceDirs[f]);
+                        bool neighborSolid = false;
+
+                        if (neighbor.x >= 0 && neighbor.x < sx &&
+                            neighbor.y >= 0 && neighbor.y < sy &&
+                            neighbor.z >= 0 && neighbor.z < sz)
+                        {
+                            neighborSolid = voxelData[neighbor.x, neighbor.y, neighbor.z] == 1;
+                        }
+
+                        if (neighborSolid) continue;
+
+                        int start = verts.Count;
+                        for (int i = 0; i < 4; i++)
+                            verts.Add(center + faceVerts[f, i] * voxelSize);
+
+                        tris.Add(start + 0);
+                        tris.Add(start + 1);
+                        tris.Add(start + 2);
+                        tris.Add(start + 2);
+                        tris.Add(start + 3);
+                        tris.Add(start + 0);
+                    }
                 }
-
-                if (neighborSolid) continue;
-
-                int start = verts.Count;
-                for (int i = 0; i < 4; i++)
-                    verts.Add(center + faceVerts[f,i] * voxelSize);
-
-                tris.Add(start + 0);
-                tris.Add(start + 1);
-                tris.Add(start + 2);
-                tris.Add(start + 2);
-                tris.Add(start + 3);
-                tris.Add(start + 0);
-            }
-        }
 
         Mesh newMesh = new Mesh();
         newMesh.indexFormat = IndexFormat.UInt32;
@@ -159,7 +161,7 @@ public class DestructibleMesh : MonoBehaviour
         meshFilter.sharedMesh = newMesh;
 
         // Update collider
-        if(meshCollider)
+        if (meshCollider)
         {
             meshCollider.sharedMesh = null;
             meshCollider.sharedMesh = newMesh;
