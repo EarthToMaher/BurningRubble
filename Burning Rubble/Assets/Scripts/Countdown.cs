@@ -14,6 +14,7 @@ public class Countdown : MonoBehaviour
     private bool isCounting;
     [SerializeField] private KartMovement move;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private RaceTimer raceTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,55 +26,51 @@ public class Countdown : MonoBehaviour
 
         //-1 value used to determine whether intensity has been set already
         intensity = -1;
-
-        StartCoroutine(WaitToStart());
     }
 
     private void Update()
     {
-        if(isCounting)
+        if (count > 0)
         {
-            if (count > 0)
-            {
-                count -= Time.deltaTime;
-            }
-
-            if (move.GetAccelerateValue() != 0)
-            {
-                if (count > 2) { intensity = 0; }
-                else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
-                else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
-                else if (count > 1 && intensity == -1) { intensity = shortBoost; }
-                else if (count > 0 && intensity == -1) { intensity = 0; }
-            }
-            else if (count > 0 && intensity != -1) { intensity = -1; }
-
-            if (count <= 0)
-            {
-                isActive = false;
-                if (!hasBoosted)
-                {
-                    if(intensity > 0) 
-                    {
-                        Debug.Log("Calling coroutine...");
-                        move.StartCoroutine(move.StartBoost(intensity));
-                        Debug.Log("Boost with intensity: " + intensity); 
-                    }
-                    hasBoosted = true;
-                }
-            }
-
-            if (count.ToString("F0").Equals("0"))
-            {
-                countText.SetText("GO!");
-                StartCoroutine(RemoveCountdown());
-            }
-            else { countText.SetText(count.ToString("F0")); }
-
-
-            //DEBUG: show countdown with 1 decimal place
-            //Debug.Log("Count: " + count.ToString("F1"));
+            count -= Time.deltaTime;
         }
+
+        if (move.GetAccelerateValue() != 0)
+        {
+            if (count > 2) { intensity = 0; }
+            else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
+            else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
+            else if (count > 1 && intensity == -1) { intensity = shortBoost; }
+            else if (count > 0 && intensity == -1) { intensity = 0; }
+        }
+        else if (count > 0 && intensity != -1) { intensity = -1; }
+
+        if (count <= 0)
+        {
+            isActive = false;
+            raceTimer.StartRace();
+            if (!hasBoosted)
+            {
+                if(intensity > 0) 
+                {
+                    Debug.Log("Calling coroutine...");
+                    move.StartCoroutine(move.StartBoost(intensity));
+                    Debug.Log("Boost with intensity: " + intensity); 
+                }
+                hasBoosted = true;
+            }
+        }
+
+        if (count.ToString("F0").Equals("0"))
+        {
+            countText.SetText("GO!");
+            StartCoroutine(RemoveCountdown());
+        }
+        else { countText.SetText(count.ToString("F0")); }
+
+
+        //DEBUG: show countdown with 1 decimal place
+        //Debug.Log("Count: " + count.ToString("F1"));
     }
 
     public bool GetActive()
@@ -89,7 +86,8 @@ public class Countdown : MonoBehaviour
     
     private IEnumerator WaitToStart()
     {
-        //waiting for kart to be on the ground
+        //waiting for kart to be on the ground (only relevant in MVP scene)
+        //call coroutine from Start and wrap all code in Update in an if(isCounting) statement
         yield return new WaitForSeconds(3f);
         isCounting = true;
     }
