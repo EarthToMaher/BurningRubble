@@ -236,8 +236,8 @@ namespace MarchingCubesProject
         [ContextMenu("Generate Marching Cubes Mesh")]
         public void GenerateMarchingCubesMesh()
         {
-            INoise perlin = new PerlinNoise(seed, 1.0f);
-            FractalNoise fractal = new FractalNoise(perlin, 3, 1.0f);
+            //INoise perlin = new PerlinNoise(seed, 1.0f);
+            //FractalNoise fractal = new FractalNoise(perlin, 3, 1.0f);
 
             //Set the mode used to create the mesh.
             //Cubes is faster and creates less verts, tetrahedrons is slower and creates more verts but better represents the mesh surface.
@@ -261,7 +261,9 @@ namespace MarchingCubesProject
                 width = worldVoxelization.gridLocations.GetLength(0);
                 height = worldVoxelization.gridLocations.GetLength(1);
                 depth = worldVoxelization.gridLocations.GetLength(2);
-            } else {
+            }
+            else
+            {
                 width = 32;
                 height = 32;
                 depth = 32;
@@ -282,7 +284,7 @@ namespace MarchingCubesProject
                         float w = z / (depth - 1.0f);
 
                         //voxels[x, y, z] = fractal.Sample3D(u, v, w); //fills the voxel array with a float number from the fractal noise, typically between -1 and 1. 
-                                                                    // but there is a weird -4 in there
+                        // but there is a weird -4 in there
 
                         //Experimental: try to use the voxel data from world voxelization
                         voxels[x, y, z] = worldVoxelization.voxelData[x, y, z];
@@ -332,6 +334,22 @@ namespace MarchingCubesProject
 
             CreateMesh32(verts, normals, indices, position);
 
+        }
+
+        [ContextMenu("Regenerate Marching Cubes Mesh from new Voxel Data")]
+        public void RegenerateMarchingCubesMesh()
+        {
+            //Delete old meshes
+            foreach (var mesh in meshes)
+            {
+                DestroyImmediate(mesh);
+            }
+            meshes.Clear();
+
+            worldVoxelization.recheckVoxels();
+
+            //Generate new mesh
+            GenerateMarchingCubesMesh();
         }
     }
 
