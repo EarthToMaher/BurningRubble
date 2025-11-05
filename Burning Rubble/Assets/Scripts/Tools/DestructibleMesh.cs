@@ -13,7 +13,7 @@ public class DestructibleMesh : MonoBehaviour
     public int size = 16;       // number of voxels per axis
     public float voxelSize = 1f;
 
-    public Vector3 hitRadius = Vector3.one; // x,y,z radius for destruction
+    public Vector3 hitRadius = new Vector3(1.1f,1,1.5f); // x,y,z radius for destruction
 
     private MeshFilter meshFilter;
     private MeshCollider meshCollider;
@@ -62,6 +62,7 @@ public class DestructibleMesh : MonoBehaviour
         Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
 
         localPoint.y += 0.1f;
+        localPoint.x += 0.15f;
 
         Vector3 min = localPoint - hitRadius;
         Vector3 max = localPoint + hitRadius;
