@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 //A lot of this script used a ChatGPT script as a base (mainly so I didn't have to deal with typing out as much math)
 
 
-public class DestructibleMesh : MonoBehaviour
+public class DestructibleMesh : MonoBehaviour, I_Destructible
 {
     public Vector3[,,] voxelPositions;
     public ReenableManager rm;
@@ -13,6 +13,8 @@ public class DestructibleMesh : MonoBehaviour
 
     public int size = 16;       // number of voxels per axis
     public float voxelSize = 1f;
+    public int hp = 5;
+    public int rubble = 5;
 
     public Vector3 hitRadius = new Vector3(1.1f,1,1.5f); // x,y,z radius for destruction
 
@@ -50,16 +52,26 @@ public class DestructibleMesh : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        ApplyHit(other.transform.position);
+        DestroyMe(other.gameObject, other.gameObject);
     }
 
     void OnTriggerStay(Collider other)
     {
-        ApplyHit(other.transform.position);
+        DestroyMe(other.gameObject, other.gameObject);
     }
 
-    void ApplyHit(Vector3 worldPoint)
+    public void DestroyMe(GameObject instigator, GameObject cause)
     {
+        int numDestroyed = ApplyHit(cause.transform.position);
+        I_Damageable damageable = cause.GetComponent<I_Damageable>();
+        if (damageable != null) damageable.TakeDamage(hp*numDestroyed);
+        RubbleMeter rm = instigator.GetComponent<RubbleMeter>();
+        if (rm != null) rm.GainRubble(rubble*numDestroyed);
+    }
+
+    int ApplyHit(Vector3 worldPoint)
+    {
+        int count=0;
         // Convert world point to local voxel space
         Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
 
@@ -87,12 +99,14 @@ public class DestructibleMesh : MonoBehaviour
                         Vector3 coords = new Vector3(x, y, z);
                         rm.AddToBatchOneMesh(this,coords,voxelData[x,y,z]);
                         voxelData[x, y, z] = 0;
+                        count++;
                         modified = true;
                     }
                 }
 
         if (modified)
             RebuildMesh();
+        return count;
     }
 
     public void RebuildMesh()
