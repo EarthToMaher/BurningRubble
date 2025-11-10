@@ -7108,7 +7108,8 @@ MonoBehaviour:
   defaultDriftAngle: 1
   maxDriftAngle: 1.5
   driftAngleAdjuster: 0.3
-  startBoostIncrementor: 20
+  boostIncrementor: 20
+  driftBoostIntensity: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 64
