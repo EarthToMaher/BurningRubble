@@ -10,6 +10,7 @@ public class KartMovement : MonoBehaviour
     bool wasAccelerating = false;
 
     //input actions 
+    private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction reverseAction;
     private InputAction accelerateAction;
@@ -69,14 +70,15 @@ public class KartMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
         if (currMaxSpeed <= 0) currMaxSpeed = 1f;
         //assign input action references
-        moveAction = InputSystem.actions.FindAction("Move");
-        reverseAction = InputSystem.actions.FindAction("Reverse");
-        accelerateAction = InputSystem.actions.FindAction("Accelerate");
-        brakeAction = InputSystem.actions.FindAction("Brake");
-        driftAction = InputSystem.actions.FindAction("Drift");
+        moveAction = playerInput.actions["Move"];
+        reverseAction = playerInput.actions["Reverse"];
+        accelerateAction = playerInput.actions["Accelerate"];
+        brakeAction = playerInput.actions["Brake"];
+        driftAction = playerInput.actions["Drift"];
 
         //assign rigidbody and fix max angular velocity for drift
         rb = this.gameObject.GetComponent<Rigidbody>();
@@ -94,6 +96,7 @@ public class KartMovement : MonoBehaviour
 
         // read in move input
         currAcceleration = accelerateAction.ReadValue<float>();
+        Debug.Log("TEST ACCELERATION: " + currAcceleration);
         currAcceleration *= accelerationMultiplier;
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
@@ -269,6 +272,13 @@ public class KartMovement : MonoBehaviour
         }
     }
 
+    //input functions 
+/*    public void OnAccelerate(InputValue value)
+    {
+        currAcceleration = value.Get<float>();
+        Debug.Log("TEST ACCELERATION: " + currAcceleration);
+    }*/
+
     //Temporary Check for destruction, should probably be changed to a spherecast check
     private void OnTriggerStay(Collider other)
     {
@@ -372,6 +382,8 @@ public class KartMovement : MonoBehaviour
 
     public float GetAccelerateValue() { return currAcceleration; }
 }
+
+
 
 
 // old code we could need later can go here

@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     public void OnJoin()
     {
         //starts game if the join action was triggered by player 1 (this will only trigger once)
-        if(!gameStarted && playerInput.playerIndex == 0)
+        if (!gameStarted && playerInput.playerIndex == 0)
         {
             multiplayer.StartGame();
             gameStarted = true;
