@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class KartMovement : MonoBehaviour
 {
+    // GameManager declaration please do not remove
+    [SerializeField] private GameManager GameManager;
+    bool wasAccelerating = false;
+
     //input actions 
     private InputAction moveAction;
     private InputAction reverseAction;
@@ -24,6 +28,7 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float defaultDriftAngle; //the drift angle when joystick is not held in a direction
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
+    [SerializeField] private float startBoostIncrementor; //how much the max speed increases for the start boost
 
     private float hoverOffset = 1.48f;   // desired height above ground
     private float correctionForce = 1000f;  // how strong to push down
@@ -54,9 +59,16 @@ public class KartMovement : MonoBehaviour
 
     public float rubbleAngle = 135f;
 
+    private void Awake()
+    {
+        //Debug.Log("This is Kart Movement");
+        GameManager = GameObject.FindFirstObjectByType<GameManager>();
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
         if (currMaxSpeed <= 0) currMaxSpeed = 1f;
         //assign input action references
         moveAction = InputSystem.actions.FindAction("Move");
@@ -73,13 +85,28 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Current Speed is: " + currAcceleration);
+        // Audio Input
+        //bool isAccelerating = currAcceleration > 0;
+        
+        GameManager.AudioManager.UpdatePitch(GameManager.AudioManager._updatePitch._name, 1f, 2f, currAcceleration / currMaxSpeed);
+
         // read in move input
-        moveDirection = moveAction.ReadValue<Vector2>().normalized;
         currAcceleration = accelerateAction.ReadValue<float>();
         currAcceleration *= accelerationMultiplier;
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
         currReverse *= reverseMultiplier;
+        if(currReverse == 0 || currAcceleration != 0)
+        {
+            //read in normal movement input while accelerating
+            moveDirection = moveAction.ReadValue<Vector2>().normalized;
+        }
+        else
+        {
+            //read in flipped movement input while reversing
+            moveDirection = -moveAction.ReadValue<Vector2>().normalized;
+        }
         //Debug.Log("Reverse: " + currReverse);
         currBraking = brakeAction.ReadValue<float>();
         currBraking *= brakingMultiplier;
@@ -119,6 +146,7 @@ public class KartMovement : MonoBehaviour
                 }
             }
         }
+        //wasAccelerating = isAccelerating;
     }
 
     void FixedUpdate()
@@ -282,18 +310,19 @@ public class KartMovement : MonoBehaviour
     {
         Debug.Log("in coroutine");
         startBoostActive = true;
-        defaultMaxSpeed += 100;
+        defaultMaxSpeed += startBoostIncrementor;
         rb.linearVelocity = transform.forward * defaultMaxSpeed;
         Debug.Log("Velocity expected: " + transform.forward * defaultMaxSpeed);
         Debug.Log("Actual velocity: " + rb.linearVelocity);
         yield return new WaitForSeconds(boostLevel);
-        defaultMaxSpeed -= 100;
+        defaultMaxSpeed -= startBoostIncrementor;
         startBoostActive = false;
         Debug.Log("end coroutine");
     }
     
-    public IEnumerator Boost(float intensity)
+    public IEnumerator Boost(float intensity, float exitDirection)
     {
+        transform.rotation = Quaternion.Euler(0, exitDirection, 0);
         float storedDefaultMaxSpeed = defaultMaxSpeed;
         defaultMaxSpeed = intensity;
         currMaxSpeed = intensity;

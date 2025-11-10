@@ -17,7 +17,7 @@ public class Kart : MonoBehaviour, I_Damageable
     [SerializeField] private float rubbleBoostIntensity;
 
     private InputAction rubbleAction;
-    private InputAction restart;
+    //private InputAction restart;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -33,13 +33,13 @@ public class Kart : MonoBehaviour, I_Damageable
         hp = MAX_HP;
 
         rubbleAction = InputSystem.actions.FindAction("Rubble");
-        restart = InputSystem.actions.FindAction("Reset");
+        //restart = InputSystem.actions.FindAction("Reset");
     }
     void Update()
     {
         //transform.position = new Vector3(transform.position.x, 2.001f, transform.position.z);
         if (rubbleAction.WasPerformedThisFrame()) RubbleBoost();
-        if (restart.WasPerformedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //if (restart.WasPerformedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void TakeDamage(int dmg)
     {
@@ -63,9 +63,9 @@ public class Kart : MonoBehaviour, I_Damageable
     {
         invincible = true;
         kartMovement.ResetVelocity();
-        GameObject _lapManager = GameObject.Find("LapManager");
-        CheckpointDetection _checkDetect = this.GetComponent<CheckpointDetection>();
-        Vector3 _respawnPoint = _lapManager.GetComponent<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
+        //GameObject _lapManager = GameObject.Find("LapManager");
+        CheckpointDetection _checkDetect = FindFirstObjectByType<CheckpointDetection>();
+        Vector3 _respawnPoint = FindFirstObjectByType<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
         this.transform.position = _respawnPoint;
         StartCoroutine(HealUponDeath());
     }

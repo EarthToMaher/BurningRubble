@@ -149,6 +149,9 @@ namespace MarchingCubesProject
             go.AddComponent<MeshRenderer>();
             go.GetComponent<Renderer>().material = material;
             go.GetComponent<MeshFilter>().mesh = mesh;
+            //DestructibleMesh dm = go.AddComponent<DestructibleMesh>();
+            //dm.active = worldVoxelization.voxelData;
+            //dm.positions = worldVoxelization.gridLocations;
             go.transform.localPosition = position;
 
             meshes.Add(go);

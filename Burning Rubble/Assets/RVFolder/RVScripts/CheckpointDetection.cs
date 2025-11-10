@@ -19,6 +19,7 @@ public class CheckpointDetection : MonoBehaviour
     {
         _txtCheckpoint.GetComponent<TextMeshProUGUI>().text = "Current Checkpoint: " + _currCheckpoint;
         _txtLapCount.GetComponent<TextMeshProUGUI>().text = ("Lap: " + _lapCount + "/3");
+        _lapManager = FindFirstObjectByType<LapManager>();
 
         _checkpointsRemaining.GetComponent<TextMeshProUGUI>().text = "Remaining Checkpoints " + _checkpointRemaining + "/" + _lapManager.RequirementReturn();
     }
