@@ -28,7 +28,8 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float defaultDriftAngle; //the drift angle when joystick is not held in a direction
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
-    [SerializeField] private float startBoostIncrementor; //how much the max speed increases for the start boost
+    [SerializeField] private float boostIncrementor; //how much the max speed increases for the start boost and drift boost
+    [SerializeField] private float driftBoostIntensity; //length of the drift boost (seconds)
 
     private float hoverOffset = 1.48f;   // desired height above ground
     private float correctionForce = 1000f;  // how strong to push down
@@ -126,6 +127,7 @@ public class KartMovement : MonoBehaviour
         {
             isDrifting = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
+            StartCoroutine(DriftBoost(driftBoostIntensity));
         }
 
         if (interpolating)
@@ -310,14 +312,23 @@ public class KartMovement : MonoBehaviour
     {
         Debug.Log("in coroutine");
         startBoostActive = true;
-        defaultMaxSpeed += startBoostIncrementor;
+        defaultMaxSpeed += boostIncrementor;
         rb.linearVelocity = transform.forward * defaultMaxSpeed;
         Debug.Log("Velocity expected: " + transform.forward * defaultMaxSpeed);
         Debug.Log("Actual velocity: " + rb.linearVelocity);
         yield return new WaitForSeconds(boostLevel);
-        defaultMaxSpeed -= startBoostIncrementor;
+        defaultMaxSpeed -= boostIncrementor;
         startBoostActive = false;
         Debug.Log("end coroutine");
+    }
+
+    public IEnumerator DriftBoost(float boostLevel)
+    {
+        currMaxSpeed = defaultMaxSpeed;
+        defaultMaxSpeed += boostIncrementor;
+        rb.linearVelocity = transform.forward * defaultMaxSpeed;
+        yield return new WaitForSeconds(boostLevel);
+        defaultMaxSpeed -= boostIncrementor;
     }
     
     public IEnumerator Boost(float intensity, float exitDirection)
