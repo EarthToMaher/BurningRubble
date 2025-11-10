@@ -7,6 +7,7 @@ public class Countdown : MonoBehaviour
     [SerializeField] private float longBoost;
     [SerializeField] private float mediumBoost;
     [SerializeField] private float shortBoost;
+    private bool gameStarted;
     private bool isActive;
     private float intensity;
     private float count;
@@ -22,6 +23,7 @@ public class Countdown : MonoBehaviour
         isActive = true;
         hasBoosted = false;
         isCounting = false;
+        gameStarted = false;
         count = 3;
 
         //-1 value used to determine whether intensity has been set already
@@ -30,52 +32,61 @@ public class Countdown : MonoBehaviour
 
     private void Update()
     {
-        if (count > 0)
+        if(gameStarted)
         {
-            count -= Time.deltaTime;
-        }
-
-        if (move.GetAccelerateValue() != 0)
-        {
-            if (count > 2) { intensity = 0; }
-            else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
-            else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
-            else if (count > 1 && intensity == -1) { intensity = shortBoost; }
-            else if (count > 0 && intensity == -1) { intensity = 0; }
-        }
-        else if (count > 0 && intensity != -1) { intensity = -1; }
-
-        if (count <= 0)
-        {
-            isActive = false;
-            raceTimer.StartRace();
-            if (!hasBoosted)
+            if (count > 0)
             {
-                if(intensity > 0) 
-                {
-                    Debug.Log("Calling coroutine...");
-                    move.StartCoroutine(move.StartBoost(intensity));
-                    Debug.Log("Boost with intensity: " + intensity); 
-                }
-                hasBoosted = true;
+                count -= Time.deltaTime;
             }
+
+            if (move.GetAccelerateValue() != 0)
+            {
+                if (count > 2) { intensity = 0; }
+                else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
+                else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
+                else if (count > 1 && intensity == -1) { intensity = shortBoost; }
+                else if (count > 0 && intensity == -1) { intensity = 0; }
+            }
+            else if (count > 0 && intensity != -1) { intensity = -1; }
+
+            if (count <= 0)
+            {
+                isActive = false;
+                raceTimer.StartRace();
+                if (!hasBoosted)
+                {
+                    if (intensity > 0)
+                    {
+                        Debug.Log("Calling coroutine...");
+                        move.StartCoroutine(move.StartBoost(intensity));
+                        Debug.Log("Boost with intensity: " + intensity);
+                    }
+                    hasBoosted = true;
+                }
+            }
+
+            if (count.ToString("F0").Equals("0"))
+            {
+                countText.SetText("GO!");
+                StartCoroutine(RemoveCountdown());
+            }
+            else { countText.SetText(count.ToString("F0")); }
+
+
+            //DEBUG: show countdown with 1 decimal place
+            //Debug.Log("Count: " + count.ToString("F1"));
         }
-
-        if (count.ToString("F0").Equals("0"))
-        {
-            countText.SetText("GO!");
-            StartCoroutine(RemoveCountdown());
-        }
-        else { countText.SetText(count.ToString("F0")); }
-
-
-        //DEBUG: show countdown with 1 decimal place
-        //Debug.Log("Count: " + count.ToString("F1"));
     }
 
     public bool GetActive()
     {
         return isActive;
+    }
+
+    public void SetGameStarted(bool hasStarted)
+    {
+        gameStarted = hasStarted;
+        Debug.Log("Countdown triggered");
     }
 
     private IEnumerator RemoveCountdown()
