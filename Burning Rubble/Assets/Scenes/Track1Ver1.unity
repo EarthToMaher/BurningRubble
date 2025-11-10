@@ -5466,6 +5466,14 @@ PrefabInstance:
       value: NewKart
       objectReference: {fileID: 0}
     - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: boostIncrementor
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
+      propertyPath: driftBoostIntensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061438949976556318, guid: 7242dbcb84261de4f9f95ee498bd915e, type: 3}
       propertyPath: startBoostIncrementor
       value: 20
       objectReference: {fileID: 0}
