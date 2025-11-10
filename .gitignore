@@ -69,3 +69,4 @@ Packages/com.unity.package-manager/.cache/
 .gradle/
 *.meta
 *.meta
+*.meta
