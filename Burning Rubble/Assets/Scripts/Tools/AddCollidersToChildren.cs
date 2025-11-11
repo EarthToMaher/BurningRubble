@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.Loading;
+using TMPro;
 
 public class AddCollidersToChildren : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class AddCollidersToChildren : MonoBehaviour
     [SerializeField] private GameObject loadingCam;
     private InputAction restart;
     private bool reloading = true;
+    private bool loading = true;
 
     void Awake()
     {
@@ -73,10 +76,17 @@ public class AddCollidersToChildren : MonoBehaviour
         Destroy(loadingCam);
         reloading = false;
         Countdown[] kartActivate = FindObjectsByType<Countdown>(FindObjectsSortMode.None);
-        foreach(Countdown kart in kartActivate)
+        loading = false;
+        Countdown[] countdowns = FindObjectsByType<Countdown>(FindObjectsSortMode.None);
+        foreach (Countdown countdown in countdowns)
         {
-            kart.SetLevelLoaded(true);
+            StartCountdown(countdown);
         }
+    }
+
+    public void StartCountdown(Countdown countdown)
+    {
+        countdown.SetLevelLoaded(!loading);
     }
     
     public IEnumerator ReloadLevel()
