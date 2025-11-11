@@ -290,6 +290,13 @@ public class KartMovement : MonoBehaviour
 
     public void ResetVelocity() { SetVelocity(Vector3.zero); }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<KartMovement>() != null)
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
+        }
+    }
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("Collided: " + collision.gameObject);
