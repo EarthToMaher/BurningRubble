@@ -81,7 +81,7 @@ public class AddCollidersToChildren : MonoBehaviour
         foreach (Countdown countdown in countdowns)
         {
             StartCountdown(countdown);
-            countdown.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            countdown.move.gameObject.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 

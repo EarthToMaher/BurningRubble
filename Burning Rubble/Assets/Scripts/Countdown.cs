@@ -14,7 +14,7 @@ public class Countdown : MonoBehaviour
     private bool hasBoosted;
     private bool isCounting;
     private bool levelLoaded = false;
-    [SerializeField] private KartMovement move;
+    [SerializeField] public KartMovement move;
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private RaceTimer raceTimer;
     private AddCollidersToChildren levelStarter;
