@@ -72,6 +72,11 @@ public class AddCollidersToChildren : MonoBehaviour
         Destroy(loadingScreen);
         Destroy(loadingCam);
         reloading = false;
+        Countdown[] kartActivate = FindObjectsByType<Countdown>(FindObjectsSortMode.None);
+        foreach(Countdown kart in kartActivate)
+        {
+            kart.SetLevelLoaded(true);
+        }
     }
     
     public IEnumerator ReloadLevel()

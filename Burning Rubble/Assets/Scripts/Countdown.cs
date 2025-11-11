@@ -13,6 +13,7 @@ public class Countdown : MonoBehaviour
     private float count;
     private bool hasBoosted;
     private bool isCounting;
+    private bool levelLoaded = false;
     [SerializeField] private KartMovement move;
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private RaceTimer raceTimer;
@@ -32,7 +33,7 @@ public class Countdown : MonoBehaviour
 
     private void Update()
     {
-        if(gameStarted)
+        if(gameStarted&&levelLoaded)
         {
             if (count > 0)
             {
@@ -86,7 +87,12 @@ public class Countdown : MonoBehaviour
     public void SetGameStarted(bool hasStarted)
     {
         gameStarted = hasStarted;
-        Debug.Log("Countdown triggered");
+        //Debug.Log("Countdown triggered");
+    }
+
+    public void SetLevelLoaded(bool levelLoaded)
+    {
+        levelLoaded = true;
     }
 
     private IEnumerator RemoveCountdown()

@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public MPManager multiplayer;
-    private PlayerInput playerInput;
-    private bool gameStarted;
+    public PlayerInput playerInput;
+    private bool gameStarted = false;
 
     void Awake()
     {
