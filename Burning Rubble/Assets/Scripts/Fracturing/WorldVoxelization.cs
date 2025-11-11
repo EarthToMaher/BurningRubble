@@ -76,6 +76,8 @@ public class WorldVoxelization : MonoBehaviour
 
                     Vector3 cellCenter = new Vector3(x + cellSize / 2f, y + cellSize / 2f, z + cellSize / 2f);
 
+                    if (cellCenter.y > 4f)continue;
+
                     if (IsPointInsideMesh(cellCenter, mcList))
                     {
                         GameObject cube;
@@ -83,12 +85,12 @@ public class WorldVoxelization : MonoBehaviour
                             cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
                         else
                             cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
                         cube.transform.position = cellCenter;
                         cube.transform.localScale = Vector3.one * cellSize;
                         cube.transform.SetParent(parent.transform);
-                        cube.GetComponent<BoxCollider>().isTrigger = true;
-                        cube.AddComponent<DestructibleBlock>();
+                        DestroyImmediate(cube.GetComponent<BoxCollider>());
+                        //cube.GetComponent<BoxCollider>().isTrigger = true;
+                        //cube.AddComponent<DestructibleBlock>();
 
                         count++;
                     }

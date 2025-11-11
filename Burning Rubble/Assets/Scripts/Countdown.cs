@@ -4,6 +4,10 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
+    [SerializeField] private float longBoost;
+    [SerializeField] private float mediumBoost;
+    [SerializeField] private float shortBoost;
+    private bool gameStarted;
     private bool isActive;
     private float intensity;
     private float count;
@@ -11,6 +15,7 @@ public class Countdown : MonoBehaviour
     private bool isCounting;
     [SerializeField] private KartMovement move;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private RaceTimer raceTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,17 +23,16 @@ public class Countdown : MonoBehaviour
         isActive = true;
         hasBoosted = false;
         isCounting = false;
+        gameStarted = false;
         count = 3;
 
         //-1 value used to determine whether intensity has been set already
         intensity = -1;
-
-        StartCoroutine(WaitToStart());
     }
 
     private void Update()
     {
-        if(isCounting)
+        if(gameStarted)
         {
             if (count > 0)
             {
@@ -38,9 +42,9 @@ public class Countdown : MonoBehaviour
             if (move.GetAccelerateValue() != 0)
             {
                 if (count > 2) { intensity = 0; }
-                else if (count >= 1.7f && intensity == -1) { intensity = 2; }
-                else if (count >= 1.4f && intensity == -1) { intensity = 1; }
-                else if (count > 1 && intensity == -1) { intensity = 0.5f; }
+                else if (count >= 1.7f && intensity == -1) { intensity = longBoost; }
+                else if (count >= 1.4f && intensity == -1) { intensity = mediumBoost; }
+                else if (count > 1 && intensity == -1) { intensity = shortBoost; }
                 else if (count > 0 && intensity == -1) { intensity = 0; }
             }
             else if (count > 0 && intensity != -1) { intensity = -1; }
@@ -48,13 +52,14 @@ public class Countdown : MonoBehaviour
             if (count <= 0)
             {
                 isActive = false;
+                raceTimer.StartRace();
                 if (!hasBoosted)
                 {
-                    if(intensity > 0) 
+                    if (intensity > 0)
                     {
                         Debug.Log("Calling coroutine...");
                         move.StartCoroutine(move.StartBoost(intensity));
-                        Debug.Log("Boost with intensity: " + intensity); 
+                        Debug.Log("Boost with intensity: " + intensity);
                     }
                     hasBoosted = true;
                 }
@@ -78,6 +83,12 @@ public class Countdown : MonoBehaviour
         return isActive;
     }
 
+    public void SetGameStarted(bool hasStarted)
+    {
+        gameStarted = hasStarted;
+        Debug.Log("Countdown triggered");
+    }
+
     private IEnumerator RemoveCountdown()
     {
         yield return new WaitForSeconds(0.7f);
@@ -86,7 +97,8 @@ public class Countdown : MonoBehaviour
     
     private IEnumerator WaitToStart()
     {
-        //waiting for kart to be on the ground
+        //waiting for kart to be on the ground (only relevant in MVP scene)
+        //call coroutine from Start and wrap all code in Update in an if(isCounting) statement
         yield return new WaitForSeconds(3f);
         isCounting = true;
     }
