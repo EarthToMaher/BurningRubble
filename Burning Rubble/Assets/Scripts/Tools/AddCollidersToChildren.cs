@@ -81,6 +81,7 @@ public class AddCollidersToChildren : MonoBehaviour
         foreach (Countdown countdown in countdowns)
         {
             StartCountdown(countdown);
+            countdown.gameObject.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 
@@ -94,7 +95,10 @@ public class AddCollidersToChildren : MonoBehaviour
         reloading = true;
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync("Track1Ver1");
         yield return new WaitUntil(() => asyncUnload.isDone);
-        SceneManager.LoadScene("Track1Ver1", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("Track1Ver1", LoadSceneMode.Additive);
         reloading = false;
+        SceneManager.LoadScene("LoadScene");
+
+
     }
 }
