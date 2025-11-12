@@ -38,6 +38,10 @@ public class WorldVoxelization : MonoBehaviour
 
     public Example marchingCubesScript;
 
+    void Start(){
+        GenerateVoxelGrid();
+    }
+
     [ContextMenu("Generate Voxel Grid")]
 
     public void GenerateVoxelGrid()
@@ -101,8 +105,8 @@ public class WorldVoxelization : MonoBehaviour
 
                     if (IsPointInsideMesh(cellCenter, mcList))
                     {
-                        ///*
                         GameObject cube;
+                        /*
                         if (cubePrefab != null)
                             cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
                         else
@@ -116,9 +120,10 @@ public class WorldVoxelization : MonoBehaviour
 
                         count++;
                         voxelData[a, b, c] = 1; // Mark voxel as occupied
-                        voxels.Add(new Voxel(new Vector3Int(a,b,c), cube));
+                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 1));
                     }else{
                         voxelData[a, b, c] = 0; // Mark voxel as empty
+                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 0));
                     }
                     c++;
                 }
@@ -244,7 +249,7 @@ public class WorldVoxelization : MonoBehaviour
     }*/
 
     public void recheckVoxels(){
-        int a=0, b=0, c=0;
+        /*int a=0, b=0, c=0;
         voxelData = new byte[gridLocations.GetLength(0), gridLocations.GetLength(1), gridLocations.GetLength(2)];
         Debug.Log("VoxelDataLength: " + voxelData.GetLength(0) + ", " + voxelData.GetLength(1) + ", " + voxelData.GetLength(2));
         for (float x = start.x; x < end.x + 2; x += cellSize)
@@ -264,7 +269,7 @@ public class WorldVoxelization : MonoBehaviour
             a++;
         }
 
-        List<Voxel> voxelsToClear = new List<Voxel>();
+        //List<Voxel> voxelsToClear = new List<Voxel>();
         foreach(Voxel v in voxels){ //VOXEL IN REMAININGVOXELS //GET VECTOR3 GRID POSITION // SET VOXELDATA AT THAT POSITION TO 1
             if(v.GetVoxelObject() == null){
                 voxelsToClear.Add(v);
@@ -275,7 +280,7 @@ public class WorldVoxelization : MonoBehaviour
 
         foreach(Voxel v in voxelsToClear){
             voxels.Remove(v);
-        }
+        }*/
     }
 
     public void clearRemainingVoxels(){

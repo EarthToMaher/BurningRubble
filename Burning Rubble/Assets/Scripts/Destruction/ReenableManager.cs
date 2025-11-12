@@ -87,7 +87,7 @@ public class ReenableManager : MonoBehaviour
                     if (amountEnabled > maxRespawnAmount) break;
                 }
             }
-            if(meshRespawnable!=null)meshRespawnable.obj.RebuildMesh();
+            if(meshRespawnable!=null)meshRespawnable.obj.RepairMe();
             if (pendingOneMesh.Count == 0) nextCheckTime = float.MaxValue;
             else nextCheckTime = pendingOneMesh[0].eligibleTime;
         }

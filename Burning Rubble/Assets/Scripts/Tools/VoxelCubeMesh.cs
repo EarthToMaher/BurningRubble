@@ -116,8 +116,8 @@ public class VoxelCubeMesh : MonoBehaviour
                     if (voxelData[x, y, z] == 0) continue;
 
                     Vector3 pos = new Vector3(x, y, z) * voxelSize - origin;
-        voxelPositions[x, y, z] = pos;
-        voxelData[x, y, z] = 1; // all solid initially
+                    voxelPositions[x, y, z] = pos;
+                    voxelData[x, y, z] = 1; // all solid initially
 
                     // For each face, check if adjacent voxel exists
                     for (int face = 0; face < 6; face++)
@@ -180,12 +180,12 @@ public class VoxelCubeMesh : MonoBehaviour
             //go.transform.parent = worldVoxelization.parent.transform;
             go.AddComponent<MeshFilter>();
             go.AddComponent<MeshRenderer>();
-        go.GetComponent<MeshFilter>().mesh = mesh;
-        go.GetComponent<MeshRenderer>().material = material;
-        MeshCollider collider = go.AddComponent<MeshCollider>();
-        collider.convex = true;
-        collider.isTrigger = true;
-            DestructibleMesh dm = go.AddComponent<DestructibleMesh>();
+            go.GetComponent<MeshFilter>().mesh = mesh;
+            go.GetComponent<MeshRenderer>().material = material;
+            MeshCollider collider = go.AddComponent<MeshCollider>();
+            collider.convex = true; //Importaint for proper collision detection with rigidbodies
+            collider.isTrigger = true; //So that it doesn't interfere with physics but can still detect collisions
+            DestructibleMesh dm = go.AddComponent<DestructibleMesh>(); //Add DestructibleMesh script to handle destruction
             dm.voxelData = voxelData;
             dm.voxelPositions = voxelPositions;
         }

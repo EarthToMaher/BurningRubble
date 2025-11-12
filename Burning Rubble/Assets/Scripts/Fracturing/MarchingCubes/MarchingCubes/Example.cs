@@ -8,12 +8,11 @@ using UnityEngine.Rendering;
 using ProceduralNoiseProject;
 using Common.Unity.Drawing;
 
-
 namespace MarchingCubesProject
 {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+#endif
 
     [ExecuteInEditMode]
     public enum MARCHING_MODE { CUBES, TETRAHEDRON };
@@ -149,9 +148,12 @@ namespace MarchingCubesProject
             go.AddComponent<MeshRenderer>();
             go.GetComponent<Renderer>().material = material;
             go.GetComponent<MeshFilter>().mesh = mesh;
-            //DestructibleMesh dm = go.AddComponent<DestructibleMesh>();
-            //dm.active = worldVoxelization.voxelData;
-            //dm.positions = worldVoxelization.gridLocations;
+            MeshCollider collider = go.AddComponent<MeshCollider>();
+            collider.convex = true; //Importaint for proper collision detection with rigidbodies
+            collider.isTrigger = true;
+            DestructibleMesh dm = go.AddComponent<DestructibleMesh>();
+            dm.voxelData = worldVoxelization.voxelData;
+            dm.voxelPositions = worldVoxelization.gridLocations;
             go.transform.localPosition = position;
 
             meshes.Add(go);
@@ -345,14 +347,20 @@ namespace MarchingCubesProject
             //Delete old meshes
             foreach (var mesh in meshes)
             {
-                DestroyImmediate(mesh);
+                Debug.Log("Deleting old mesh: " + mesh.name);
+                Destroy(mesh);
             }
             meshes.Clear();
 
-            worldVoxelization.recheckVoxels();
+            //worldVoxelization.recheckVoxels();
 
             //Generate new mesh
             GenerateMarchingCubesMesh();
+        }
+
+        public void ReenableMeshRegeneration()
+        {
+            
         }
     }
 

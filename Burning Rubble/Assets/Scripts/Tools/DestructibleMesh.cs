@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
+using MarchingCubesProject;
 
 //A lot of this script used a ChatGPT script as a base (mainly so I didn't have to deal with typing out as much math)
 
@@ -20,49 +21,32 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
 
     private MeshFilter meshFilter;
     private MeshCollider meshCollider;
+    private Example marchingCubesScript;
 
     void Awake()
     {
         rm = FindFirstObjectByType<ReenableManager>();
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
-
-        if (voxelData == null || voxelPositions == null)
-        {
-            InitializeVoxels();
-            RebuildMesh();
-        }
-    }
-
-    void InitializeVoxels()
-    {
-        voxelPositions = new Vector3[size, size, size];
-        voxelData = new byte[size, size, size];
-
-        Vector3 offset = new Vector3(size, size, size) * voxelSize * 0.5f;
-
-        for (int x = 0; x < size; x++)
-            for (int y = 0; y < size; y++)
-                for (int z = 0; z < size; z++)
-                {
-                    voxelPositions[x, y, z] = new Vector3(x, y, z) * voxelSize - offset;
-                    voxelData[x, y, z] = 1;
-                }
+        marchingCubesScript = FindFirstObjectByType<Example>();
     }
 
     void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("Collision detected with " + other.gameObject.name);
         DestroyMe(other.gameObject, other.gameObject);
     }
 
     void OnTriggerStay(Collider other)
     {
+        //Debug.Log("Collision stay detected with " + other.gameObject.name);
         DestroyMe(other.gameObject, other.gameObject);
     }
 
     public void DestroyMe(GameObject instigator, GameObject cause)
     {
-        int numDestroyed = ApplyHit(cause.transform.position);
+        Vector3 hitpoint = meshCollider.ClosestPoint(cause.transform.position);
+        int numDestroyed = ApplyHit(hitpoint);
         I_Damageable damageable = cause.GetComponent<I_Damageable>();
         if (damageable != null) damageable.TakeDamage(hp*numDestroyed);
         RubbleMeter rm = instigator.GetComponent<RubbleMeter>();
@@ -71,27 +55,32 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
 
     int ApplyHit(Vector3 worldPoint)
     {
-        int count=0;
+        int count = 0;
         // Convert world point to local voxel space
-        Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
+        //Debug.Log("World Point: " + worldPoint);
+        //Vector3 localPoint = transform.InverseTransformPoint(worldPoint);
+        //Debug.Log("Local Point: " + localPoint);
 
-        localPoint.y += 0.1f;
-        localPoint.x += 0.15f;
+        //localPoint.y += 0.1f;
+        //localPoint.x += 0.15f;
 
-        Vector3 min = localPoint - hitRadius;
-        Vector3 max = localPoint + hitRadius;
+        Vector3 min = worldPoint - hitRadius;
+        Vector3 max = worldPoint + hitRadius;
 
         bool modified = false;
 
-        for (int x = 0; x < size; x++)
-            for (int y = 0; y < size; y++)
-                for (int z = 0; z < size; z++)
+        for (int x = 0; x < voxelData.GetLength(0); x++)
+            for (int y = 0; y < voxelData.GetLength(1); y++)
+                for (int z = 0; z < voxelData.GetLength(2); z++)
                 {
+                    //Debug.Log("Checking voxel: " + voxelData[x,y,z]);
                     if (voxelData[x, y, z] == 0) continue;
 
                     Vector3 voxelCenter = voxelPositions[x, y, z];
+                    //Debug.Log("Voxel Center: " + voxelCenter);
 
-                    // Check if voxel center is inside the hit bounds
+                    // Check if voxel center is inside the hit bounds //CURRENTLY NOT WORKING PROPERLY BECAUSE THE VOXELS ARE NOT... DOING CORRECT THINGS
+                    //Debug.Log("Voxel Center: " + voxelCenter + " Min: " + min + " Max: " + max);
                     if (voxelCenter.x >= min.x && voxelCenter.x <= max.x &&
                         voxelCenter.y >= min.y && voxelCenter.y <= max.y &&
                         voxelCenter.z >= min.z && voxelCenter.z <= max.z)
@@ -99,13 +88,19 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
                         Vector3 coords = new Vector3(x, y, z);
                         rm.AddToBatchOneMesh(this,coords,voxelData[x,y,z]);
                         voxelData[x, y, z] = 0;
+                        Debug.Log("Voxel destroyed");
                         count++;
                         modified = true;
                     }
                 }
 
         if (modified)
-            RebuildMesh();
+        {
+            Debug.Log("Rebuilding mesh after destruction");
+            marchingCubesScript.RegenerateMarchingCubesMesh();//RebuildMesh();
+            modified = false;
+        }
+
         return count;
     }
 
@@ -186,5 +181,10 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
             meshCollider.sharedMesh = null;
             meshCollider.sharedMesh = newMesh;
         }
+    }
+
+    public void RepairMe()
+    {
+        marchingCubesScript.ReenableMeshRegeneration();
     }
 }
