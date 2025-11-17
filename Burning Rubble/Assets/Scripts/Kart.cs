@@ -32,7 +32,7 @@ public class Kart : MonoBehaviour, I_Damageable
 
         hp = MAX_HP;
 
-        rubbleAction = InputSystem.actions.FindAction("Rubble");
+        rubbleAction = GetComponent<PlayerInput>().actions["Rubble"];
         //restart = InputSystem.actions.FindAction("Reset");
     }
     void Update()

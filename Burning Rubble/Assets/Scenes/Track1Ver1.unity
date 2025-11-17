@@ -20993,7 +20993,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877529747}
-  - component: {fileID: 877529746}
   - component: {fileID: 877529748}
   m_Layer: 0
   m_Name: Managers
@@ -21002,21 +21001,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &877529746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877529744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7433426ec4c524d8e75ab8c90ca7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ReenableManager
-  checkRate: 3
-  maxRespawnAmount: 5
-  minWaitTime: 5
 --- !u!4 &877529747
 Transform:
   m_ObjectHideFlags: 0
