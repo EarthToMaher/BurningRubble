@@ -30,6 +30,11 @@ public class LapManager : MonoBehaviour
         return _checkpointArray[currCheckpoint]._checkpointPosition;
     }
 
+    public Quaternion SetCheckpointRot(int currCheckpoint)
+    {
+        return _checkpointArray[currCheckpoint]._checkpointRotation;
+    }
+
     public int RequirementReturn() 
     {
         return _checkpointReqNum;
