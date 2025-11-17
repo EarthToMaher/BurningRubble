@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class StartManager : MonoBehaviour
 {
     public MPManager multiplayer;
     public PlayerInput playerInput;
