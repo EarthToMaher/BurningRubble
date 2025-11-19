@@ -23,11 +23,11 @@ public class ReenableManager : MonoBehaviour
 
     private class OneMeshRespawnable
     {
-        public GameObject obj;
+        public DestructibleMesh obj;
         public int xCoord, yCoord, zCoord;
         public byte previousVal;
         public float eligibleTime;
-        public OneMeshRespawnable(GameObject o, float t,int x, int y, int z, byte val)
+        public OneMeshRespawnable(DestructibleMesh o, float t,int x, int y, int z, byte val)
         {
             obj = o;
             eligibleTime = t;
@@ -71,32 +71,23 @@ public class ReenableManager : MonoBehaviour
         if (oneMesh)
         {
             Debug.Log("In one mesh");
-            Debug.Log(pendingOneMesh.Count);
             if (pendingOneMesh.Count == 0) return; //Stop running if the list is empty
             Debug.Log("Past return");
             OneMeshRespawnable meshRespawnable = null;
-            DestructibleMesh dm = null;
             for (int i = pendingOneMesh.Count - 1; i >= 0; i--)
             {
                 Debug.Log("In loop");
                 if (pendingOneMesh[i].eligibleTime <= now)
                 {
-                    //Debug.Log(pendingOneMesh[i].obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh> == null);
                     meshRespawnable = pendingOneMesh[i];
-                    dm = meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>();
-                    //Debug.Log("IS this TRUE???? " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>); //We now know that its a null object meaning that it thinks its nothing for some reason
-                    if (dm != null){
-                        //Debug.Log("Before Value Change: " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord]);
-                        dm.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord] = meshRespawnable.previousVal; //Turns it back to 1
-                        //Debug.Log("After Value Change: " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord]);
-                    }
+                    if (meshRespawnable.obj) meshRespawnable.obj.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord] = meshRespawnable.previousVal;
                     pendingOneMesh.RemoveAt(i);
                     if (maxRespawnAmount < 1) continue;
                     amountEnabled++;
                     if (amountEnabled > maxRespawnAmount) break;
                 }
             }
-            if(meshRespawnable!=null)dm.RepairMe();
+            if(meshRespawnable!=null)meshRespawnable.obj.RepairMe();
             if (pendingOneMesh.Count == 0) nextCheckTime = float.MaxValue;
             else nextCheckTime = pendingOneMesh[0].eligibleTime;
         }
@@ -132,7 +123,7 @@ public class ReenableManager : MonoBehaviour
             nextCheckTime = Time.time + minWaitTime; //Updates the next check time relative to this object if its the only object or if its reenable time is less than the next check time
     }
 
-    public void AddToBatchOneMesh(GameObject obj, Vector3 coords, byte val)
+    public void AddToBatchOneMesh(DestructibleMesh obj, Vector3 coords, byte val)
     {
         pendingOneMesh.Add(new OneMeshRespawnable(obj, Time.time + minWaitTime, Mathf.FloorToInt(coords.x), Mathf.FloorToInt(coords.y), Mathf.FloorToInt(coords.z), val));
         if (pendingOneMesh.Count == 1 || Time.time + minWaitTime < nextCheckTime) nextCheckTime = Time.time + minWaitTime;

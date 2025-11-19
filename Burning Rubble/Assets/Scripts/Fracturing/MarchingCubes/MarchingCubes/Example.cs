@@ -342,7 +342,7 @@ namespace MarchingCubesProject
         }
 
         [ContextMenu("Regenerate Marching Cubes Mesh from new Voxel Data")]
-        public void RegenerateMarchingCubesMesh(byte[,,] newByteArray)
+        public void RegenerateMarchingCubesMesh()
         {
             //Delete old meshes
             foreach (var mesh in meshes)
@@ -355,7 +355,6 @@ namespace MarchingCubesProject
             //worldVoxelization.recheckVoxels();
 
             //Generate new mesh
-            worldVoxelization.voxelData = newByteArray;
             GenerateMarchingCubesMesh();
         }
 
