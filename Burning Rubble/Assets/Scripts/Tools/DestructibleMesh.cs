@@ -29,6 +29,7 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
         meshFilter = GetComponent<MeshFilter>();
         meshCollider = GetComponent<MeshCollider>();
         marchingCubesScript = FindFirstObjectByType<Example>();
+        voxelData = marchingCubesScript.worldVoxelization.voxelData;
     }
 
     void OnTriggerEnter(Collider other)
@@ -86,9 +87,9 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
                         voxelCenter.z >= min.z && voxelCenter.z <= max.z)
                     {
                         Vector3 coords = new Vector3(x, y, z);
-                        rm.AddToBatchOneMesh(this,coords,voxelData[x,y,z]);
+                        rm.AddToBatchOneMesh(this.transform.parent.gameObject,coords,voxelData[x,y,z]); //Check that all the values are correct
                         voxelData[x, y, z] = 0;
-                        Debug.Log("Voxel destroyed");
+                        //Debug.Log("Voxel destroyed");
                         count++;
                         modified = true;
                     }
@@ -97,7 +98,7 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
         if (modified)
         {
             Debug.Log("Rebuilding mesh after destruction");
-            marchingCubesScript.RegenerateMarchingCubesMesh();//RebuildMesh();
+            marchingCubesScript.RegenerateMarchingCubesMesh(voxelData);//RebuildMesh();
             modified = false;
         }
 
@@ -185,6 +186,6 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
 
     public void RepairMe()
     {
-        marchingCubesScript.ReenableMeshRegeneration();
+        marchingCubesScript.RegenerateMarchingCubesMesh(voxelData);
     }
 }

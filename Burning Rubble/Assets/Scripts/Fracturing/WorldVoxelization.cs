@@ -21,6 +21,7 @@ public class WorldVoxelization : MonoBehaviour
 
     [Header("Layer Settings")]
     public string targetLayerName = "Voxelize";
+    public List<GameObject> listOfObjectsToVoxelize = new List<GameObject>();
 
     [Header("Cube Placement")]
     public GameObject cubePrefab;       // Optional prefab — if null, will use a built-in cube
@@ -40,7 +41,20 @@ public class WorldVoxelization : MonoBehaviour
 
     void Start(){
         GenerateVoxelGrid();
+        foreach(GameObject singleObjectInList in listOfObjectsToVoxelize){
+            singleObjectInList.SetActive(false); //turns off the objects after using them to make voxelized mesh
+        }
     }
+
+    // void OnApplicationQuit()
+    // {
+    //     GetMeshCollidersInLayer();
+    //     Debug.Log("Play mode is ending. Performing cleanup tasks...");
+    //     foreach(GameObject singleObjectInList in listOfObjectsToVoxelize){
+    //         Debug.Log("Setting Game Object");
+    //         singleObjectInList.SetActive(true); //turns pn the objects after using them to make voxelized mesh
+    //     }
+    // }
 
     [ContextMenu("Generate Voxel Grid")]
 
@@ -120,10 +134,11 @@ public class WorldVoxelization : MonoBehaviour
 
                         count++;
                         voxelData[a, b, c] = 1; // Mark voxel as occupied
-                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 1));
+                        //voxels.Add(new Voxel(new Vector3Int(a,b,c), 1)); 
+                        //Need to work on changing it from various independent variables to the Voxel class data, but thats a later problem
                     }else{
                         voxelData[a, b, c] = 0; // Mark voxel as empty
-                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 0));
+                        //voxels.Add(new Voxel(new Vector3Int(a,b,c), 0));
                     }
                     c++;
                 }
@@ -211,11 +226,12 @@ public class WorldVoxelization : MonoBehaviour
     public List<MeshCollider> GetMeshCollidersInLayer()
     {
         List<MeshCollider> mcList = new List<MeshCollider>();
-        MeshCollider[] colliders = includeInactive ? FindObjectsOfType<MeshCollider>(true) : FindObjectsOfType<MeshCollider>();
+        MeshCollider[] colliders = includeInactive ? FindObjectsOfType<MeshCollider>(true) : FindObjectsOfType<MeshCollider>(true);
         foreach (MeshCollider mc in colliders)
         {
             if (mc.gameObject.layer != targetLayer) continue;
             mcList.Add(mc);
+            listOfObjectsToVoxelize.Add(mc.gameObject);
         }
         Debug.Log("Found " + mcList.Count + " colliders in layer " + targetLayerName);
         return mcList;
