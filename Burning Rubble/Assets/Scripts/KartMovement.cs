@@ -88,7 +88,7 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Current Speed is: " + currAcceleration);
+        //Debug.Log("Current Speed is: " + currAcceleration);
         // Audio Input
         //bool isAccelerating = currAcceleration > 0;
         
@@ -96,7 +96,7 @@ public class KartMovement : MonoBehaviour
 
         // read in move input
         currAcceleration = accelerateAction.ReadValue<float>();
-        Debug.Log("TEST ACCELERATION: " + currAcceleration);
+        //Debug.Log("TEST ACCELERATION: " + currAcceleration);
         currAcceleration *= accelerationMultiplier;
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
@@ -385,12 +385,18 @@ public class KartMovement : MonoBehaviour
         currMaxSpeed = defaultMaxSpeed;
     }
 
+    // Return statements
     public bool CanMove() { return canMove; }
 
     public float GetAccelerateValue() { return currAcceleration; }
+
+    public float ReturnMaxSpeed() { return defaultMaxSpeed; }
+    
+    //Setter statements
+    public void SetCurrVelocity(float velocity) { currAcceleration = velocity; }
+
+    public void SetMaxSpeed(float maxSpeed) { defaultMaxSpeed = maxSpeed; }
 }
-
-
 
 
 // old code we could need later can go here
