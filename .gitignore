@@ -67,6 +67,3 @@ Packages/com.unity.package-manager/.cache/
 
 # Gradle cache (Android)
 .gradle/
-*.meta
-*.meta
-*.meta

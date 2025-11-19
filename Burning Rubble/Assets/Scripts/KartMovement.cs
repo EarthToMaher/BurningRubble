@@ -10,7 +10,6 @@ public class KartMovement : MonoBehaviour
     bool wasAccelerating = false;
 
     //input actions 
-    private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction reverseAction;
     private InputAction accelerateAction;
@@ -29,8 +28,7 @@ public class KartMovement : MonoBehaviour
     [SerializeField] private float defaultDriftAngle; //the drift angle when joystick is not held in a direction
     [SerializeField] private float maxDriftAngle; //the max angle when player widens drift (joystick held opposite to drift direction)
     [SerializeField] private float driftAngleAdjuster; //how much drift angle changes in a frame based on input
-    [SerializeField] private float boostIncrementor; //how much the max speed increases for the start boost and drift boost
-    [SerializeField] private float driftBoostIntensity; //length of the drift boost (seconds)
+    [SerializeField] private float startBoostIncrementor; //how much the max speed increases for the start boost
 
     private float hoverOffset = 1.48f;   // desired height above ground
     private float correctionForce = 1000f;  // how strong to push down
@@ -70,15 +68,14 @@ public class KartMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
         GameManager.AudioManager.PlayCategoryOnce("EngineLoop");
         if (currMaxSpeed <= 0) currMaxSpeed = 1f;
         //assign input action references
-        moveAction = playerInput.actions["Move"];
-        reverseAction = playerInput.actions["Reverse"];
-        accelerateAction = playerInput.actions["Accelerate"];
-        brakeAction = playerInput.actions["Brake"];
-        driftAction = playerInput.actions["Drift"];
+        moveAction = InputSystem.actions.FindAction("Move");
+        reverseAction = InputSystem.actions.FindAction("Reverse");
+        accelerateAction = InputSystem.actions.FindAction("Accelerate");
+        brakeAction = InputSystem.actions.FindAction("Brake");
+        driftAction = InputSystem.actions.FindAction("Drift");
 
         //assign rigidbody and fix max angular velocity for drift
         rb = this.gameObject.GetComponent<Rigidbody>();
@@ -88,7 +85,7 @@ public class KartMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Current Speed is: " + currAcceleration);
+        Debug.Log("Current Speed is: " + currAcceleration);
         // Audio Input
         //bool isAccelerating = currAcceleration > 0;
         
@@ -96,7 +93,6 @@ public class KartMovement : MonoBehaviour
 
         // read in move input
         currAcceleration = accelerateAction.ReadValue<float>();
-        //Debug.Log("TEST ACCELERATION: " + currAcceleration);
         currAcceleration *= accelerationMultiplier;
         //Debug.Log("Acceleration: " + currAcceleration);
         currReverse = reverseAction.ReadValue<float>();
@@ -130,7 +126,6 @@ public class KartMovement : MonoBehaviour
         {
             isDrifting = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            StartCoroutine(DriftBoost(driftBoostIntensity));
         }
 
         if (interpolating)
@@ -272,13 +267,6 @@ public class KartMovement : MonoBehaviour
         }
     }
 
-    //input functions 
-/*    public void OnAccelerate(InputValue value)
-    {
-        currAcceleration = value.Get<float>();
-        Debug.Log("TEST ACCELERATION: " + currAcceleration);
-    }*/
-
     //Temporary Check for destruction, should probably be changed to a spherecast check
     private void OnTriggerStay(Collider other)
     {
@@ -290,13 +278,6 @@ public class KartMovement : MonoBehaviour
 
     public void ResetVelocity() { SetVelocity(Vector3.zero); }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.GetComponent<KartMovement>() != null)
-        {
-            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>());
-        }
-    }
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("Collided: " + collision.gameObject);
@@ -329,23 +310,14 @@ public class KartMovement : MonoBehaviour
     {
         Debug.Log("in coroutine");
         startBoostActive = true;
-        defaultMaxSpeed += boostIncrementor;
+        defaultMaxSpeed += startBoostIncrementor;
         rb.linearVelocity = transform.forward * defaultMaxSpeed;
         Debug.Log("Velocity expected: " + transform.forward * defaultMaxSpeed);
         Debug.Log("Actual velocity: " + rb.linearVelocity);
         yield return new WaitForSeconds(boostLevel);
-        defaultMaxSpeed -= boostIncrementor;
+        defaultMaxSpeed -= startBoostIncrementor;
         startBoostActive = false;
         Debug.Log("end coroutine");
-    }
-
-    public IEnumerator DriftBoost(float boostLevel)
-    {
-        currMaxSpeed = defaultMaxSpeed;
-        defaultMaxSpeed += boostIncrementor;
-        rb.linearVelocity = transform.forward * defaultMaxSpeed;
-        yield return new WaitForSeconds(boostLevel);
-        defaultMaxSpeed -= boostIncrementor;
     }
     
     public IEnumerator Boost(float intensity, float exitDirection)
@@ -385,17 +357,9 @@ public class KartMovement : MonoBehaviour
         currMaxSpeed = defaultMaxSpeed;
     }
 
-    // Return statements
     public bool CanMove() { return canMove; }
 
     public float GetAccelerateValue() { return currAcceleration; }
-
-    public float ReturnMaxSpeed() { return defaultMaxSpeed; }
-    
-    //Setter statements
-    public void SetCurrVelocity(float velocity) { currAcceleration = velocity; }
-
-    public void SetMaxSpeed(float maxSpeed) { defaultMaxSpeed = maxSpeed; }
 }
 
 

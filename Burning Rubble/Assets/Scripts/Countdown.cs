@@ -7,39 +7,32 @@ public class Countdown : MonoBehaviour
     [SerializeField] private float longBoost;
     [SerializeField] private float mediumBoost;
     [SerializeField] private float shortBoost;
-    private bool gameStarted;
     private bool isActive;
     private float intensity;
     private float count;
     private bool hasBoosted;
     private bool isCounting;
-    private bool levelLoaded = false;
-    [SerializeField] public KartMovement move;
+    [SerializeField] private KartMovement move;
     [SerializeField] private TextMeshProUGUI countText;
-    [SerializeField] private RaceTimer raceTimer;
-    private AddCollidersToChildren levelStarter;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        levelStarter = FindAnyObjectByType<AddCollidersToChildren>();
-        levelStarter.StartCountdown(this);
         isActive = true;
         hasBoosted = false;
         isCounting = false;
-        gameStarted = false;
         count = 3;
 
         //-1 value used to determine whether intensity has been set already
         intensity = -1;
+
+        StartCoroutine(WaitToStart());
     }
 
     private void Update()
     {
-        Debug.Log("Level Loaded: " + levelLoaded);
-        if(gameStarted&&levelLoaded)
+        if(isCounting)
         {
-            Debug.Log("Work pls");
             if (count > 0)
             {
                 count -= Time.deltaTime;
@@ -58,14 +51,13 @@ public class Countdown : MonoBehaviour
             if (count <= 0)
             {
                 isActive = false;
-                raceTimer.StartRace();
                 if (!hasBoosted)
                 {
-                    if (intensity > 0)
+                    if(intensity > 0) 
                     {
                         Debug.Log("Calling coroutine...");
                         move.StartCoroutine(move.StartBoost(intensity));
-                        Debug.Log("Boost with intensity: " + intensity);
+                        Debug.Log("Boost with intensity: " + intensity); 
                     }
                     hasBoosted = true;
                 }
@@ -89,18 +81,6 @@ public class Countdown : MonoBehaviour
         return isActive;
     }
 
-    public void SetGameStarted(bool hasStarted)
-    {
-        gameStarted = hasStarted;
-        //Debug.Log("Countdown triggered");
-    }
-
-    public void SetLevelLoaded(bool val)
-    {
-        this.levelLoaded =val;
-        Debug.Log("Setting level loaded");
-    }
-
     private IEnumerator RemoveCountdown()
     {
         yield return new WaitForSeconds(0.7f);
@@ -109,8 +89,7 @@ public class Countdown : MonoBehaviour
     
     private IEnumerator WaitToStart()
     {
-        //waiting for kart to be on the ground (only relevant in MVP scene)
-        //call coroutine from Start and wrap all code in Update in an if(isCounting) statement
+        //waiting for kart to be on the ground
         yield return new WaitForSeconds(3f);
         isCounting = true;
     }
