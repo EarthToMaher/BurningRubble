@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Unity.Loading;
+using TMPro;
 
 public class AddCollidersToChildren : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class AddCollidersToChildren : MonoBehaviour
     [SerializeField] private GameObject loadingCam;
     private InputAction restart;
     private bool reloading = true;
+    private bool loading = true;
 
     void Awake()
     {
@@ -72,6 +75,19 @@ public class AddCollidersToChildren : MonoBehaviour
         Destroy(loadingScreen);
         Destroy(loadingCam);
         reloading = false;
+        Countdown[] kartActivate = FindObjectsByType<Countdown>(FindObjectsSortMode.None);
+        loading = false;
+        Countdown[] countdowns = FindObjectsByType<Countdown>(FindObjectsSortMode.None);
+        foreach (Countdown countdown in countdowns)
+        {
+            StartCountdown(countdown);
+            countdown.move.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        }
+    }
+
+    public void StartCountdown(Countdown countdown)
+    {
+        countdown.SetLevelLoaded(!loading);
     }
     
     public IEnumerator ReloadLevel()
@@ -79,7 +95,10 @@ public class AddCollidersToChildren : MonoBehaviour
         reloading = true;
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync("Track1Ver1");
         yield return new WaitUntil(() => asyncUnload.isDone);
-        SceneManager.LoadScene("Track1Ver1", LoadSceneMode.Additive);
+        //SceneManager.LoadScene("Track1Ver1", LoadSceneMode.Additive);
         reloading = false;
+        SceneManager.LoadScene("LoadScene");
+
+
     }
 }
