@@ -35,6 +35,7 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
         reMgr = FindFirstObjectByType<ReenableManager>();
+        Debug.Log("Assigned reMgr");
         if(particle!=null) particle = Instantiate(particle, transform.position, Quaternion.identity);
 
 

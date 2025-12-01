@@ -31,7 +31,7 @@ public class RubbleMeter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rubbleAction = InputSystem.actions.FindAction("Rubble");
+        rubbleAction = GetComponent<PlayerInput>().actions["Rubble"];
     }
 
     // Update is called once per frame
