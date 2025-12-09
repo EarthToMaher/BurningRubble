@@ -699,8 +699,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'JOIN WITH NORTH FACE BUTTON
 
-    P1 START BY PRESSING North Face Button
-    Again'
+    P1 START BY PRESSING NORTH FACE BUTTON
+    AGAIN'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7881415630225444673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06af8dc920d79da4eba850afec027356, type: 3}
+  m_Script: {fileID: 11500000, guid: dc77d6d0abfa57847b84c4771e263b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JoinScreenManager
   p1Text: {fileID: 1612315048060295775}

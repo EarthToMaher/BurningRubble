@@ -715,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.4
+  m_fontSize: 18.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7209,7 +7209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5632499203328562138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a67613aea7230cd40acad95af2eae1b2, type: 3}
+  m_Script: {fileID: 11500000, guid: eb2d802c401198b4cabd5770f59e0f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StartGame
   multiplayer: {fileID: 0}

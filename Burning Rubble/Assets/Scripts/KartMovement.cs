@@ -51,7 +51,8 @@ public class KartMovement : MonoBehaviour
     //booleans
     private bool isDrifting;
     private bool lowCOMActive;
-    private bool startBoostActive;
+    private bool startBoostActive = false;
+    private bool driftBoostActive = false;
 
     //currently doesn't do anything, but here to handle situations in the future and there so I can put it in RubbleBoost for now
     private bool canMove = true;
@@ -131,7 +132,16 @@ public class KartMovement : MonoBehaviour
         {
             isDrifting = false;
             rb.constraints = RigidbodyConstraints.FreezeRotation;
-            StartCoroutine(DriftBoost(driftBoostIntensity));
+
+            if (!driftBoostActive)
+            {
+                StartCoroutine(DriftBoost(driftBoostIntensity));
+            }
+            else
+            {
+                currMaxSpeed = defaultMaxSpeed;
+                rb.linearVelocity = transform.forward * defaultMaxSpeed;
+            }
         }
 
         if (interpolating)
@@ -336,6 +346,7 @@ public class KartMovement : MonoBehaviour
         Debug.Log("Actual velocity: " + rb.linearVelocity);
         yield return new WaitForSeconds(boostLevel);
         defaultMaxSpeed -= boostIncrementor;
+        rb.linearVelocity = transform.forward * defaultMaxSpeed;
         startBoostActive = false;
         Debug.Log("end coroutine");
     }
@@ -345,8 +356,11 @@ public class KartMovement : MonoBehaviour
         currMaxSpeed = defaultMaxSpeed;
         defaultMaxSpeed += boostIncrementor;
         rb.linearVelocity = transform.forward * defaultMaxSpeed;
+        driftBoostActive = true;
         yield return new WaitForSeconds(boostLevel);
+        driftBoostActive = false;
         defaultMaxSpeed -= boostIncrementor;
+        rb.linearVelocity = transform.forward * defaultMaxSpeed;
     }
     
     public IEnumerator Boost(float intensity, float exitDirection)

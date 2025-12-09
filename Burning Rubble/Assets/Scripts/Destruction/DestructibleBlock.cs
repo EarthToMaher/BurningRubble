@@ -25,16 +25,17 @@ public class DestructibleBlock : MonoBehaviour, I_Destructible
     //Private Instance Variables, No Need to Access from Inspector
     private MeshRenderer rend;
     private Collider coll;
-    private ReenableManager reMgr;
+    public ReenableManager reMgr;
     private RubblePickUp[] pickUps;
 
     // Initializes our instance variables, Instantiates our PickUps and Fills the Array
-    void Start()
+    void OnEnable()
     {
 
         rend = gameObject.GetComponent<MeshRenderer>();
         coll = gameObject.GetComponent<Collider>();
         reMgr = FindFirstObjectByType<ReenableManager>();
+        Debug.Log("Assigned reMgr");
         if(particle!=null) particle = Instantiate(particle, transform.position, Quaternion.identity);
 
 
