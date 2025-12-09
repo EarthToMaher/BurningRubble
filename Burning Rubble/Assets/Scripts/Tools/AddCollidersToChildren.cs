@@ -71,7 +71,7 @@ public class AddCollidersToChildren : MonoBehaviour
             yield return new WaitForEndOfFrame();
         } while (numActivated < voxelCount);
         Debug.Log("Finished Loading");
-        SceneManager.LoadScene("Track2Ver1", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Track1Ver1", LoadSceneMode.Additive);
         Destroy(loadingScreen);
         Destroy(loadingCam);
         reloading = false;
