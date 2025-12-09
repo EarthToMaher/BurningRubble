@@ -27,7 +27,7 @@ public class ReenableManager : MonoBehaviour
         public int xCoord, yCoord, zCoord;
         public byte previousVal;
         public float eligibleTime;
-        public OneMeshRespawnable(GameObject o, float t, int x, int y, int z, byte val)
+        public OneMeshRespawnable(GameObject o, float t,int x, int y, int z, byte val)
         {
             obj = o;
             eligibleTime = t;
@@ -85,8 +85,7 @@ public class ReenableManager : MonoBehaviour
                     meshRespawnable = pendingOneMesh[i];
                     dm = meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>();
                     //Debug.Log("IS this TRUE???? " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>); //We now know that its a null object meaning that it thinks its nothing for some reason
-                    if (dm != null)
-                    {
+                    if (dm != null){
                         //Debug.Log("Before Value Change: " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord]);
                         dm.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord] = meshRespawnable.previousVal; //Turns it back to 1
                         //Debug.Log("After Value Change: " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord]);
@@ -97,13 +96,13 @@ public class ReenableManager : MonoBehaviour
                     if (amountEnabled > maxRespawnAmount) break;
                 }
             }
-            if (meshRespawnable != null) dm.RepairMe();
+            if(meshRespawnable!=null)dm.RepairMe();
             if (pendingOneMesh.Count == 0) nextCheckTime = float.MaxValue;
             else nextCheckTime = pendingOneMesh[0].eligibleTime;
         }
         else
         {
-            if (pending.Count == 0) return; //Stop running if the list is empty
+             if (pending.Count == 0) return; //Stop running if the list is empty
             for (int i = pending.Count - 1; i >= 0; i--)
             {
                 if (pending[i].eligibleTime <= now)
