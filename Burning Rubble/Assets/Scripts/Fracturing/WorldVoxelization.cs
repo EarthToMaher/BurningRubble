@@ -1,11 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-using MarchingCubesProject;
-using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
-
 
 [ExecuteInEditMode]
 public class WorldVoxelization : MonoBehaviour
@@ -16,8 +13,6 @@ public class WorldVoxelization : MonoBehaviour
     public bool includeInactive = false;
     public bool fitToRenderers = true;
     public bool fitToColliders = true;
-    Vector3 start;
-    Vector3 end;
 
     [Header("Layer Settings")]
     public string targetLayerName = "Voxelize";
@@ -26,27 +21,13 @@ public class WorldVoxelization : MonoBehaviour
     public GameObject cubePrefab;       // Optional prefab — if null, will use a built-in cube
     public bool clearOldCubes = true;   // Destroys previously placed cubes before spawning new ones
     public string spawnedParentName = "VoxelGrid";
-    public GameObject parent;
 
     private Bounds sceneBounds;
     private int targetLayer;
 
-    //[Header("Grid Locations")]
-    public Vector3[,,] gridLocations = new Vector3[0,0,0];
-    public byte[,,] voxelData = new byte[0,0,0];
-    public List<Voxel> voxels = new List<Voxel>();
-
-    public Example marchingCubesScript;
-
-    void Start(){
-        GenerateVoxelGrid();
-    }
-
     [ContextMenu("Generate Voxel Grid")]
-
     public void GenerateVoxelGrid()
     {
-        clearRemainingVoxels();
         targetLayer = LayerMask.NameToLayer(targetLayerName);
         if (targetLayer < 0)
         {
@@ -56,7 +37,7 @@ public class WorldVoxelization : MonoBehaviour
 
         UpdateSceneBounds();
 
-        // Optionally clear previously spawned cubes //does not work as far as I can tell
+        // Optionally clear previously spawned cubes
         if (clearOldCubes)
         {
             var oldParent = GameObject.Find(spawnedParentName);
@@ -65,76 +46,57 @@ public class WorldVoxelization : MonoBehaviour
         }
 
         // Create parent to hold cubes
-        parent = new GameObject(spawnedParentName);
+        GameObject parent = new GameObject(spawnedParentName);
         parent.transform.position = Vector3.zero;
 
-        start = new Vector3(
+        Vector3 start = new Vector3(
             Mathf.Floor(sceneBounds.min.x / cellSize) * cellSize,
             Mathf.Floor(sceneBounds.min.y / cellSize) * cellSize,
             Mathf.Floor(sceneBounds.min.z / cellSize) * cellSize
         );
 
-        end = new Vector3(
+        Vector3 end = new Vector3(
             Mathf.Ceil(sceneBounds.max.x / cellSize) * cellSize,
             Mathf.Ceil(sceneBounds.max.y / cellSize) * cellSize,
             Mathf.Ceil(sceneBounds.max.z / cellSize) * cellSize
         );
 
-        // Initialize grid locations array
-        gridLocations = new Vector3[Mathf.CeilToInt((end.x - start.x) / cellSize) +2, Mathf.CeilToInt((end.y - start.y) / cellSize) +2, Mathf.CeilToInt((end.z - start.z) / cellSize) +2];
-        voxelData = new byte[gridLocations.GetLength(0), gridLocations.GetLength(1), gridLocations.GetLength(2)];
-        Debug.Log("Grid size: " + gridLocations.GetLength(0) + " x " + gridLocations.GetLength(1) + " x " + gridLocations.GetLength(2));
-        Debug.Log("Start X: " + start.x + " End X: " + end.x + "\nStart Y: " + start.y + " End Y: " + end.y + "\nStart Z: " + start.z + " End Z: " + end.z);
-
-
         int count = 0;
 
         List<MeshCollider> mcList = GetMeshCollidersInLayer();
 
-        int a=0, b=0, c=0;
+
         // Main loop to fill the grid
-        for (float x = start.x; x < end.x + 2; x += cellSize)
+        for (float x = start.x; x < end.x; x += cellSize)
         {
-            for (float y = start.y; y < end.y + 2; y += cellSize)
+            for (float y = start.y; y < end.y; y += cellSize)
             {
-                for (float z = start.z; z < end.z + 2; z += cellSize)
+                for (float z = start.z; z < end.z; z += cellSize)
                 {
 
-                    Vector3 cellCenter = new Vector3((x + cellSize / 2f) - cellSize, (y + cellSize / 2f) - cellSize, (z + cellSize / 2f) - cellSize);
-                    gridLocations[a,b,c] = new Vector3(cellCenter.x, cellCenter.y,  cellCenter.z);
+                    Vector3 cellCenter = new Vector3(x + cellSize / 2f, y + cellSize / 2f, z + cellSize / 2f);
+
+                    if (cellCenter.y > 4f)continue;
 
                     if (IsPointInsideMesh(cellCenter, mcList))
                     {
                         GameObject cube;
-                        ///*
                         if (cubePrefab != null)
                             cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
                         else
                             cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
                         cube.transform.position = cellCenter;
                         cube.transform.localScale = Vector3.one * cellSize;
                         cube.transform.SetParent(parent.transform);
-                        cube.GetComponent<BoxCollider>().isTrigger = true;
-                        cube.AddComponent<DestructibleBlock>();//*/
+                        DestroyImmediate(cube.GetComponent<BoxCollider>());
+                        //cube.GetComponent<BoxCollider>().isTrigger = true;
+                        //cube.AddComponent<DestructibleBlock>();
 
                         count++;
-                        voxelData[a, b, c] = 1; // Mark voxel as occupied
-                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 1));
-                    }else{
-                        voxelData[a, b, c] = 0; // Mark voxel as empty
-                        voxels.Add(new Voxel(new Vector3Int(a,b,c), 0));
                     }
-                    c++;
                 }
-                c = 0;
-                b++;
             }
-            b = 0;
-            a++;
         }
-
-        //marchingCubesScript.GenerateMarchingCubesMesh();
 
         Debug.Log($"Generated {count} cubes inside grid fitting \"{targetLayerName}\" objects.");
     }
@@ -221,72 +183,5 @@ public class WorldVoxelization : MonoBehaviour
         return mcList;
     }
 
-    /*void OnDrawGizmos()
-    {
-        // Draw only if grid has been generated
-        if (gridLocations == null || gridLocations.Length == 0)
-            return;
-
-        Gizmos.color = gridColor;
-
-        for (int x = 0; x < gridLocations.GetLength(0); x++)
-        {
-            for (int y = 0; y < gridLocations.GetLength(1); y++)
-            {
-                for (int z = 0; z < gridLocations.GetLength(2); z++)
-                {
-                    Vector3 pos = gridLocations[x, y, z];
-
-                    // Skip unused boundary cells
-                    //if (float.IsNaN(pos.x))
-                        //continue;
-
-                    // Draw cube outline for each valid grid cell
-                    Gizmos.DrawWireCube(pos, Vector3.one * cellSize);
-                }
-            }
-        }
-    }*/
-
-    public void recheckVoxels(){
-        /*int a=0, b=0, c=0;
-        voxelData = new byte[gridLocations.GetLength(0), gridLocations.GetLength(1), gridLocations.GetLength(2)];
-        Debug.Log("VoxelDataLength: " + voxelData.GetLength(0) + ", " + voxelData.GetLength(1) + ", " + voxelData.GetLength(2));
-        for (float x = start.x; x < end.x + 2; x += cellSize)
-        {
-            for (float y = start.y; y < end.y + 2; y += cellSize)
-            {
-                for (float z = start.z; z < end.z + 2; z += cellSize)
-                {
-                    //Debug.Log("Rechecking voxel at: " + a + ", " + b + ", " + c);
-                    voxelData[a, b, c] = 0; // Mark voxel as empty
-                    c++;
-                }
-                c = 0;
-                b++;
-            }
-            b = 0;
-            a++;
-        }
-
-        //List<Voxel> voxelsToClear = new List<Voxel>();
-        foreach(Voxel v in voxels){ //VOXEL IN REMAININGVOXELS //GET VECTOR3 GRID POSITION // SET VOXELDATA AT THAT POSITION TO 1
-            if(v.GetVoxelObject() == null){
-                voxelsToClear.Add(v);
-                continue;
-            }
-            voxelData[v.GetGridPosition().x, v.GetGridPosition().y, v.GetGridPosition().z] = 1;
-        }
-
-        foreach(Voxel v in voxelsToClear){
-            voxels.Remove(v);
-        }*/
-    }
-
-    public void clearRemainingVoxels(){
-        voxels.Clear();
-    }
-
 }
-
 #endif

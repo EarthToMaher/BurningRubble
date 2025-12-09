@@ -64,10 +64,16 @@ public class Kart : MonoBehaviour, I_Damageable
         invincible = true;
         kartMovement.ResetVelocity();
         //GameObject _lapManager = GameObject.Find("LapManager");
-        CheckpointDetection _checkDetect = FindFirstObjectByType<CheckpointDetection>();
-        Vector3 _respawnPoint = FindFirstObjectByType<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
-        this.transform.position = _respawnPoint;
+        StopKart();
         StartCoroutine(HealUponDeath());
+        for (int i = 0; i < 60; i++)
+        {
+            CheckpointDetection _checkDetect = FindFirstObjectByType<CheckpointDetection>();
+            Vector3 _respawnPoint = FindFirstObjectByType<LapManager>().SetCheckpointPos(_checkDetect._currCheckpoint);
+            Quaternion _respawnRotation = FindAnyObjectByType<LapManager>().SetCheckpointRot(_checkDetect._currCheckpoint);
+            this.transform.position = _respawnPoint;
+            this.transform.rotation = _respawnRotation;
+        }
     }
 
     private IEnumerator HealUponDeath()

@@ -21,6 +21,8 @@ public class RaceTimer : MonoBehaviour
 
     private CheckpointDetection gm;
 
+    private bool raceStarted = false;
+
 
     void Start()
     {
@@ -34,7 +36,11 @@ public class RaceTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
+        if(raceStarted)
+        {
+            time += Time.deltaTime;
+        }
+
         //Don't update timer if the race is complete
         if (gm._lapCount > 3)
         {
@@ -43,7 +49,7 @@ public class RaceTimer : MonoBehaviour
         }
 
 
-        time += Time.deltaTime;
+        //time += Time.deltaTime;
         //Get the number of minutes, seconds, and milliseconds that the scene has been running
         int minutes = Mathf.FloorToInt(time) / 60;
         int seconds = Mathf.FloorToInt(time) % 60;
@@ -76,5 +82,10 @@ public class RaceTimer : MonoBehaviour
 
         //Format our time as a string and change the text
         return String.Format("{0}:{1}.{2}", minutes, seconds, milliseconds);
+    }
+
+    public void StartRace()
+    {
+        raceStarted = true;
     }
 }
