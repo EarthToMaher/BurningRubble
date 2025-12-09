@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176574527673189613}
   - component: {fileID: 2647199495313773129}
-  - component: {fileID: 8026302484571228728}
+  - component: {fileID: 8894421914487138269}
   m_Layer: 0
   m_Name: MultiplayerManager
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &8026302484571228728
+--- !u!114 &8894421914487138269
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,12 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MPManager
   joinScreen: {fileID: 0}
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  player1Start: {x: 499.9, y: 0, z: 700}
-  player2Start: {x: 499.9, y: 0, z: 698}
-  player3Start: {x: 499.9, y: 0, z: 702}
-  player4Start: {x: 499.9, y: 0, z: 696}
+  players: []
+  player1Start: {x: 0, y: 0, z: 0}
+  player2Start: {x: 0, y: 0, z: 0}
+  player3Start: {x: 0, y: 0, z: 0}
+  player4Start: {x: 0, y: 0, z: 0}

@@ -152,7 +152,7 @@ namespace MarchingCubesProject
             collider.convex = true; //Importaint for proper collision detection with rigidbodies
             collider.isTrigger = true;
             DestructibleMesh dm = go.AddComponent<DestructibleMesh>();
-            dm.parentGridPiece = gridPiece; //Need to set this properly later
+            //dm.parentGridPiece = gridPiece; //Need to set this properly later
             dm.voxelData = gridPiece.GetVoxelData();
             dm.voxelPositions = gridPiece.GetVoxelPositions();
             go.transform.localPosition = position;
