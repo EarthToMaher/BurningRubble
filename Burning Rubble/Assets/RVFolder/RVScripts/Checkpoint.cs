@@ -11,12 +11,14 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private bool _isLapPoint;
     [SerializeField] private int _remainingCheckpoints = 0;
     public Vector3 _checkpointPosition;
+    public Quaternion _checkpointRotation;
     public bool _hasPassed;
 
     public void Start()
     {
         _hasPassed = false;
         _checkpointPosition = this.transform.position;
+        _checkpointRotation = this.transform.rotation;
         //_checkpointPosition = new Vector3(Mathf.Abs(_checkpointPosition.x) - 50, _checkpointPosition.y, _checkpointPosition.z);
         //if (this.transform.position.x < 0) _checkpointPosition = new Vector3(_checkpointPosition.x * - 1, _checkpointPosition.y, _checkpointPosition.z);
     }
