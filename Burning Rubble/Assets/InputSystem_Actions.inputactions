@@ -657,17 +657,6 @@
                     "action": "Join",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8cdac434-12b4-4487-8ddf-b1e736ce2062",
-                    "path": "<Keyboard>/backquote",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Join",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

@@ -715,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.9
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7001,7 +7001,7 @@ GameObject:
   - component: {fileID: 1488391331784195039}
   - component: {fileID: 1981736834816086225}
   - component: {fileID: 7469469064551229219}
-  - component: {fileID: 9073006692310393106}
+  - component: {fileID: 4591309631334084487}
   m_Layer: 0
   m_Name: Kart
   m_TagString: Player
@@ -7200,7 +7200,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 768161287621097691}
---- !u!114 &9073006692310393106
+--- !u!114 &4591309631334084487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7209,10 +7209,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5632499203328562138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb2d802c401198b4cabd5770f59e0f29, type: 3}
+  m_Script: {fileID: 11500000, guid: 653433ab7ab01452a9e4367b43c84747, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StartGame
-  multiplayer: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::StartManager
   playerInput: {fileID: 0}
 --- !u!1 &5651480845445376591
 GameObject:
