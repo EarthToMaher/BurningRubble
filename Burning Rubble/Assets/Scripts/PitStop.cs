@@ -12,11 +12,15 @@ public class PitStop : MonoBehaviour
         if (!kart.NeedsHealing()) yield return new WaitForEndOfFrame();
         else
         {
-            kart.kartMovement.enabled = false;
-            kart.StopKart();
-            yield return new WaitForSeconds(1);
-            while (!kart.Heal(healRate)) yield return new WaitForSeconds(1);
-            kart.kartMovement.enabled = true;
+            /* 
+             * Old script for healing cart.
+             */
+            //kart.kartMovement.enabled = false;
+            //kart.StopKart();
+            //yield return new WaitForSeconds(1);
+            //while (!kart.Heal(healRate)) yield return new WaitForSeconds(1);
+            //kart.kartMovement.enabled = true;
+            kart.Heal(healRate);
             kart.kartMovement.StartCoroutine(kart.kartMovement.Boost(60f, exitDirection.eulerAngles.y));
         }
     }

@@ -128,7 +128,7 @@ public class WorldVoxelization : MonoBehaviour
                             if (IsPointInsideMesh(cellCenter, mcList))
                             {
                                 GameObject cube;
-                                /*
+                                ///*
                                 if (cubePrefab != null)
                                     cube = (GameObject)PrefabUtility.InstantiatePrefab(cubePrefab);
                                 else
@@ -157,7 +157,7 @@ public class WorldVoxelization : MonoBehaviour
                     a++;
                 }
 
-                marchingCubesScript.GenerateMarchingCubesMeshBig(voxelData, gridLocations);
+                //marchingCubesScript.GenerateMarchingCubesMeshBig(voxelData, gridLocations);
 
                 Debug.Log($"Generated {count} cubes inside grid fitting \"{targetLayerName}\" objects.");
             }
