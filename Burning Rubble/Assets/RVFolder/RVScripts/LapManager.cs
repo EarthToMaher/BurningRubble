@@ -25,6 +25,9 @@ public class LapManager : MonoBehaviour
         // It was gonna be way more of a headache for me to think of this on my own, so thanks chatgpt
         // You a real one
     }
+
+
+
     public Vector3 SetCheckpointPos(int currCheckpoint)
     {
         return _checkpointArray[currCheckpoint]._checkpointPosition;
