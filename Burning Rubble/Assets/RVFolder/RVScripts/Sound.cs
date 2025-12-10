@@ -14,7 +14,7 @@ public class Sound
 
     public AudioClip _clip;
 
-    [Range(0f, 100f)]
+    [Range(0f, 1)]
     public float _volume;
     [Range(0f, 1f)]
     public float _pitch;
