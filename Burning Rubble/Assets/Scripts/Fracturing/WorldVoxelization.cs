@@ -2,13 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using MarchingCubesProject;
 using System;
-
-#if UNITY_EDITOR
 using UnityEditor;
 
 
+#if UNITY_EDITOR
 [ExecuteInEditMode]
+#endif
 public class WorldVoxelization : MonoBehaviour
+
 {
     [Header("Grid Settings")]
     public float cellSize = 1f;
@@ -41,6 +42,8 @@ public class WorldVoxelization : MonoBehaviour
     public Example marchingCubesScript;
 
     public ReenableManager reenableManager;
+
+    #if UNITY_EDITOR
 
     void Start(){
         GenerateVoxelGrid();
@@ -479,7 +482,5 @@ public class WorldVoxelization : MonoBehaviour
     public void resetSmallGrids(){
         arrayOfGridPieces = null;
     }
-
+    #endif
 }
-
-#endif
