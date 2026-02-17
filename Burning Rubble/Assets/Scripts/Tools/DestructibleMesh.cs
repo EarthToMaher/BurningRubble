@@ -59,7 +59,7 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
     public void DestroyMe(GameObject instigator, GameObject cause)
     {
         Vector3 hitpoint = meshCollider.ClosestPoint(cause.transform.position);
-        Debug.Log("Hitpoint: " + hitpoint);
+        Debug.Log("Hitpoint: " + hitpoint); //does run this code
         int numDestroyed = ApplyHit(hitpoint);
         I_Damageable damageable = cause.GetComponent<I_Damageable>();
         if (damageable != null) damageable.TakeDamage(hp*numDestroyed);
@@ -138,12 +138,15 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
 
         bool modified = false;
 
+        Debug.Log("Going through Voxel Data");
+
         for (int x = 0; x < voxelData.GetLength(0); x++)
             for (int y = 0; y < voxelData.GetLength(1); y++)
                 for (int z = 0; z < voxelData.GetLength(2); z++)
                 {
                     if (voxelData[x, y, z] == 0) continue;
 
+                    Debug.Log("VoxelData didnt = 0");
                     Vector3 voxelCenter = voxelPositions[x, y, z];
 
                     // Now in same coordinate space
@@ -158,6 +161,7 @@ public class DestructibleMesh : MonoBehaviour, I_Destructible
 
                         voxelData[x, y, z] = 0;
                         modified = true;
+                        Debug.Log("Modified = true");
                         count++;
                     }
                 }
