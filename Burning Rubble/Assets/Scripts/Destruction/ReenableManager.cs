@@ -83,7 +83,7 @@ public class ReenableManager : MonoBehaviour
                 {
                     //Debug.Log(pendingOneMesh[i].obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh> == null);
                     meshRespawnable = pendingOneMesh[i];
-                    dm = meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>();
+                    dm = meshRespawnable.obj.GetComponent<DestructibleMesh>();
                     //Debug.Log("IS this TRUE???? " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>); //We now know that its a null object meaning that it thinks its nothing for some reason
                     if (dm != null){
                         //Debug.Log("Before Value Change: " + meshRespawnable.obj.transform.GetChild(0).gameObject.GetComponent<DestructibleMesh>.voxelData[meshRespawnable.xCoord, meshRespawnable.yCoord, meshRespawnable.zCoord]);
